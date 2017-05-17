@@ -13,8 +13,8 @@ namespace NovaktApp
 		{
 			InitializeComponent();
 
-			MainPage = new NovaktApp.MainPage();
-		}
+            MainPage = new NavigationPage(new View.LoginPage());
+        }
 
 		protected override void OnStart ()
 		{

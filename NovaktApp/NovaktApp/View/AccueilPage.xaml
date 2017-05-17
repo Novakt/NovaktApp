@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NovaktApp.View.AccueilPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Button Grid.Row="0" HorizontalOptions="Center" WidthRequest="200" Text="Produits" />
+        <Button Grid.Row="1" HorizontalOptions="Center" WidthRequest="200" Text="Chantiers réalisés"/>
+        <Button Grid.Row="2" HorizontalOptions="Center" WidthRequest="200" Text="Client"/>
+        <Button Grid.Row="3" HorizontalOptions="Center" WidthRequest="200" Text="Synchroniser"/>
+    </Grid>
+</ContentPage>
