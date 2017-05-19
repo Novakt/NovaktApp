@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NovaktApp.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,13 @@ namespace NovaktApp.View
 		public AccueilPage ()
 		{
 			InitializeComponent ();
-		}
-	}
+            //MessageService.message("test");
+
+        }
+
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+
+        }
+    }
 }
