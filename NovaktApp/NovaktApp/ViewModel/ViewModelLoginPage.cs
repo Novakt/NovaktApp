@@ -3,7 +3,7 @@ using NovaktApp.View;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Windows.Input;
+using NovaktApp.Core;
 using Xamarin.Forms;
 
 namespace NovaktApp.ViewModel
@@ -12,8 +12,7 @@ namespace NovaktApp.ViewModel
     {
         private INavigation _Navigation;
         private DelegateCommand _ConnexionCommand;
-        public DelegateCommand ConnexionCommand => _ConnexionCommand;
-
+        
         public INavigation Navigation
         {
             get
@@ -26,10 +25,14 @@ namespace NovaktApp.ViewModel
                 _Navigation = value;
             }
         }
+        public DelegateCommand ConnexionCommand => _ConnexionCommand;
+
         public ViewModelLoginPage(INavigation nav)
         {
             _Navigation = nav;
+
             _ConnexionCommand = new DelegateCommand(ExecuteConnexionCommand);
+           
         }
 
         private void ExecuteConnexionCommand(object obj)
@@ -45,5 +48,6 @@ namespace NovaktApp.ViewModel
 
 
         }
+
     }
 }
