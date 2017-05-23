@@ -23,15 +23,14 @@ namespace NovaktApp.ViewModel
 
         public INavigation Navigation
         {
-            get
-            {
-                return _Navigation;
-            }
-
+            get { return _Navigation; }
             set
             {
+                OnPropertyChanging(nameof(Navigation));
                 _Navigation = value;
-            }
+                OnPropertyChanged(nameof(Navigation));
+
+               }
         }
 
         private void ExecuteClientsCommand(object obj)
