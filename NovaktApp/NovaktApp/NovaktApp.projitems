@@ -12,12 +12,15 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Data\DBCategorie.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entity\Categorie.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entity\Chantier.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entity\Client.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entity\Commercial.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entity\Estimation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entity\Produit.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interface\IDatabase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interface\ISQLite.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelAccueilPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelCategorieChantier.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelEstimationPage.cs" />
