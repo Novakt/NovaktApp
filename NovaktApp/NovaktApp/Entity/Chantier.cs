@@ -20,6 +20,7 @@ namespace NovaktApp.Entity
         private int _NbEtage;
         private string _Description;
         private ObservableCollection<Produit> _Produits;
+        private int _IDServeur;
 
         public int ID
         {
@@ -187,6 +188,19 @@ namespace NovaktApp.Entity
             set
             {
                 _Produits = value;
+            }
+        }
+
+        public int IDServeur
+        {
+            get
+            {
+                return _IDServeur;
+            }
+
+            set
+            {
+                _IDServeur = value;
             }
         }
     }
