@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NovaktApp.View.ListeClientPage">
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="50"/>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="50"/>
+    </Grid.RowDefinitions>
+
+    <Label Grid.Row="0" Text="Clients"/>
+
+    <ListView x:Name="Clients" Grid.Row="1" ItemsSource="{Binding Clients}" SelectedItem="{Binding SelectClient}">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <ViewCell.View>
+              <StackLayout Orientation="Vertical" HorizontalOptions="Start">
+                <Grid>
+                  <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                  </Grid.RowDefinitions>
+                  <Label Grid.Row="0" HorizontalOptions="Start"  Text="{Binding Intitule}" FontSize="Medium"/>
+                </Grid>
+              </StackLayout>
+            </ViewCell.View>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+    
+    <Button x:Name="NouvelleEstimation" Grid.Row="2" Text="Nouveau client" Command="{Binding EstimationCommand}"/>
+  </Grid>
+</ContentPage>

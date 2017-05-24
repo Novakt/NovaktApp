@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NovaktApp.View.EstimationPage">
+  
+  <ScrollView x:Name="ScrollView">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="50"/>
+        <RowDefinition Height="50"/>
+        <RowDefinition Height="50"/>
+        <RowDefinition Height="50"/>
+        <RowDefinition Height="50"/>
+        <RowDefinition Height="50"/>
+        <RowDefinition Height="50"/>
+        <RowDefinition Height="50"/>
+        <RowDefinition Height="50"/>
+        <RowDefinition Height="50"/>
+        <RowDefinition Height="50"/>
+        <RowDefinition Height="50"/>
+        <RowDefinition Height="200"/>
+        <!--<RowDefinition Height="50"/>
+        <RowDefinition Height="50"/>
+        <RowDefinition Height="200"/>-->
+      </Grid.RowDefinitions>
+    </Grid>
+     
+    <!--Nom client-->
+    <Entry Grid.Row="0" x:Name="Intitule" Placeholder="Nom client" Text="{Binding Client.Intitule}"/>
+
+    <!--Adresse client-->
+    <Entry Grid.Row="1" x:Name="Adresse" Placeholder="Adresse client" Text="{Binding Client.Adresse}"/>
+
+    <!--Ville client-->
+    <Entry Grid.Row="2" x:Name="Ville" Placeholder="Ville client" Text="{Binding Client.Ville}"/>
+
+    <!--Tel client-->
+    <Entry Grid.Row="3" x:Name="Tel" Placeholder="Tel client" Text="{Binding Client.Tel}"/>
+
+    <!--Mail client-->
+    <Entry Grid.Row="4" x:Name="Mail" Placeholder="Mail client" Text="{Binding Client.Mail}"/>
+
+    <!--Estimation + Bouton + nouvelle estimation client-->
+    <Grid Grid.Row="5">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+
+      <Picker Grid.Column="0" x:Name="EstimationListe" ItemsSource="{Binding Estimations}" ItemDisplayBinding="{Binding Libelle}" SelectedItem="{Binding SelectEstimation}"/>
+      <Button Grid.Column="1" x:Name="EstimationPlus" HorizontalOptions="Center" Text="+" Command="{Binding EstimationPlusCommand}"/>
+      <Entry Grid.Column="2" x:Name="Estimation" Placeholder="Estimation client" Text="{Binding Estimation.Libelle}"/>
+      
+    </Grid>
+
+    <!--Secteur activité client-->
+    <Entry Grid.Row="6" x:Name="Secteur" Placeholder="Secteur activité" Text=""/>
+    
+    <!--Surface client-->
+    <Entry Grid.Row="7" x:Name="Surface" Placeholder="Surface client" Text=""/>
+    
+    <!--nb batiment client-->
+    <Entry Grid.Row="8" x:Name="NbBatiments" Placeholder="Nombre batiments" Text=""/>
+    
+    <!--Type chantier client-->
+    <Entry Grid.Row="9" x:Name="TypeChantier" Placeholder="Type chantier" Text=""/>
+    
+    <!--Type batiment client-->
+    <Entry Grid.Row="10" x:Name="TypeBatiment" Placeholder="Type batiment" Text=""/>
+
+    <!--Température moyenne client-->
+    <Entry Grid.Row="11" x:Name="Temperature" Placeholder="Température moyenne" Text=""/>
+
+    <!--Lieu client-->
+    <Entry Grid.Row="12" x:Name="Lieu" Placeholder="Lieu client" Text=""/>
+    
+    <!--Etage client-->
+    <Entry Grid.Row="12" x:Name="NbEtages" Placeholder="Nombre etages" Text=""/>
+    
+    <!--Boutton nouveau produit et liste produit client-->
+    <Grid Grid.Row="13">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="50"/>
+        <RowDefinition Height="150"/>
+      </Grid.RowDefinitions>
+
+      <Button Grid.Row="0" x:Name="Produit" HorizontalOptions="Center" Text="+" Command="{Binding ProduitUtiliseCommand}"/>
+
+      <ListView x:Name="Produits" Grid.Row="1">
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <ViewCell>
+              <ViewCell.View>
+                <StackLayout Orientation="Vertical" HorizontalOptions="Start">
+                  <Grid>
+                    <Grid.RowDefinitions>
+                      <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" HorizontalOptions="Start"  Text="lol" FontSize="Medium"/>
+                  </Grid>
+                </StackLayout>
+              </ViewCell.View>
+            </ViewCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+
+    </Grid>
+    
+  </ScrollView>
+</ContentPage>
