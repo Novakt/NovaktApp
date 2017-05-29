@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NovaktApp.View.ChantierPage">
+    <ContentPage.Content>
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="auto"/>
+        <RowDefinition Height="auto"/>
+        <RowDefinition Height="auto"/>
+        <RowDefinition Height="auto"/>
+        <RowDefinition Height="auto"/>
+        <RowDefinition Height="auto"/>
+        <RowDefinition Height="auto"/>
+        <RowDefinition Height="auto"/>
+        <RowDefinition Height="auto"/>
+        <RowDefinition Height="auto"/>
+        <RowDefinition Height="auto"/>
+        <RowDefinition Height="auto"/>
+        <RowDefinition Height="auto"/>
+      </Grid.RowDefinitions>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="100"/>
+        <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+      <Label Grid.Row="2" Grid.Column="0" Text="Secteur d'activité" />
+      <Label Grid.Row="3" Grid.Column="0" Text="Suface en M²" />
+      <Label Grid.Row="4" Grid.Column="0" Text="Nombre de bâtiments" />
+      <Label Grid.Row="5" Grid.Column="0" Text="Type de chantier" />
+      <Label Grid.Row="5" Grid.Column="0" Text="Types de bâtiment" />
+      <Label Grid.Row="7" Grid.Column="0" Text="Tempéature Moyenne" />
+      <Label Grid.Row="8" Grid.Column="0" Text="Lieu" />
+      <Label Grid.Row="9" Grid.Column="0" Text="Etage" />
+      <Label Grid.Row="10" Grid.Column="0" Text="Desciption" />
+      <Entry Grid.Row="2" Grid.Column="1" Text="text"/>
+
+    </Grid>
+    </ContentPage.Content>
+</ContentPage>

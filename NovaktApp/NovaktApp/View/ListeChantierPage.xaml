@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NovaktApp.View.ListeChantierPage">
+  <ContentPage.Content>
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="20"/>
+        <RowDefinition Height="auto"/>
+      </Grid.RowDefinitions>
+
+      <Label Grid.Row="0" Text="Chantiers"/>
+
+      <ListView x:Name="Produits" Grid.Row="1" ItemsSource="{Binding Chantiers}" SelectedItem="{Binding SelectChantier}">
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <ViewCell>
+              <ViewCell.View>
+                <StackLayout Orientation="Vertical" HorizontalOptions="Center">
+                  <Grid>
+                    <Grid.RowDefinitions>
+                      <RowDefinition Height="*"/>
+                      <RowDefinition Height="auto"/>
+                      <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                      <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <!--<Image Grid.Row="0" Grid.Column="0" x:Name="ChantierImage" Source="chantier.png" HorizontalOptions="CenterAndExpand" HeightRequest="200" WidthRequest="200"/>
+                    -->
+
+                    <Label Grid.Row="1" Grid.Column="0" HorizontalOptions="Center"  Text="{Binding Nom}" FontSize="Medium" />
+                    <Label Grid.Row="2" Grid.Column="0" HorizontalOptions="Center"  Text="Chantier réalisé le 21/03/2015" FontSize="Small"/>
+
+                  </Grid>
+                </StackLayout>
+              </ViewCell.View>
+            </ViewCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+    </Grid>
+  </ContentPage.Content>
+</ContentPage>
