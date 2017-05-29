@@ -28,7 +28,6 @@ namespace NovaktApp.ViewModel
                 _Navigation = value;
             }
         }
-        //public DelegateCommand ConnexionCommand => _ConnexionCommand;
 
         public ViewModelCategorieProduitPage(INavigation nav)
         {

@@ -29,7 +29,7 @@ namespace NovaktApp.ViewModel
             }
         }
 
-        //Liste de tous les clients
+        //Liste de tous les produits
         public ObservableCollection<Produit> Produits
         {
             get { return _Produit; }
