@@ -18,6 +18,7 @@ namespace NovaktApp.Entity
         private int _TemperatureMoyenne;
         private int _NbEtage;
         private ObservableCollection<Produit> _Produits;
+        private string _Lieu;
         private int _IDServeur;
 
         public int ID
@@ -173,6 +174,19 @@ namespace NovaktApp.Entity
             set
             {
                 _IDServeur = value;
+            }
+        }
+
+        public string Lieu
+        {
+            get
+            {
+                return _Lieu;
+            }
+
+            set
+            {
+                _Lieu = value;
             }
         }
     }

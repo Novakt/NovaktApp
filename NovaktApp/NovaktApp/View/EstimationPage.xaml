@@ -66,25 +66,89 @@
       </Entry>
 
       <!--Surface client-->
-      <Entry Grid.Row="7" x:Name="Surface" Placeholder="Surface client" Text=""/>
+      <Entry Grid.Row="7" x:Name="Surface" Placeholder="Surface client">
+        <Entry.Triggers>
+          <DataTrigger TargetType="Entry" Binding="{Binding EstimationSelectVerif}" Value="False">
+            <Setter Property="Text" Value="{Binding Estimation.Secteur}"/>
+          </DataTrigger>
+          <DataTrigger TargetType="Entry" Binding="{Binding EstimationSelectVerif}" Value="True">
+            <Setter Property="Text" Value="{Binding SelectEstimation.Secteur}"/>
+          </DataTrigger>
+        </Entry.Triggers>
+      </Entry>
 
       <!--nb batiment client-->
-      <Entry Grid.Row="8" x:Name="NbBatiments" Placeholder="Nombre batiments" Text=""/>
-
+      <Entry Grid.Row="8" x:Name="NbBatiments" Placeholder="Nombre batiments">
+        <Entry.Triggers>
+          <DataTrigger TargetType="Entry" Binding="{Binding EstimationSelectVerif}" Value="False">
+            <Setter Property="Text" Value="{Binding Estimation.NbBatiment}"/>
+          </DataTrigger>
+          <DataTrigger TargetType="Entry" Binding="{Binding EstimationSelectVerif}" Value="True">
+            <Setter Property="Text" Value="{Binding SelectEstimation.NbBatiment}"/>
+          </DataTrigger>
+        </Entry.Triggers>
+      </Entry>
+      
       <!--Type chantier client-->
-      <Entry Grid.Row="9" x:Name="TypeChantier" Placeholder="Type chantier" Text=""/>
-
+      <Entry Grid.Row="9" x:Name="TypeChantier" Placeholder="Type chantier">
+        <Entry.Triggers>
+          <DataTrigger TargetType="Entry" Binding="{Binding EstimationSelectVerif}" Value="False">
+            <Setter Property="Text" Value="{Binding Estimation.TypeChantier}"/>
+          </DataTrigger>
+          <DataTrigger TargetType="Entry" Binding="{Binding EstimationSelectVerif}" Value="True">
+            <Setter Property="Text" Value="{Binding SelectEstimation.TypeChantier}"/>
+          </DataTrigger>
+        </Entry.Triggers>
+      </Entry>
+      
       <!--Type batiment client-->
-      <Entry Grid.Row="10" x:Name="TypeBatiment" Placeholder="Type batiment" Text=""/>
-
+      <Entry Grid.Row="10" x:Name="TypeBatiment" Placeholder="Type batiment">
+        <Entry.Triggers>
+          <DataTrigger TargetType="Entry" Binding="{Binding EstimationSelectVerif}" Value="False">
+            <Setter Property="Text" Value="{Binding Estimation.TypeBatiment}"/>
+          </DataTrigger>
+          <DataTrigger TargetType="Entry" Binding="{Binding EstimationSelectVerif}" Value="True">
+            <Setter Property="Text" Value="{Binding SelectEstimation.TypeBatiment}"/>
+          </DataTrigger>
+        </Entry.Triggers>
+      </Entry>
+         
       <!--Température moyenne client-->
-      <Entry Grid.Row="11" x:Name="Temperature" Placeholder="Température moyenne" Text=""/>
-
+      <Entry Grid.Row="11" x:Name="Temperature" Placeholder="Température moyenne">
+        <Entry.Triggers>
+          <DataTrigger TargetType="Entry" Binding="{Binding EstimationSelectVerif}" Value="False">
+            <Setter Property="Text" Value="{Binding Estimation.TemperatureMoyenne}"/>
+          </DataTrigger>
+          <DataTrigger TargetType="Entry" Binding="{Binding EstimationSelectVerif}" Value="True">
+            <Setter Property="Text" Value="{Binding SelectEstimation.TemperatureMoyenne}"/>
+          </DataTrigger>
+        </Entry.Triggers>
+      </Entry>
+      
+      
       <!--Lieu client-->
-      <Entry Grid.Row="12" x:Name="Lieu" Placeholder="Lieu client" Text=""/>
-
-      <!--Etage client-->
-      <Entry Grid.Row="13" x:Name="NbEtages" Placeholder="Nombre etages" Text=""/>
+      <Entry Grid.Row="12" x:Name="Lieu" Placeholder="Lieu client">
+        <Entry.Triggers>
+          <DataTrigger TargetType="Entry" Binding="{Binding EstimationSelectVerif}" Value="False">
+            <Setter Property="Text" Value="{Binding Estimation.Lieu}"/>
+          </DataTrigger>
+          <DataTrigger TargetType="Entry" Binding="{Binding EstimationSelectVerif}" Value="True">
+            <Setter Property="Text" Value="{Binding SelectEstimation.Lieu}"/>
+          </DataTrigger>
+        </Entry.Triggers>
+      </Entry>
+      
+        <!--Etage client-->
+      <Entry Grid.Row="13" x:Name="NbEtages" Placeholder="Nombre etages">
+        <Entry.Triggers>
+          <DataTrigger TargetType="Entry" Binding="{Binding EstimationSelectVerif}" Value="False">
+            <Setter Property="Text" Value="{Binding Estimation.NbEtage}"/>
+          </DataTrigger>
+          <DataTrigger TargetType="Entry" Binding="{Binding EstimationSelectVerif}" Value="True">
+            <Setter Property="Text" Value="{Binding SelectEstimation.NbEtage}"/>
+          </DataTrigger>
+        </Entry.Triggers>
+      </Entry>
 
       <!--Boutton nouveau produit et liste produit client-->
       <Grid Grid.Row="14">
@@ -96,7 +160,7 @@
 
         <Button Grid.Row="0" x:Name="Produit" Text="+" Command="{Binding ProduitUtiliseCommand}"/>
 
-        <ListView x:Name="Produits" Grid.Row="1">
+        <ListView x:Name="Produits" Grid.Row="1" ItemsSource="{Binding Produits" SelectedItem="{Binding SelectProduit}">
           <ListView.ItemTemplate>
             <DataTemplate>
               <ViewCell>

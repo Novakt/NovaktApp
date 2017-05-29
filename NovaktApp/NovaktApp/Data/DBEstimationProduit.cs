@@ -39,9 +39,9 @@ namespace NovaktApp.Data
             _connection.DeleteAll<EstimationProduit>();
         }
 
-        public EstimationProduit Get(int idEstimation, int idProduit)
+        public EstimationProduit Get(int idEstimation/*, int idProduit*/)
         {
-            return _connection.Table<EstimationProduit>().FirstOrDefault(EstimationProduit => EstimationProduit.IDEstimation == idEstimation && EstimationProduit.IDProduit == idProduit);
+            return _connection.Table<EstimationProduit>().FirstOrDefault(EstimationProduit => EstimationProduit.IDEstimation == idEstimation /*&& EstimationProduit.IDProduit == idProduit*/);
         }
         public void Update(EstimationProduit estimationProduit)
         {
