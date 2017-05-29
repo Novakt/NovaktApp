@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace NovaktApp.ViewModel
+namespace NovaktApp.View
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class ViewModelDetailProduitPage : ContentPage
+	public partial class ProduitPage : ContentPage
 	{
-		public ViewModelDetailProduitPage ()
+		public ProduitPage ()
 		{
 			InitializeComponent ();
 		}
