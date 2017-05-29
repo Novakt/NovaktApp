@@ -42,7 +42,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelListeClientPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelListProduitPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelLoginPage.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelCategorieProduitPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)View\AccueilPage.xaml.cs">
       <DependentUpon>AccueilPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -51,13 +50,6 @@
       <DependentUpon>CategorieProduitPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-<<<<<<< HEAD
-    <Compile Include="$(MSBuildThisFileDirectory)View\DetailProduitPage.xaml.cs">
-      <DependentUpon>DetailProduitPage.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-=======
->>>>>>> 532003bff0816a2efabf75ffee5ffaf72a2ef714
     <Compile Include="$(MSBuildThisFileDirectory)View\EstimationPage.xaml.cs">
       <DependentUpon>EstimationPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -68,10 +60,6 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)View\ListeProduitPage.xaml.cs">
       <DependentUpon>ListeProduitPage.xaml</DependentUpon>
-<<<<<<< HEAD
-      <SubType>Code</SubType>
-=======
->>>>>>> 532003bff0816a2efabf75ffee5ffaf72a2ef714
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)View\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
@@ -125,28 +113,5 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\CategorieProduitPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\ListeProduitPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\DetailProduitPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-=======
-    <Page Include="$(MSBuildThisFileDirectory)View\ListeProduitPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
->>>>>>> 532003bff0816a2efabf75ffee5ffaf72a2ef714
   </ItemGroup>
 </Project>
