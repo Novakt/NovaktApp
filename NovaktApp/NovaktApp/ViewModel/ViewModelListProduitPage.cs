@@ -14,7 +14,6 @@ namespace NovaktApp.ViewModel
         private INavigation _Navigation;
         private Produit _SelectProduit;
         private ObservableCollection<Produit> _Produit;
-        private DelegateCommand _EstimationCommand;
          
         //Produit selectionné dans la liste
         public Produit SelectProduit
@@ -25,7 +24,14 @@ namespace NovaktApp.ViewModel
                 OnPropertyChanging(nameof(SelectProduit));
                 _SelectProduit = value;
                 OnPropertyChanged(nameof(SelectProduit));
-
+                if (SelectProduit != null)
+                {
+                    //Permet de naviguer vers la page Liste produits
+                    //DetailProduitPage pg = new DetailProduitPage();
+                    //ViewModelDetailProduitPage vm = new ViewModelDetailProduitPage(pg.Navigation);
+                    //pg.BindingContext = vm;
+                    //this._Navigation.PushAsync(pg).ConfigureAwait(false);
+                }
             }
         }
 
@@ -79,17 +85,6 @@ namespace NovaktApp.ViewModel
             Produits.Add(pr5);
 
             _Navigation = nav;
-
-            //_EstimationCommand = new DelegateCommand(ExecuteEstimationCommand);
-        }
-
-        private void ExecuteEstimationCommand(object obj)
-        {
-            //Permt de naviguer vers la page estimation
-            EstimationPage pg = new EstimationPage();
-            ViewModelEstimationPage vm = new ViewModelEstimationPage(pg.Navigation);
-            pg.BindingContext = vm;
-            this._Navigation.PushAsync(pg).ConfigureAwait(false);
         }
     }
 }
