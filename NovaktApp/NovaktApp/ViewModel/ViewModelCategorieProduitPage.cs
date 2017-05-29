@@ -66,14 +66,13 @@ namespace NovaktApp.ViewModel
                 OnPropertyChanging(nameof(SelectCategorie));
                 _SelectCategorie = value;
                 OnPropertyChanged(nameof(SelectCategorie));
-
             }
         }
 
-        //Liste des catégories
+        //Liste de toutes les catégories 
         public ObservableCollection<Categorie> Categories
         {
-            get { return _Categories; }
+            get { return _Categories; } 
             set
             {
                 OnPropertyChanging(nameof(Categories));
