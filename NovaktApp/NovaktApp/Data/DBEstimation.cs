@@ -52,15 +52,15 @@ namespace NovaktApp.Data
         public void UpdateByIdServeur(Estimation estimation)
         {
             _connection.Query<Categorie>("UPDATE [Estimation] SET" +
-                "[Estimation] SET [Libelle] = ?, " +
-                "[Estimation] SET [DateCreation] = ?, " +
-                "[Estimation] SET [Secteur] = ?, " +
-                "[Estimation] SET [Surface] = ?, " +
-                "[Estimation] SET [NbBatiment] = ?, " +
-                "[Estimation] SET [TypeChantier] = ?, " +
-                "[Estimation] SET [TypeBatiment] = ?, " +
-                "[Estimation] SET [TemperatureMoyenne] = ?, " +
-                "[Estimation] SET [NbEtage] = ?, " +
+                "[Libelle] = ?, " +
+                "[DateCreation] = ?, " +
+                "[Secteur] = ?, " +
+                "[Surface] = ?, " +
+                "[NbBatiment] = ?, " +
+                "[TypeChantier] = ?, " +
+                "[TypeBatiment] = ?, " +
+                "[TemperatureMoyenne] = ?, " +
+                "[NbEtage] = ?, " +
                 "WHERE [IdServeur] = ?",
                 estimation.Libelle,
                 estimation.DateCreation,

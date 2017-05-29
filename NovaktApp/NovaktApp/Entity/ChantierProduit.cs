@@ -9,6 +9,7 @@ namespace NovaktApp.Entity
         private int _IDChantier;
         private int _IDProduit;
         private int _Quantite;
+        private int _IDServeur;
 
         public int IDChantier
         {
@@ -46,6 +47,19 @@ namespace NovaktApp.Entity
             set
             {
                 _Quantite = value;
+            }
+        }
+
+        public int IDServeur
+        {
+            get
+            {
+                return _IDServeur;
+            }
+
+            set
+            {
+                _IDServeur = value;
             }
         }
     }

@@ -51,7 +51,18 @@ namespace NovaktApp.Data
         //Serveur
         public void UpdateByIdServeur(Produit produit)
         {
-            _connection.Query<Categorie>("UPDATE [Produit] SET [Reference] = ?,[Produit] SET [Nom] = ?,[Produit] SET [Type] = ?,[Produit] SET [Description] = ?,[Produit] SET [LienImage] = ? WHERE [IdServeur] = ?", produit.Reference, produit.Nom, produit.Type, produit.Description, produit.LienImage, produit.IDServeur);
+            _connection.Query<Categorie>("UPDATE [Produit] SET [Reference] = ?,"+
+                "[Nom] = ?,"+
+                "[Type] = ?,"+
+                "[Description] = ?,"+
+                "[LienImage] = ?"+ 
+                "WHERE [IdServeur] = ?", 
+                produit.Reference, 
+                produit.Nom, 
+                produit.Type, 
+                produit.Description, 
+                produit.LienImage, 
+                produit.IDServeur);
         }
         public Produit GetByIdServeur(int id)
         {

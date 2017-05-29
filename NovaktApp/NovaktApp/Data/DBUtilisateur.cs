@@ -51,10 +51,10 @@ namespace NovaktApp.Data
         //Serveur
         public void UpdateByIdServeur(Commercial commercial)
         {
-            _connection.Query<Categorie>("UPDATE [Commercial] SET" +
-                "[Commercial] SET [Login] = ?, " +
-                "[Commercial] SET [Password] = ?, " +
-                "[Commercial] SET [Token] = ? " +
+            _connection.Query<Categorie>("UPDATE [Commercial] SET " +
+                "[Login] = ?, " +
+                "[Password] = ?, " +
+                "[Token] = ? " +
                 "WHERE [IdServeur] = ?",
                 commercial.Login,
                 commercial.Password,

@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+             x:Class="NovaktApp.PopupView.PopupPageProduit">
+  <!--Animations use example-->
+  <pages:PopupPage.Animation>
+    <animations:ScaleAnimation 
+      PositionIn="Center"
+      PositionOut="Center"
+      ScaleIn="1.2"
+      ScaleOut="0.8"
+      DurationIn="400"
+      DurationOut="300"
+      EasingIn="SinOut"
+      EasingOut="SinIn"
+      HasBackgroundAnimation="True"/>
+  </pages:PopupPage.Animation>
+
+  <pages:PopupPage.Content>
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="50"/>
+        <RowDefinition Height="50"/>
+        <RowDefinition Height="50"/>
+        <RowDefinition Height="50"/>
+      </Grid.RowDefinitions>
+
+      <Label Grid.Row="0" Text="Sélectionner un produit"/>
+
+      <!--Liste de catégorie-->
+      <Picker Grid.Column="1" x:Name="Categorie" ItemsSource="{Binding Categories}" ItemDisplayBinding="{Binding Nom}" SelectedItem="{Binding SelectCategorie}"/>
+
+      <!--Liste de produit-->
+      <Picker Grid.Column="2" x:Name="Produit" ItemsSource="{Binding Categories}" ItemDisplayBinding="{Binding Nom}" SelectedItem="{Binding SelectCategorie}"/>
+
+      <!--Bouton ajouter produit dans la listes des produits de l'estimation-->
+      <Button Grid.Column="3" x:Name="Ajouter" HorizontalOptions="Center" Text="Ajouter" Command="{Binding AjouterCommand}"/>
+
+    </Grid>
+  </pages:PopupPage.Content>
+</pages:PopupPage>
+  

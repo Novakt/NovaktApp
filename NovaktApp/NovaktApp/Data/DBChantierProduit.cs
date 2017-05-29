@@ -49,6 +49,29 @@ namespace NovaktApp.Data
         }
 
         //Serveur
+        public void UpdateByIdServeur(ChantierProduit chantierProduit)
+        {
+            _connection.Query<ChantierProduit>("UPDATE [ChantierProduit] SET " +
+                "[IDProduit] = ?, " +
+                "[IDChantier] = ?" +
+                "WHERE [IdServeur] = ?",
+                chantierProduit.IDProduit,
+                chantierProduit.IDChantier,
+                chantierProduit.IDServeur);
+        }
+        public ChantierProduit GetByIdServeur(int id)
+        {
+            return _connection.Table<ChantierProduit>().FirstOrDefault(ChantierProduit => ChantierProduit.IDServeur == id);
+        }
+
+        public List<ChantierProduit> GetAllByEstimationProduit(int idChantier, int idProduit)
+        {
+            return (
+                from t in _connection.Table<ChantierProduit>()
+                select t
+                    ).Where(c => c.IDChantier == idChantier && c.IDProduit == idProduit).ToList();
+        }
+
         public IEnumerable<ChantierProduit> GetAll()
         {
             return (
@@ -57,5 +80,4 @@ namespace NovaktApp.Data
                     ).ToList();
         }
     }
-}
 }

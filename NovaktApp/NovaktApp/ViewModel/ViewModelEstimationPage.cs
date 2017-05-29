@@ -1,4 +1,6 @@
 ﻿using NovaktApp.Core;
+using NovaktApp.PopupView;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -49,11 +51,18 @@ namespace NovaktApp.ViewModel
         //Résultat de l'estimation
         private void ExecuteProduitUtiliseCommand(object obj)
         {
-
+            OpenPopup();
         }
+
         private void ExecuteEstimerCommand(object obj)
         {
 
+        }
+
+        private async void OpenPopup()
+        {
+            PopupPageProduit pg = new PopupPageProduit();
+            await PopupNavigation.PushAsync(pg); 
         }
 
     }

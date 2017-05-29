@@ -52,16 +52,16 @@ namespace NovaktApp.Data
         public void UpdateByIdServeur(Chantier chantier)
         {
             _connection.Query<Categorie>("UPDATE [Chantier] SET [Nom] = ?,"+
-                "[Chantier] SET [LienImage] = ?,"+
-                "[Chantier] SET [Secteur] = ?, "+
-                "[Chantier] SET [Surface] = ?, " +
-                "[Chantier] SET [NbBatiment] = ?, " +
-                "[Chantier] SET [TypeChantier] = ?, " +
-                "[Chantier] SET [TypeBatiment] = ?, " +
-                "[Chantier] SET [TemperatureMoyenne] = ?, " +
-                "[Chantier] SET [Lieu] = ?, " +
-                "[Chantier] SET [NbEtage] = ?, " +
-                "[Chantier] SET [Description] = ? " + 
+                "[LienImage] = ?,"+
+                "[Secteur] = ?, "+
+                "[Surface] = ?, " +
+                "[NbBatiment] = ?, " +
+                "[TypeChantier] = ?, " +
+                "[TypeBatiment] = ?, " +
+                "[TemperatureMoyenne] = ?, " +
+                "[Lieu] = ?, " +
+                "[NbEtage] = ?, " +
+                "[Description] = ? " + 
                 "WHERE [IdServeur] = ?",
                 chantier.Nom,
                 chantier.LienImage, 
