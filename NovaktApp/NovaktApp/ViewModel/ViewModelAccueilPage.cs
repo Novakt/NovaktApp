@@ -11,15 +11,19 @@ namespace NovaktApp.ViewModel
     {
         private INavigation _Navigation;
         private DelegateCommand _ClientsCommand;
+        private DelegateCommand _CategorieChantierCommand;
 
         public DelegateCommand ClientsCommand => _ClientsCommand;
+        public DelegateCommand CategorieChantierCommand => _CategorieChantierCommand;
 
         public ViewModelAccueilPage(INavigation nav)
         {
             _Navigation = nav;
 
             _ClientsCommand = new DelegateCommand(ExecuteClientsCommand);
+            _CategorieChantierCommand = new DelegateCommand(ExecuteCategorieChantierCommand);
         }
+
 
         public INavigation Navigation
         {
@@ -38,6 +42,16 @@ namespace NovaktApp.ViewModel
             //Permt de naviguer vers la liste des clients
             ListeClientPage pg = new ListeClientPage();
             ViewModelListeClientPage vm = new ViewModelListeClientPage(pg.Navigation);
+            pg.BindingContext = vm;
+            this._Navigation.PushAsync(pg).ConfigureAwait(false);
+
+        }
+
+        private void ExecuteCategorieChantierCommand(object obj)
+        {
+            //Permt de naviguer vers la liste des catégories de chantier
+            CategorieChantierPage pg = new CategorieChantierPage();
+            ViewModelCategorieChantier vm = new ViewModelCategorieChantier(pg.Navigation);
             pg.BindingContext = vm;
             this._Navigation.PushAsync(pg).ConfigureAwait(false);
 
