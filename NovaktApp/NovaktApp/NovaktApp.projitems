@@ -36,9 +36,11 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelAccueilPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelChantierPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelCategorieProduitPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelDetailProduitPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelEstimationPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelListeChantierPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelListeClientPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelListProduitPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelLoginPage.cs" />
@@ -52,6 +54,9 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)View\EstimationPage.xaml.cs">
       <DependentUpon>EstimationPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\ListeChantierPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)View\ListeClientPage.xaml.cs">

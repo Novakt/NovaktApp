@@ -11,11 +11,11 @@ namespace NovaktApp.ViewModel
     {
         private INavigation _Navigation;
         private DelegateCommand _ClientsCommand;
-        private DelegateCommand _CategorieChantierCommand;
+        private DelegateCommand _ListeChantierCommand;
         private DelegateCommand _CategorieProduitCommand;
 
         public DelegateCommand ClientsCommand => _ClientsCommand;
-        public DelegateCommand CategorieChantierCommand => _CategorieChantierCommand;
+        public DelegateCommand ListeChantierCommand => _ListeChantierCommand;
         public DelegateCommand CategorieProduitCommand => _CategorieProduitCommand;
 
         public ViewModelAccueilPage(INavigation nav)
@@ -23,7 +23,7 @@ namespace NovaktApp.ViewModel
             _Navigation = nav;
 
             _ClientsCommand = new DelegateCommand(ExecuteClientsCommand);
-            _CategorieChantierCommand = new DelegateCommand(ExecuteCategorieChantierCommand);
+            _ListeChantierCommand = new DelegateCommand(ExecuteListeChantierCommand);
             _CategorieProduitCommand = new DelegateCommand(ExecuteCategorieProduitCommand);
         }
 
@@ -60,13 +60,13 @@ namespace NovaktApp.ViewModel
 
         }
 
-        private void ExecuteCategorieChantierCommand(object obj)
+        private void ExecuteListeChantierCommand(object obj)
         {
-            //Permt de naviguer vers la liste des catégories de chantier
-             //CategorieChantierPage pg = new CategorieChantierPage();
-             //ViewModelCategorieChantier vm = new ViewModelCategorieChantier(pg.Navigation);
-             //pg.BindingContext = vm;
-             //this._Navigation.PushAsync(pg).ConfigureAwait(false);
+            //Permt de naviguer vers la liste des chantier
+             ListeChantierPage pg = new ListeChantierPage();
+             ViewModelListeChantierPage vm = new ViewModelListeChantierPage(pg.Navigation);
+             pg.BindingContext = vm;
+             this._Navigation.PushAsync(pg).ConfigureAwait(false);
 
         }
     }
