@@ -10,7 +10,7 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <ListView x:Name="Clients" Grid.Row="1" ItemsSource="{Binding Clients}" SelectedItem="{Binding SelectClient}">
+            <ListView x:Name="Categories" Grid.Row="1" ItemsSource="{Binding Categories}" SelectedItem="{Binding SelectCategorie}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
