@@ -70,13 +70,13 @@ namespace NovaktApp.Data
             return _connection.Table<Client>().FirstOrDefault(Client => Client.IDServeur == id);
         }
 
-        public List<Client> GetAllByVisite(int id)
+        /*public List<Client> GetAllByVisite(int id)
         {
             return (
                 from t in _connection.Table<Client>()
                 select t
                     ).Where(c => c.ID == id).ToList();
-        }
+        }*/
 
         public IEnumerable<Client> GetAll()
         {

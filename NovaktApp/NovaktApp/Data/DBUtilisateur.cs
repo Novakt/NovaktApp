@@ -66,13 +66,13 @@ namespace NovaktApp.Data
             return _connection.Table<Commercial>().FirstOrDefault(Commercial => Commercial.IDServeur == id);
         }
 
-        public List<Commercial> GetAllByVisite(int id)
+        /*public List<Commercial> GetAllByVisite(int id)
         {
             return (
                 from t in _connection.Table<Commercial>()
                 select t
                     ).Where(c => c.ID == id).ToList();
-        }
+        }*/
 
         public IEnumerable<Commercial> GetAll()
         {

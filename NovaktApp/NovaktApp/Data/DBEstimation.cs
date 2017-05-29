@@ -78,13 +78,13 @@ namespace NovaktApp.Data
             return _connection.Table<Estimation>().FirstOrDefault(Estimation => Estimation.IDServeur == id);
         }
 
-        public List<Estimation> GetAllByVisite(int id)
+        /*public List<Estimation> GetAllByVisite(int id)
         {
             return (
                 from t in _connection.Table<Estimation>()
                 select t
                     ).Where(c => c.ID == id).ToList();
-        }
+        }*/
 
         public IEnumerable<Estimation> GetAll()
         {

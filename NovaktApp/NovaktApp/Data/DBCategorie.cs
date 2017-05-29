@@ -58,13 +58,13 @@ namespace NovaktApp.Data
             return _connection.Table<Categorie>().FirstOrDefault(Categorie => Categorie.IDServeur == id);
         }
 
-        public List<Categorie> GetAllByVisite(int id)
+        /*public List<Categorie> GetAllByIdCategorie(int id)
         {
             return (
                 from t in _connection.Table<Categorie>()
                 select t
                     ).Where(c => c.ID == id).ToList();
-        }
+        }*/
 
         public IEnumerable<Categorie> GetAll()
         {
