@@ -7,11 +7,9 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
 
             <Label Grid.Row="0" Text="Produits"/>
-
             <ListView x:Name="Produits" Grid.Row="1" ItemsSource="{Binding Produits}" SelectedItem="{Binding SelectProduit}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
