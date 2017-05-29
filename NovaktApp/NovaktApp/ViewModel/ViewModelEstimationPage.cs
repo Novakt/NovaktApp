@@ -1,9 +1,11 @@
 ﻿using NovaktApp.Core;
+using NovaktApp.Data;
 using NovaktApp.Entity;
 using NovaktApp.PopupView;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using Xamarin.Forms;
 
@@ -18,6 +20,9 @@ namespace NovaktApp.ViewModel
         private Client _Client;
         private bool _EstimationSelectVerif;
         private Estimation _SelectEstimation;
+        private ObservableCollection<Produit> _Produits;
+        private Produit _SelectProduit;
+        private Estimation _Estimation;
 
 
         //Permet de naviguer entre les différentes pages
@@ -67,6 +72,13 @@ namespace NovaktApp.ViewModel
 
                 if(_SelectEstimation != null)
                 {
+                    //Récupération des roduit lié à l'estimation
+                    ObservableCollection<EstimationProduit> obs = new ObservableCollection<EstimationProduit>();
+                    DBEstimationProduit dbEP = new DBEstimationProduit();
+                    obs.Add(dbEP.Get(_SelectEstimation.ID));
+
+
+
                     EstimationSelectVerif = true;
                 }
             }
@@ -85,11 +97,64 @@ namespace NovaktApp.ViewModel
             }
         }
 
+        //Permet de récupérer le produit selectionné
+        public Produit SelectProduit
+        {
+            get { return _SelectProduit; }
+            set
+            {
+                OnPropertyChanging(nameof(SelectProduit));
+                _SelectProduit = value;
+                OnPropertyChanged(nameof(SelectProduit));
+
+                if (_SelectEstimation != null)
+                {
+                    EstimationSelectVerif = true;
+                }
+            }
+        }
+
+        //Liste des produit ajouter à l'estimation
+        public ObservableCollection<Produit> Produits
+        {
+            get { return _Produits; }
+            set
+            {
+                OnPropertyChanging(nameof(Produits));
+                _Produits = value;
+                OnPropertyChanged(nameof(Produits));
+
+                if (_SelectEstimation != null)
+                {
+                    EstimationSelectVerif = true;
+                }
+            }
+        }
+
+        //Permet de créer une estimation
+        public Estimation Estimation
+        {
+            get { return _Estimation; }
+            set
+            {
+                OnPropertyChanging(nameof(Estimation));
+                _Estimation = value;
+                OnPropertyChanged(nameof(Estimation));
+
+                if (_SelectEstimation != null)
+                {
+                    EstimationSelectVerif = true;
+                }
+            }
+        }
+
 
         public ViewModelEstimationPage(INavigation nav)
         {
             _Navigation = nav;
 
+            _Produits = new ObservableCollection<Produit>();
+            
             EstimationSelectVerif = false;
 
             _EstimationPlusCommand = new DelegateCommand(ExecuteEstimationPlusCommand);
@@ -103,7 +168,7 @@ namespace NovaktApp.ViewModel
 
         }
 
-        //Résultat de l'estimation
+        //Ajouter des produit dans une estimation
         private void ExecuteProduitUtiliseCommand(object obj)
         {
             OpenPopup();
@@ -111,6 +176,18 @@ namespace NovaktApp.ViewModel
 
         private void ExecuteEstimerCommand(object obj)
         {
+            DBEstimation db = new DBEstimation();
+            
+            //Ajout ou modification d'une estimation
+            if(EstimationSelectVerif == false)
+            {
+                db.Add(Estimation);
+            }
+            else
+            {
+                db.Update(SelectEstimation);
+            }
+
 
         }
 

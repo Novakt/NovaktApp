@@ -96,6 +96,7 @@ namespace NovaktApp.ViewModel
 
             est.ID = 1;
             est.Libelle = "Estimation 1";
+            est.Lieu = "Amiens";
             est.DateCreation = DateTime.Now;
             est.Secteur = "Nord-Ouest";
             est.NbBatiment = 1;
@@ -121,6 +122,9 @@ namespace NovaktApp.ViewModel
             ViewModelEstimationPage vm = new ViewModelEstimationPage(pg.Navigation);
             pg.BindingContext = vm;
             this._Navigation.PushAsync(pg).ConfigureAwait(false);
+
+            //Permet de désélectinner l'élément dans la liste
+            SelectClient = null;
         }
 
     }
