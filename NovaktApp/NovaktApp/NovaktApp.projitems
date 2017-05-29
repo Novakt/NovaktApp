@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
@@ -38,9 +38,15 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelAccueilPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelEstimationPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelListeClientPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelListProduitPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelLoginPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelCategorieProduitPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)View\AccueilPage.xaml.cs">
       <DependentUpon>AccueilPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\CategorieProduitPage.xaml.cs">
+      <DependentUpon>CategorieProduitPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)View\EstimationPage.xaml.cs">
@@ -50,6 +56,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)View\ListeClientPage.xaml.cs">
       <DependentUpon>ListeClientPage.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\ListeProduitPage.xaml.cs">
+      <DependentUpon>ListeProduitPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)View\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
@@ -86,7 +95,18 @@
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)PopupView\PopupPageProduit.xaml">
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\CategorieProduitPage.xaml">
+      <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)View\ListeProduitPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 </Project>
