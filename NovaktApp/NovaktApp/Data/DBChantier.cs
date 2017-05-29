@@ -81,13 +81,13 @@ namespace NovaktApp.Data
             return _connection.Table<Chantier>().FirstOrDefault(Chantier => Chantier.IDServeur == id);
         }
 
-        public List<Chantier> GetAllByVisite(int id)
+        /*public List<Chantier> GetAllByVisite(int id)
         {
             return (
                 from t in _connection.Table<Chantier>()
                 select t
                     ).Where(c => c.ID == id).ToList();
-        }
+        }*/
 
         public IEnumerable<Chantier> GetAll()
         {
