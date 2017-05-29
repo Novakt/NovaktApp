@@ -49,6 +49,26 @@ namespace NovaktApp.Data
         }
 
         //Serveur
+        public void UpdateByIdEstimationProduit(EstimationProduit estimationProduit)
+        {
+            _connection.Query<EstimationProduit>("UPDATE [EstimationProduit] " +
+                "[IDProduit] = ?, " +
+                "[IDEstimation] = ?" +
+                "WHERE [IDProduit] = ? && [IDEstmation] = ?",
+                estimationProduit.IDProduit,
+                estimationProduit.IDEstimation,
+                estimationProduit.IDProduit,
+                estimationProduit.IDEstimation);
+        }
+        
+        public List<EstimationProduit> GetAllByEstimationProduit(int idEstimation, int idProduit)
+        {
+            return (
+                from t in _connection.Table<EstimationProduit>()
+                select t
+                    ).Where(c => c.IDEstimation == idEstimation && c.IDProduit == idProduit).ToList();
+        }
+
         public IEnumerable<EstimationProduit> GetAll()
         {
             return (

@@ -51,10 +51,10 @@ namespace NovaktApp.Data
         //Serveur
         public void UpdateByIdServeur(Commercial commercial)
         {
-            _connection.Query<Categorie>("UPDATE [Commercial] SET" +
-                "[Commercial] SET [Login] = ?, " +
-                "[Commercial] SET [Password] = ?, " +
-                "[Commercial] SET [Token] = ? " +
+            _connection.Query<Categorie>("UPDATE [Commercial] SET " +
+                "[Login] = ?, " +
+                "[Password] = ?, " +
+                "[Token] = ? " +
                 "WHERE [IdServeur] = ?",
                 commercial.Login,
                 commercial.Password,
@@ -66,13 +66,13 @@ namespace NovaktApp.Data
             return _connection.Table<Commercial>().FirstOrDefault(Commercial => Commercial.IDServeur == id);
         }
 
-        public List<Commercial> GetAllByVisite(int id)
+        /*public List<Commercial> GetAllByVisite(int id)
         {
             return (
                 from t in _connection.Table<Commercial>()
                 select t
                     ).Where(c => c.ID == id).ToList();
-        }
+        }*/
 
         public IEnumerable<Commercial> GetAll()
         {

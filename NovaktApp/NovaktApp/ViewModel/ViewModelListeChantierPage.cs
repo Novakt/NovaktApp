@@ -25,16 +25,16 @@ namespace NovaktApp.ViewModel
                 _SelectChantier = value;
                 OnPropertyChanged(nameof(SelectChantier));
 
-            }
+                if (SelectChantier != null)
+                {
+                    //Permt de naviguer vers la page estimation
+                    ChantierPage pg = new ChantierPage();
+                    ViewModelChantierPage vm = new ViewModelChantierPage(pg.Navigation, SelectChantier);
+                    pg.BindingContext = vm;
+                    this._Navigation.PushAsync(pg).ConfigureAwait(false);
+                }
 
-            if( SelectChantier != null)
-            {
-                //Permt de naviguer vers la page estimation
-                ChantierPage pg = new ChantierPage();
-                ViewModelChantierPage vm = new ViewModelChantierPage(pg.Navigation, SelectChantier);
-                pg.BindingContext = vm;
-                this._Navigation.PushAsync(pg).ConfigureAwait(false);
-            }
+            }          
         }
 
         //Liste de tous les clients
@@ -90,9 +90,5 @@ namespace NovaktApp.ViewModel
 
         }
 
-        private void ExecuteChantiersCommand(object obj)
-        {
-          
-        }
     }
 }

@@ -11,7 +11,7 @@
 
       <Label Grid.Row="0" Text="Chantiers"/>
 
-      <ListView x:Name="Produits" Grid.Row="1" ItemsSource="{Binding Chantiers}" SelectedItem="{Binding SelectChantier}">
+      <ListView x:Name="Chantiers" Grid.Row="1" ItemsSource="{Binding Chantiers}" SelectedItem="{Binding SelectChantier}" RowHeight="200">
         <ListView.ItemTemplate>
           <DataTemplate>
             <ViewCell>
@@ -23,15 +23,10 @@
                       <RowDefinition Height="auto"/>
                       <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                      <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <!--<Image Grid.Row="0" Grid.Column="0" x:Name="ChantierImage" Source="chantier.png" HorizontalOptions="CenterAndExpand" HeightRequest="200" WidthRequest="200"/>
-                    -->
-
-                    <Label Grid.Row="1" Grid.Column="0" HorizontalOptions="Center"  Text="{Binding Nom}" FontSize="Medium" />
-                    <Label Grid.Row="2" Grid.Column="0" HorizontalOptions="Center"  Text="Chantier réalisé le 21/03/2015" FontSize="Small"/>
-
+   
+                    <Image Grid.Row="0" x:Name="ChantierImage" Source="chantier.png" HorizontalOptions="CenterAndExpand" WidthRequest="100"/>
+                    <Label Grid.Row="1" HorizontalOptions="Center"  Text="{Binding Nom}" FontSize="Medium" />
+                    <Label Grid.Row="2" HorizontalOptions="Center"  Text="Chantier réalisé le 21/03/2015" FontSize="Small"/>
                   </Grid>
                 </StackLayout>
               </ViewCell.View>

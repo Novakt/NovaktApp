@@ -23,7 +23,7 @@
         <RowDefinition Height="400"/>
         <!--<RowDefinition Height="200"/>-->
       </Grid.RowDefinitions>
-
+      
       <!--Nom client-->
       <Entry Grid.Row="0" x:Name="Intitule" Placeholder="Nom client" Text="{Binding Client.Intitule}"/>
 
@@ -47,14 +47,23 @@
           <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Picker Grid.Column="0" x:Name="EstimationListe" ItemsSource="{Binding Estimations}" ItemDisplayBinding="{Binding Libelle}" SelectedItem="{Binding SelectEstimation}"/>
+        <Picker Grid.Column="0" x:Name="EstimationListe" ItemsSource="{Binding Client.Estimations}" ItemDisplayBinding="{Binding Libelle}" SelectedItem="{Binding SelectEstimation}"/>
         <Button Grid.Column="1" x:Name="EstimationPlus" HorizontalOptions="Center" Text="+" Command="{Binding EstimationPlusCommand}"/>
         <Entry Grid.Column="2" x:Name="Estimation" Placeholder="Estimation client" Text="{Binding Estimation.Libelle}"/>
 
       </Grid>
 
       <!--Secteur activité client-->
-      <Entry Grid.Row="6" x:Name="Secteur" Placeholder="Secteur activité" Text=""/>
+      <Entry Grid.Row="6" x:Name="Secteur" Placeholder="Secteur activité">
+        <Entry.Triggers>
+          <DataTrigger TargetType="Entry" Binding="{Binding EstimationSelectVerif}" Value="False">
+            <Setter Property="Text" Value="{Binding Estimation.Secteur}"/>
+          </DataTrigger>
+          <DataTrigger TargetType="Entry" Binding="{Binding EstimationSelectVerif}" Value="True">
+            <Setter Property="Text" Value="{Binding SelectEstimation.Secteur}"/>
+          </DataTrigger>
+        </Entry.Triggers>
+      </Entry>
 
       <!--Surface client-->
       <Entry Grid.Row="7" x:Name="Surface" Placeholder="Surface client" Text=""/>

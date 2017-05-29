@@ -13,14 +13,28 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Data\DBCategorie.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\DBChantier.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\DBChantierProduit.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\DBClient.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\DBEstimation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\DBEstimationProduit.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\DBProduit.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\DBUtilisateur.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entity\Categorie.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entity\Chantier.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entity\ChantierProduit.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entity\Client.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entity\Commercial.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entity\Estimation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entity\EstimationProduit.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Entity\Produit.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interface\IDatabase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interface\ISQLite.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PopupViewModel\PopupPageProduitViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PopupView\PopupPageProduit.xaml.cs">
+      <DependentUpon>PopupPageProduit.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelAccueilPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelChantierPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelEstimationPage.cs" />
@@ -53,7 +67,6 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)View\ListeProduitPage.xaml.cs">
       <DependentUpon>ListeProduitPage.xaml</DependentUpon>
-      <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)View\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
@@ -88,9 +101,8 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\ListeProduitPage.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)PopupView\PopupPageProduit.xaml">
       <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -108,5 +120,9 @@
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\ChantierPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <Page Include="$(MSBuildThisFileDirectory)View\ListeProduitPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 </Project>

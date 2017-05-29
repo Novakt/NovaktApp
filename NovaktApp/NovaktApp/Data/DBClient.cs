@@ -51,12 +51,12 @@ namespace NovaktApp.Data
         //Serveur
         public void UpdateByIdServeur(Client client)
         {
-            _connection.Query<Categorie>("UPDATE [Client] SET"+
-                "[Client] SET [Intitule] = ?, " +
-                "[Client] SET [Adresse] = ?, " +
-                "[Client] SET [Ville] = ?, " +
-                "[Client] SET [Tel] = ?, " +
-                "[Client] SET [Mail] = ? " +
+            _connection.Query<Categorie>("UPDATE [Client] SET "+
+                "[Intitule] = ?, " +
+                "[Adresse] = ?, " +
+                "[Ville] = ?, " +
+                "[Tel] = ?, " +
+                "[Mail] = ? " +
                 "WHERE [IdServeur] = ?",
                 client.Intitule,
                 client.Adresse,
@@ -70,13 +70,13 @@ namespace NovaktApp.Data
             return _connection.Table<Client>().FirstOrDefault(Client => Client.IDServeur == id);
         }
 
-        public List<Client> GetAllByVisite(int id)
+        /*public List<Client> GetAllByVisite(int id)
         {
             return (
                 from t in _connection.Table<Client>()
                 select t
                     ).Where(c => c.ID == id).ToList();
-        }
+        }*/
 
         public IEnumerable<Client> GetAll()
         {

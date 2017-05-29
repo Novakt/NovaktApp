@@ -15,8 +15,8 @@ namespace NovaktApp.ViewModel
         private Produit _SelectProduit;
         private ObservableCollection<Produit> _Produit;
         private DelegateCommand _EstimationCommand;
-
-        //Client selectionné dans la liste
+         
+        //Produit selectionné dans la liste
         public Produit SelectProduit
         {
             get { return _SelectProduit; }
@@ -29,7 +29,7 @@ namespace NovaktApp.ViewModel
             }
         }
 
-        //Liste de tous les clients
+        //Liste de tous les produits
         public ObservableCollection<Produit> Produits
         {
             get { return _Produit; }
