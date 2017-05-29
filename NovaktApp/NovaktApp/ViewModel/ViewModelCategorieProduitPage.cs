@@ -14,7 +14,6 @@ namespace NovaktApp.ViewModel
         private INavigation _Navigation;
         private Categorie _SelectCategorie;
         private ObservableCollection<Categorie> _Categories;
-        private DelegateCommand _ListCategorieCommand;
 
         public INavigation Navigation
         {
@@ -33,9 +32,7 @@ namespace NovaktApp.ViewModel
         {
             _Navigation = nav;
 
-            _ListCategorieCommand = new DelegateCommand(ExecuteListProduitCommand);
-
-            Categories = new ObservableCollection<Categorie>();
+           Categories = new ObservableCollection<Categorie>();
 
             Categorie cat1 = new Categorie();
             Categorie cat2 = new Categorie();
@@ -65,7 +62,18 @@ namespace NovaktApp.ViewModel
                 OnPropertyChanging(nameof(SelectCategorie));
                 _SelectCategorie = value;
                 OnPropertyChanged(nameof(SelectCategorie));
+
+                if (SelectCategorie != null)
+                {
+                    //Permet de naviguer vers la page Liste produits
+                    ListeProduitPage pg = new ListeProduitPage();
+                    ViewModelListProduitPage vm = new ViewModelListProduitPage(pg.Navigation);
+                    pg.BindingContext = vm;
+                    this._Navigation.PushAsync(pg).ConfigureAwait(false);
+                }
             }
+
+
         }
 
         //Liste de toutes les catégories 
@@ -80,15 +88,5 @@ namespace NovaktApp.ViewModel
 
             }
         }
-
-        private void ExecuteListProduitCommand(object obj)
-        {
-            //Permt de naviguer vers la page estimation
-            ListeProduitPage pg = new ListeProduitPage();
-            ViewModelListProduitPage vm = new ViewModelListProduitPage(pg.Navigation);
-            pg.BindingContext = vm;
-            this._Navigation.PushAsync(pg).ConfigureAwait(false);
-        }
-
     }
 }
