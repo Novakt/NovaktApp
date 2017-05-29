@@ -27,10 +27,10 @@ namespace NovaktApp.ViewModel
                 if (SelectProduit != null)
                 {
                     //Permet de naviguer vers la page Liste produits
-                    DetailProduitPage pg = new DetailProduitPage();
-                    ViewModelDetailProduitPage vm = new ViewModelDetailProduitPage(pg.Navigation);
-                    pg.BindingContext = vm;
-                    this._Navigation.PushAsync(pg).ConfigureAwait(false);
+                    //DetailProduitPage pg = new DetailProduitPage();
+                    //ViewModelDetailProduitPage vm = new ViewModelDetailProduitPage(pg.Navigation);
+                    //pg.BindingContext = vm;
+                    //this._Navigation.PushAsync(pg).ConfigureAwait(false);
                 }
             }
         }
