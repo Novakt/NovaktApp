@@ -22,7 +22,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Interface\IDatabase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interface\ISQLite.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelAccueilPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelChantierPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelEstimationPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelListeChantierPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelListeClientPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelListProduitPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelLoginPage.cs" />
@@ -35,8 +37,14 @@
       <DependentUpon>CategorieProduitPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\ChantierPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)View\EstimationPage.xaml.cs">
       <DependentUpon>EstimationPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\ListeChantierPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)View\ListeClientPage.xaml.cs">
@@ -88,6 +96,16 @@
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\CategorieProduitPage.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\ListeChantierPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\ChantierPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
