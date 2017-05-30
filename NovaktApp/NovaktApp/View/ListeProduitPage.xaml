@@ -3,31 +3,31 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NovaktApp.View.ListeProduitPage">
     <ContentPage.Content>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="50"/>
+        <RowDefinition Height="*"/>
+      </Grid.RowDefinitions>
 
-            <Label Grid.Row="0" Text="Produits"/>
-            <ListView x:Name="Produits" Grid.Row="1" ItemsSource="{Binding Produits}" SelectedItem="{Binding SelectProduit}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <ViewCell.View>
-                                <StackLayout Orientation="Vertical" HorizontalOptions="Start">
-                                    <Grid>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="auto"/>
-                                        </Grid.RowDefinitions>
-                                        <Label Grid.Row="0" HorizontalOptions="Start"  Text="{Binding Nom}" FontSize="Medium"/>
-                                    </Grid>
-                                </StackLayout>
-                            </ViewCell.View>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </Grid>
-    </ContentPage.Content>
+      <Label Grid.Row="0" Text="Produits"/>
+      <ListView x:Name="Produits" Grid.Row="1" ItemsSource="{Binding Produits}" SelectedItem="{Binding SelectProduit}">
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <ViewCell>
+              <ViewCell.View>
+                <StackLayout Orientation="Vertical" HorizontalOptions="Start">
+                  <Grid>
+                    <Grid.RowDefinitions>
+                      <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" HorizontalOptions="Start"  Text="{Binding Nom}" FontSize="Medium"/>
+                  </Grid>
+                </StackLayout>
+              </ViewCell.View>
+            </ViewCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+    </Grid>
+  </ContentPage.Content>
 </ContentPage>
