@@ -74,8 +74,8 @@ namespace NovaktApp.ViewModel
                 {
                     //Récupération des roduit lié à l'estimation
                     ObservableCollection<EstimationProduit> obs = new ObservableCollection<EstimationProduit>();
-                    DBEstimationProduit dbEP = new DBEstimationProduit();
-                    obs.Add(dbEP.Get(_SelectEstimation.ID));
+                    //DBEstimationProduit dbEP = new DBEstimationProduit();
+                    //obs.Add(dbEP.Get(_SelectEstimation.ID));
 
 
 
