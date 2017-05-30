@@ -15,6 +15,6 @@ namespace NovaktApp.View
 		public ListeChantierPage ()
 		{
 			InitializeComponent ();
-        }
+		}
 	}
 }

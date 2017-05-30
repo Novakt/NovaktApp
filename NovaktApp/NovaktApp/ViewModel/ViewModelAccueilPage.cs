@@ -63,10 +63,10 @@ namespace NovaktApp.ViewModel
         private void ExecuteListeChantierCommand(object obj)
         {
             //Permt de naviguer vers la liste des chantier
-             ListeChantierPage pg = new ListeChantierPage();
-             ViewModelListeChantierPage vm = new ViewModelListeChantierPage(pg.Navigation);
-             pg.BindingContext = vm;
-             this._Navigation.PushAsync(pg).ConfigureAwait(false);
+           ListeChantierPage pg = new ListeChantierPage();
+           ViewModelListeChantierPage vm = new ViewModelListeChantierPage(pg.Navigation);
+           pg.BindingContext = vm;
+           this._Navigation.PushAsync(pg).ConfigureAwait(false);
 
         }
     }
