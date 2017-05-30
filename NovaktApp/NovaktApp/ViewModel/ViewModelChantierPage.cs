@@ -22,10 +22,10 @@ namespace NovaktApp.ViewModel
                 p1.Nom = "Produit 1";
                 Produits.Add(p1);
                 Produit p2 = new Produit();
-                p1.Nom = "Produit 2";
+                p2.Nom = "Produit 2";
                 Produits.Add(p2);
                 Produit p3 = new Produit();
-                p1.Nom = "Produit 3";
+                p3.Nom = "Produit 3";
                 Produits.Add(p3);
             }
             else
