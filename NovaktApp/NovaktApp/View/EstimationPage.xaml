@@ -25,19 +25,19 @@
             </Grid.RowDefinitions>
 
             <!--Nom client-->
-            <Entry Grid.Row="0" x:Name="Intitule" Placeholder="Nom client" Text="{Binding Client.Intitule}"/>
+            <Entry Grid.Row="0" x:Name="Intitule" PlaceholderColor="#005da7" TextColor="#005da7"  Placeholder="Nom client" Text="{Binding Client.Intitule}"/>
 
             <!--Adresse client-->
-            <Entry Grid.Row="1" x:Name="Adresse" Placeholder="Adresse client" Text="{Binding Client.Adresse}"/>
+            <Entry Grid.Row="1" x:Name="Adresse"  PlaceholderColor="#005da7" TextColor="#005da7" Placeholder="Adresse client" Text="{Binding Client.Adresse}"/>
 
             <!--Ville client-->
-            <Entry Grid.Row="2" x:Name="Ville" Placeholder="Ville client" Text="{Binding Client.Ville}"/>
+            <Entry Grid.Row="2" x:Name="Ville"    PlaceholderColor="#005da7" TextColor="#005da7" Placeholder="Ville client" Text="{Binding Client.Ville}"/>
 
             <!--Tel client-->
-            <Entry Grid.Row="3" x:Name="Tel" Placeholder="Tel client" Text="{Binding Client.Tel}"/>
+            <Entry Grid.Row="3" x:Name="Tel"      PlaceholderColor="#005da7" TextColor="#005da7" Placeholder="Tel client" Text="{Binding Client.Tel}"/>
 
             <!--Mail client-->
-            <Entry Grid.Row="4" x:Name="Mail" Placeholder="Mail client" Text="{Binding Client.Mail}"/>
+            <Entry Grid.Row="4" x:Name="Mail"     PlaceholderColor="#005da7" TextColor="#005da7" Placeholder="Mail client" Text="{Binding Client.Mail}"/>
 
             <!--Estimation + Bouton + nouvelle estimation client-->
             <Grid Grid.Row="5">
@@ -47,14 +47,14 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Picker Grid.Column="0" x:Name="EstimationListe" ItemsSource="{Binding Client.Estimations}" ItemDisplayBinding="{Binding Libelle}" SelectedItem="{Binding SelectEstimation}"/>
-                <Button Grid.Column="1" x:Name="EstimationPlus" HorizontalOptions="Center" Text="+" Command="{Binding EstimationPlusCommand}"/>
-                <Entry Grid.Column="2" x:Name="Estimation" Placeholder="Estimation client" Text="{Binding Estimation.Libelle}"/>
+                <Picker Grid.Column="0" x:Name="EstimationListe"    ItemsSource="{Binding Client.Estimations}" ItemDisplayBinding="{Binding Libelle}" SelectedItem="{Binding SelectEstimation}"/>
+                <Button Grid.Column="1" x:Name="EstimationPlus"  TextColor="White"  BackgroundColor="#005da7"   Opacity="0.75"     HorizontalOptions="Center" Text="+" Command="{Binding EstimationPlusCommand}"/>
+                <Entry Grid.Column="2"  x:Name="Estimation"      PlaceholderColor="#005da7"  Placeholder="Estimation client" Text="{Binding Estimation.Libelle}"/>
 
             </Grid>
 
             <!--Secteur activité client-->
-            <Entry Grid.Row="6" x:Name="Secteur" Placeholder="Secteur activité">
+            <Entry Grid.Row="6" x:Name="Secteur" Placeholder="Secteur activité" PlaceholderColor="#005da7">
                 <Entry.Triggers>
                     <DataTrigger TargetType="Entry" Binding="{Binding EstimationSelectVerif}" Value="False">
                         <Setter Property="Text" Value="{Binding Estimation.Secteur}"/>
@@ -66,7 +66,7 @@
             </Entry>
 
             <!--Surface client-->
-            <Entry Grid.Row="7" x:Name="Surface" Placeholder="Surface client">
+            <Entry Grid.Row="7" x:Name="Surface" Placeholder="Surface client" PlaceholderColor="#005da7">
                 <Entry.Triggers>
                     <DataTrigger TargetType="Entry" Binding="{Binding EstimationSelectVerif}" Value="False">
                         <Setter Property="Text" Value="{Binding Estimation.Secteur}"/>
@@ -78,7 +78,7 @@
             </Entry>
 
             <!--nb batiment client-->
-            <Entry Grid.Row="8" x:Name="NbBatiments" Placeholder="Nombre batiments">
+            <Entry Grid.Row="8" x:Name="NbBatiments" Placeholder="Nombre batiments" PlaceholderColor="#005da7">
                 <Entry.Triggers>
                     <DataTrigger TargetType="Entry" Binding="{Binding EstimationSelectVerif}" Value="False">
                         <Setter Property="Text" Value="{Binding Estimation.NbBatiment}"/>
@@ -90,7 +90,7 @@
             </Entry>
 
             <!--Type chantier client-->
-            <Entry Grid.Row="9" x:Name="TypeChantier" Placeholder="Type chantier">
+            <Entry Grid.Row="9" x:Name="TypeChantier" Placeholder="Type chantier" PlaceholderColor="#005da7">
                 <Entry.Triggers>
                     <DataTrigger TargetType="Entry" Binding="{Binding EstimationSelectVerif}" Value="False">
                         <Setter Property="Text" Value="{Binding Estimation.TypeChantier}"/>
@@ -102,7 +102,7 @@
             </Entry>
 
             <!--Type batiment client-->
-            <Entry Grid.Row="10" x:Name="TypeBatiment" Placeholder="Type batiment">
+            <Entry Grid.Row="10" x:Name="TypeBatiment" Placeholder="Type batiment" PlaceholderColor="#005da7">
                 <Entry.Triggers>
                     <DataTrigger TargetType="Entry" Binding="{Binding EstimationSelectVerif}" Value="False">
                         <Setter Property="Text" Value="{Binding Estimation.TypeBatiment}"/>
@@ -114,7 +114,7 @@
             </Entry>
 
             <!--Température moyenne client-->
-            <Entry Grid.Row="11" x:Name="Temperature" Placeholder="Température moyenne">
+            <Entry Grid.Row="11" x:Name="Temperature" Placeholder="Température moyenne" PlaceholderColor="#005da7">
                 <Entry.Triggers>
                     <DataTrigger TargetType="Entry" Binding="{Binding EstimationSelectVerif}" Value="False">
                         <Setter Property="Text" Value="{Binding Estimation.TemperatureMoyenne}"/>
@@ -127,7 +127,7 @@
 
 
             <!--Lieu client-->
-            <Entry Grid.Row="12" x:Name="Lieu" Placeholder="Lieu client">
+            <Entry Grid.Row="12" x:Name="Lieu" Placeholder="Lieu client" PlaceholderColor="#005da7">
                 <Entry.Triggers>
                     <DataTrigger TargetType="Entry" Binding="{Binding EstimationSelectVerif}" Value="False">
                         <Setter Property="Text" Value="{Binding Estimation.Lieu}"/>
@@ -139,7 +139,7 @@
             </Entry>
 
             <!--Etage client-->
-            <Entry Grid.Row="13" x:Name="NbEtages" Placeholder="Nombre etages">
+            <Entry Grid.Row="13" x:Name="NbEtages" Placeholder="Nombre etages" PlaceholderColor="#005da7">
                 <Entry.Triggers>
                     <DataTrigger TargetType="Entry" Binding="{Binding EstimationSelectVerif}" Value="False">
                         <Setter Property="Text" Value="{Binding Estimation.NbEtage}"/>
@@ -158,7 +158,7 @@
                     <RowDefinition Height="50"/>
                 </Grid.RowDefinitions>
 
-                <Button Grid.Row="0" x:Name="Produit" Text="+" Command="{Binding ProduitUtiliseCommand}"/>
+                <Button Grid.Row="0" x:Name="Produit" Text="+" TextColor="White"  BackgroundColor="#005da7"   Opacity="0.75" Command="{Binding ProduitUtiliseCommand}"/>
 
                 <ListView x:Name="Produits" Grid.Row="1" ItemsSource="{Binding Produits}" SelectedItem="{Binding SelectProduit}">
                     <ListView.ItemTemplate>
@@ -179,7 +179,7 @@
                     </ListView.ItemTemplate>
                 </ListView>
 
-                <Button Grid.Row="2" x:Name="Estimer" Text="Estimer" Command="{Binding EstimerCommand}"/>
+                <Button Grid.Row="2" x:Name="Estimer" Text="Estimer" TextColor="White"  BackgroundColor="#005da7"   Opacity="0.75" Command="{Binding EstimerCommand}"/>
 
             </Grid>
 

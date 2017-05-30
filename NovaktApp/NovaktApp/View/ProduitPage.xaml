@@ -19,16 +19,16 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Image Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,20,0,0" x:Name="ProduitImage" Source="produit.png"  HorizontalOptions="CenterAndExpand" WidthRequest="100"/>
-                    <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="Produit" FontSize="Large" HorizontalTextAlignment="Center"/>
-                    <Label Grid.Row="2" Grid.Column="0" Text="Référence" FontSize="Small"/>
-                    <Label Grid.Row="3" Grid.Column="0" Text="Nom" FontSize="Small"/>
-                    <Label Grid.Row="4" Grid.Column="0" Text="Type" FontSize="Small"/>
-                    <Label Grid.Row="5" Grid.Column="0" Text="Description" FontSize="Small"/>
+                    <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="Produit"     TextColor="#005da7" FontSize="Large" HorizontalTextAlignment="Center"/>
+                    <Label Grid.Row="2" Grid.Column="0" Text="Référence"    FontSize="Small"   TextColor="#005da7"   Margin="5,0,0,0"  HorizontalTextAlignment="End"  VerticalTextAlignment="Center"/>
+                    <Label Grid.Row="3" Grid.Column="0" Text="Nom"          FontSize="Small"   TextColor="#005da7"   Margin="5,0,0,0"  HorizontalTextAlignment="End"  VerticalTextAlignment="Center"/>
+                    <Label Grid.Row="4" Grid.Column="0" Text="Type"         FontSize="Small"   TextColor="#005da7"   Margin="5,0,0,0"  HorizontalTextAlignment="End"  VerticalTextAlignment="Center"/>
+                    <Label Grid.Row="5" Grid.Column="0" Text="Description"  FontSize="Small"   TextColor="#005da7"   Margin="5,0,0,0"  HorizontalTextAlignment="End"  VerticalTextAlignment="Center"/>
 
-                    <Entry Grid.Row="2" Grid.Column="1"   IsEnabled="false"  Text="text"/>
-                    <Entry Grid.Row="3" Grid.Column="1"   IsEnabled="false"  Text="text"/>
-                    <Entry Grid.Row="4" Grid.Column="1"   IsEnabled="false"  Text="text"/>
-                    <Editor Grid.Row="5" Grid.Column="1"  IsEnabled="false"   Text="text"/>
+                    <Entry Grid.Row="2" Grid.Column="1"  TextColor="#005da7" Opacity="1"   Text="text"/>
+                    <Entry Grid.Row="3" Grid.Column="1"  TextColor="#005da7" Opacity="1"   Text="text"/>
+                    <Entry Grid.Row="4" Grid.Column="1"  TextColor="#005da7" Opacity="1"   Text="text"/>
+                    <Editor Grid.Row="5" Grid.Column="1" TextColor="#005da7" Opacity="1"    Text="text"/>
 
                 </Grid>
             </StackLayout>

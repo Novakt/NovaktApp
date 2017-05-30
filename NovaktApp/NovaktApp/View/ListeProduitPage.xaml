@@ -20,7 +20,7 @@
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto"/>
                                         </Grid.RowDefinitions>
-                                        <Label Grid.Row="0" HorizontalOptions="Start"  Text="{Binding Nom}" FontSize="Medium"/>
+                                        <Label Grid.Row="0" HorizontalOptions="Start"  Text="{Binding Nom}" FontSize="Medium" HorizontalTextAlignment="Center"/>
                                     </Grid>
                                 </StackLayout>
                             </ViewCell.View>
