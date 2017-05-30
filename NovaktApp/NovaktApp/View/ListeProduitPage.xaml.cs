@@ -9,13 +9,12 @@ using Xamarin.Forms.Xaml;
 
 namespace NovaktApp.View
 {
+	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ListeProduitPage : ContentPage
 	{
 		public ListeProduitPage ()
 		{
-
-		    InitializeComponent ();
-
+			InitializeComponent ();
 		}
 	}
 }
