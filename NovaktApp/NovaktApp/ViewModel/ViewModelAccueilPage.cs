@@ -49,17 +49,22 @@ namespace NovaktApp.ViewModel
             this._Navigation.PushAsync(pg).ConfigureAwait(false);
 
         }
-
+        /// <summary>
+        /// Permet de naviguer vers la liste des catégories de produit
+        /// </summary>
+        /// <param name="obj"></param>
         private void ExecuteCategorieProduitCommand(object obj)
         {
-            //Permt de naviguer vers la liste des catégories de produit
             CategorieProduitPage pg = new CategorieProduitPage();
             ViewModelCategorieProduitPage vm = new ViewModelCategorieProduitPage(pg.Navigation);
             pg.BindingContext = vm;
             this._Navigation.PushAsync(pg).ConfigureAwait(false);
 
         }
-
+        /// <summary>
+        /// Ouvre la page de la liste chantier
+        /// </summary>
+        /// <param name="obj"></param>
         private void ExecuteListeChantierCommand(object obj)
         {
             //Permt de naviguer vers la liste des chantier

@@ -41,15 +41,15 @@
                     <Label Grid.Row="12" Grid.Column="0"  TextColor="#005da7"  Opacity="0.6"  Margin="5,0,0,0"  HorizontalTextAlignment="End"  VerticalTextAlignment="Center" Text="Produits Utilisés" FontSize="Small"/>
 
 
-                    <Entry Grid.Row="2" Grid.Column="1"  TextColor="#005da7"  Opacity="0.6" Text="text"/>
-                    <Entry Grid.Row="3" Grid.Column="1"  TextColor="#005da7"  Opacity="0.6" Text="text"/>
-                    <Entry Grid.Row="4" Grid.Column="1"  TextColor="#005da7"  Opacity="0.6" Text="text"/>
-                    <Entry Grid.Row="5" Grid.Column="1"  TextColor="#005da7"  Opacity="0.6" Text="text"/>
-                    <Entry Grid.Row="6" Grid.Column="1"  TextColor="#005da7"  Opacity="0.6" Text="text"/>
-                    <Entry Grid.Row="7" Grid.Column="1"  TextColor="#005da7"  Opacity="0.6" Text="text"/>
-                    <Entry Grid.Row="8" Grid.Column="1"  TextColor="#005da7"  Opacity="0.6" Text="text"/>
-                    <Entry Grid.Row="9" Grid.Column="1"  TextColor="#005da7"  Opacity="0.6" Text="text"/>
-                    <Entry Grid.Row="11" Grid.Column="0" TextColor="#005da7"  Opacity="0.6" Grid.ColumnSpan="2" Text="text"/>
+                    <Entry Grid.Row="2" Grid.Column="1" IsEnabled="False" TextColor="#005da7" Text="Tertiaire"/>
+                    <Entry Grid.Row="3" Grid.Column="1" IsEnabled="False" TextColor="#005da7" Text="2250m²"/>
+                    <Entry Grid.Row="4" Grid.Column="1" IsEnabled="False" TextColor="#005da7" Text="1"/>
+                    <Entry Grid.Row="5" Grid.Column="1" IsEnabled="False" TextColor="#005da7" Text="Rénovation"/>
+                    <Entry Grid.Row="6" Grid.Column="1" IsEnabled="False" TextColor="#005da7" Text="Usine"/>
+                    <Entry Grid.Row="7" Grid.Column="1" IsEnabled="False" TextColor="#005da7" Text="20°C"/>
+                    <Entry Grid.Row="8" Grid.Column="1" IsEnabled="False" TextColor="#005da7" Text="Paris"/>
+                    <Entry Grid.Row="9" Grid.Column="1" IsEnabled="False" TextColor="#005da7" Text="2"/>
+                    <Editor Grid.Row="11" Grid.Column="0" IsEnabled="False" TextColor="#005da7" Grid.ColumnSpan="2" Text="Ce chantier à été réalisé pour une demande de (...)"/>
                                                         
                     <ListView x:Name="Produits" Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2" ItemsSource="{Binding Produits}">
                         <ListView.ItemTemplate>

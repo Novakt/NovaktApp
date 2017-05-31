@@ -25,10 +25,10 @@
                     <Label Grid.Row="4" Grid.Column="0" Text="Type"         FontSize="Small"   TextColor="#005da7"   Margin="5,0,0,0"  HorizontalTextAlignment="End"  VerticalTextAlignment="Center"/>
                     <Label Grid.Row="5" Grid.Column="0" Text="Description"  FontSize="Small"   TextColor="#005da7"   Margin="5,0,0,0"  HorizontalTextAlignment="End"  VerticalTextAlignment="Center"/>
 
-                    <Entry Grid.Row="2" Grid.Column="1"  TextColor="#005da7" Opacity="1"   Text="text"/>
-                    <Entry Grid.Row="3" Grid.Column="1"  TextColor="#005da7" Opacity="1"   Text="text"/>
-                    <Entry Grid.Row="4" Grid.Column="1"  TextColor="#005da7" Opacity="1"   Text="text"/>
-                    <Editor Grid.Row="5" Grid.Column="1" TextColor="#005da7" Opacity="1"    Text="text"/>
+                    <Entry Grid.Row="2" Grid.Column="1"  TextColor="#005da7" IsEnabled="False"  Text="015015184"/>
+                    <Entry Grid.Row="3" Grid.Column="1"  TextColor="#005da7" IsEnabled="False"  Text="Pompe RZ 0001"/>
+                    <Entry Grid.Row="4" Grid.Column="1"  TextColor="#005da7" IsEnabled="False"  Text="Pompe à chaleur orienté froid"/>
+                    <Editor Grid.Row="5" Grid.Column="1" TextColor="#005da7" IsEnabled="False"  Text="Cette pompe peut (...)"/>
 
                 </Grid>
             </StackLayout>

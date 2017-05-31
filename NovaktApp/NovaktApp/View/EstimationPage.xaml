@@ -179,7 +179,7 @@
                     </ListView.ItemTemplate>
                 </ListView>
 
-                <Button Grid.Row="2" x:Name="Estimer" Text="Estimer" TextColor="White"  BackgroundColor="#005da7"   Opacity="0.75" Command="{Binding EstimerCommand}"/>
+                <Button Grid.Row="2" x:Name="Estimer" Text="Estimer" TextColor="White"  BackgroundColor="#005da7"   Opacity="0.75"/>
 
             </Grid>
 
