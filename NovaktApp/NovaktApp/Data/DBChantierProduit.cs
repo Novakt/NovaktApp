@@ -76,5 +76,6 @@ namespace NovaktApp.Data
                 select t
                     ).ToList();
         }
+
     }
 }

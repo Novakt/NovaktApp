@@ -38,7 +38,6 @@ namespace NovaktApp.ViewModel
                 }
             }
         }
-
         //Liste de tous les clients
         public ObservableCollection<Client> Clients
         {
@@ -51,10 +50,8 @@ namespace NovaktApp.ViewModel
 
             }
         }
-
         //Permet de créer un nouveau client et son estimation
         public DelegateCommand EstimationCommand => _EstimationCommand;
-
         //Permet de naviguer entre les pages
         public INavigation Navigation
         {
@@ -67,7 +64,6 @@ namespace NovaktApp.ViewModel
 
             }
         }
-
         //Permet de récupérer l'estimation
         public Estimation SelectEstimation
         {
@@ -80,6 +76,10 @@ namespace NovaktApp.ViewModel
             }
         }
 
+        /// <summary>
+        /// Constructeur
+        /// </summary>
+        /// <param name="nav"></param>
         public ViewModelListeClientPage(INavigation nav)
         {
             Clients = new ObservableCollection<Client>();
@@ -115,9 +115,12 @@ namespace NovaktApp.ViewModel
             _EstimationCommand = new DelegateCommand(ExecuteEstimationCommand);
         }
 
+        /// <summary>
+        /// Permt de naviguer vers la page estimation
+        /// </summary>
+        /// <param name="obj"></param>
         private void ExecuteEstimationCommand(object obj)
         {
-            //Permt de naviguer vers la page estimation
             EstimationPage pg = new EstimationPage();
             ViewModelEstimationPage vm = new ViewModelEstimationPage(pg.Navigation);
             pg.BindingContext = vm;

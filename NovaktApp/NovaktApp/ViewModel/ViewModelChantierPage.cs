@@ -13,6 +13,26 @@ namespace NovaktApp.ViewModel
     public class ViewModelChantierPage : Observable
     {
         private ObservableCollection<Produit> _Produits;
+        public ObservableCollection<Produit> Produits
+        {
+            get
+            {
+                return _Produits;
+            }
+
+            set
+            {
+                OnPropertyChanging(nameof(Produit));
+                _Produits = value;
+                OnPropertyChanged(nameof(Produit));
+            }
+        }
+
+        /// <summary>
+        /// Constructeur
+        /// </summary>
+        /// <param name="nav"></param>
+        /// <param name="ch"></param>
         public ViewModelChantierPage(INavigation nav, Chantier ch)
         {
             if (ch.Produits == null)
@@ -35,20 +55,6 @@ namespace NovaktApp.ViewModel
               
         }
 
-        public ObservableCollection<Produit> Produits
-        {
-            get
-            {
-                return _Produits;
-            }
-
-            set
-            {
-                OnPropertyChanging(nameof(Produit));
-                _Produits = value;
-                OnPropertyChanged(nameof(Produit));
-            }
-        }
     }
 }
 

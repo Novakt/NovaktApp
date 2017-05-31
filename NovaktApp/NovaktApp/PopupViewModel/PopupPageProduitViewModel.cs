@@ -11,9 +11,12 @@ namespace NovaktApp.PopupViewModel
         private INavigation _Navigation;
         private DelegateCommand _AjouterCommand;
 
-
         public DelegateCommand AjouterCommand => _AjouterCommand;
 
+        /// <summary>
+        /// Constructeur
+        /// </summary>
+        /// <param name="nav"></param>
         public PopupPageProduitViewModel(INavigation nav)
         {
             _Navigation = nav;
@@ -21,6 +24,10 @@ namespace NovaktApp.PopupViewModel
             _AjouterCommand = new DelegateCommand(ExecuteAjouterCommand);
         }
 
+        /// <summary>
+        /// Permet d'ajouter un produit a une estimation
+        /// </summary>
+        /// <param name="obj"></param>
         private void ExecuteAjouterCommand(object obj)
         {
 

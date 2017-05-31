@@ -36,7 +36,6 @@ namespace NovaktApp.ViewModel
 
             }          
         }
-
         //Liste de tous les clients
         public ObservableCollection<Chantier> Chantiers
         {
@@ -49,7 +48,6 @@ namespace NovaktApp.ViewModel
 
             }
         }
-
         //Permet de naviguer entre les pages
         public INavigation Navigation
         {
@@ -62,7 +60,11 @@ namespace NovaktApp.ViewModel
 
             }
         }
-
+        
+        /// <summary>
+        /// Constructeur
+        /// </summary>
+        /// <param name="nav"></param>
         public ViewModelListeChantierPage(INavigation nav)
         {
             Chantiers = new ObservableCollection<Chantier>();

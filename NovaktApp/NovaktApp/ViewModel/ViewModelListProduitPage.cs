@@ -15,6 +15,55 @@ namespace NovaktApp.ViewModel
         private Produit _SelectProduit;
         private ObservableCollection<Produit> _Produit;
 
+        //Produit selectionné dans la liste
+        public Produit SelectProduit
+        {
+            get { return _SelectProduit; }
+            set
+            {
+                OnPropertyChanging(nameof(SelectProduit));
+                _SelectProduit = value;
+                OnPropertyChanged(nameof(SelectProduit));
+                if (SelectProduit != null)
+                {
+                    //Permet de naviguer vers la page Liste produits
+                    ProduitPage pg = new ProduitPage();
+                    ViewModelProduitPage vm = new ViewModelProduitPage(pg.Navigation, SelectProduit);
+                    pg.BindingContext = vm;
+                    this._Navigation.PushAsync(pg).ConfigureAwait(false);
+                }
+            }
+        }
+        //Liste de tous les produits
+        public ObservableCollection<Produit> Produits
+        {
+            get { return _Produit; }
+            set
+            {
+                OnPropertyChanging(nameof(Produits));
+                _Produit = value;
+                OnPropertyChanged(nameof(Produits));
+
+            }
+        }
+        //Permet de naviguer entre les pages
+        public INavigation Navigation
+        {
+            get { return _Navigation; }
+            set
+            {
+                OnPropertyChanging(nameof(Navigation));
+                _Navigation = value;
+                OnPropertyChanged(nameof(Navigation));
+
+            }
+        }
+
+        /// <summary>
+        /// Constructeur
+        /// </summary>
+        /// <param name="nav"></param>
+        /// <param name="cat"></param>
         public ViewModelListProduitPage(INavigation nav, Categorie cat)
         {
             Produits = new ObservableCollection<Produit>();
@@ -39,52 +88,6 @@ namespace NovaktApp.ViewModel
             Produits.Add(pr5);
 
             _Navigation = nav;
-        }
-
-        //Produit selectionné dans la liste
-        public Produit SelectProduit
-        {
-            get { return _SelectProduit; }
-            set
-            {
-                OnPropertyChanging(nameof(SelectProduit));
-                _SelectProduit = value;
-                OnPropertyChanged(nameof(SelectProduit));
-                if (SelectProduit != null)
-                {
-                    //Permet de naviguer vers la page Liste produits
-                    ProduitPage pg = new ProduitPage();
-                    ViewModelProduitPage vm = new ViewModelProduitPage(pg.Navigation, SelectProduit);
-                    pg.BindingContext = vm;
-                    this._Navigation.PushAsync(pg).ConfigureAwait(false);
-                }
-            }
-        }
-
-        //Liste de tous les produits
-        public ObservableCollection<Produit> Produits
-        {
-            get { return _Produit; }
-            set
-            {
-                OnPropertyChanging(nameof(Produits));
-                _Produit = value;
-                OnPropertyChanged(nameof(Produits));
-
-            }
-        }
-
-        //Permet de naviguer entre les pages
-        public INavigation Navigation
-        {
-            get { return _Navigation; }
-            set
-            {
-                OnPropertyChanging(nameof(Navigation));
-                _Navigation = value;
-                OnPropertyChanged(nameof(Navigation));
-
-            }
         }
 
 

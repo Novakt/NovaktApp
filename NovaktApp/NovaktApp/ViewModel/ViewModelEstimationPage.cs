@@ -37,16 +37,12 @@ namespace NovaktApp.ViewModel
 
             }
         }
-
         //Permet de créer des estimation supplémentaire pour un client
         public DelegateCommand EstimationPlusCommand  => _EstimationPlusCommand;
-
         //Permet de rajouter des produit dans la liste de produits pour réaliser l'estimation
         public DelegateCommand ProduitUtiliseCommand => _ProduitUtiliseCommand;
-
         //Permet de réaliser l'estimation
         public DelegateCommand EstimerCommand => _EstimerCommand;
-
         //Récupére les informations du client
         public Client Client
         {
@@ -59,7 +55,6 @@ namespace NovaktApp.ViewModel
 
             }
         }
-
         //Permet de récupérer l'estimation sélectionnée
         public Estimation SelectEstimation
         {
@@ -83,7 +78,6 @@ namespace NovaktApp.ViewModel
                 }
             }
         }
-
         //Permt de vérifier si une estimation pour un client est selectionné
         public bool EstimationSelectVerif
         {
@@ -96,7 +90,6 @@ namespace NovaktApp.ViewModel
 
             }
         }
-
         //Permet de récupérer le produit selectionné
         public Produit SelectProduit
         {
@@ -113,7 +106,6 @@ namespace NovaktApp.ViewModel
                 }
             }
         }
-
         //Liste des produit ajouter à l'estimation
         public ObservableCollection<Produit> Produits
         {
@@ -130,7 +122,6 @@ namespace NovaktApp.ViewModel
                 }
             }
         }
-
         //Permet de créer une estimation
         public Estimation Estimation
         {
@@ -148,7 +139,10 @@ namespace NovaktApp.ViewModel
             }
         }
 
-
+        /// <summary>
+        /// Constructeur
+        /// </summary>
+        /// <param name="nav"></param>
         public ViewModelEstimationPage(INavigation nav)
         {
             _Navigation = nav;
@@ -161,24 +155,31 @@ namespace NovaktApp.ViewModel
             _ProduitUtiliseCommand = new DelegateCommand(ExecuteProduitUtiliseCommand);
             _EstimerCommand = new DelegateCommand(ExecuteEstimerCommand);
         }
-
-        //Permet de créer une nouvelle estimation
+        /// <summary>
+        /// Permet de créer une nouvelle estimation
+        /// </summary>
+        /// <param name="obj"></param>
         private void ExecuteEstimationPlusCommand(object obj)
         {
 
         }
-
-        //Ajouter des produit dans une estimation
+        /// <summary>
+        /// Ajouter des produit dans une estimation
+        /// </summary>
+        /// <param name="obj"></param>
         private void ExecuteProduitUtiliseCommand(object obj)
         {
             OpenPopup();
         }
 
+        /// <summary>
+        /// Ajout d'une estimation
+        /// </summary>
+        /// <param name="obj"></param>
         private void ExecuteEstimerCommand(object obj)
         {
             DBEstimation db = new DBEstimation();
             
-            //Ajout ou modification d'une estimation
             if(EstimationSelectVerif == false)
             {
                 db.Add(Estimation);
@@ -190,7 +191,9 @@ namespace NovaktApp.ViewModel
 
 
         }
-
+        /// <summary>
+        /// Ouvre la fenêtre de popup
+        /// </summary>
         private async void OpenPopup()
         {
             PopupPageProduit pg = new PopupPageProduit();

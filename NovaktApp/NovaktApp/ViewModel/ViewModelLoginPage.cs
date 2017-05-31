@@ -12,7 +12,7 @@ namespace NovaktApp.ViewModel
     {
         private INavigation _Navigation;
         private DelegateCommand _ConnexionCommand;
-        
+          
         public INavigation Navigation
         {
             get
@@ -27,6 +27,10 @@ namespace NovaktApp.ViewModel
         }
         public DelegateCommand ConnexionCommand => _ConnexionCommand;
 
+        /// <summary>
+        /// Constructeur
+        /// </summary>
+        /// <param name="nav"></param>
         public ViewModelLoginPage(INavigation nav)
         {
             _Navigation = nav;
@@ -34,7 +38,10 @@ namespace NovaktApp.ViewModel
             _ConnexionCommand = new DelegateCommand(ExecuteConnexionCommand);
            
         }
-
+        /// <summary>
+        /// Permet de se connecter
+        /// </summary>
+        /// <param name="obj"></param>
         private void ExecuteConnexionCommand(object obj)
         {
             //verification login/password

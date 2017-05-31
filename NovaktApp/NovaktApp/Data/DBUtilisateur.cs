@@ -9,7 +9,7 @@ using Xamarin.Forms;
 
 namespace NovaktApp.Data
 {
-    public class DBUtilisateur
+    public class DBUtilisateur : IDatabase<Commercial>
     {
         private SQLiteConnection _connection;
 
