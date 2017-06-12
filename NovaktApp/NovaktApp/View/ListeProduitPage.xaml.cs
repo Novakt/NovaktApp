@@ -14,7 +14,7 @@ namespace NovaktApp.View
 	{
 		public ListeProduitPage ()
 		{
-			//InitializeComponent ();
+			InitializeComponent ();
 		}
 	}
 }

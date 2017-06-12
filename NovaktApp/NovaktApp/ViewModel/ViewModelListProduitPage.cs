@@ -14,7 +14,7 @@ namespace NovaktApp.ViewModel
         private INavigation _Navigation;
         private Produit _SelectProduit;
         private ObservableCollection<Produit> _Produit;
-         
+
         //Produit selectionné dans la liste
         public Produit SelectProduit
         {
@@ -27,14 +27,13 @@ namespace NovaktApp.ViewModel
                 if (SelectProduit != null)
                 {
                     //Permet de naviguer vers la page Liste produits
-                    //DetailProduitPage pg = new DetailProduitPage();
-                    //ViewModelDetailProduitPage vm = new ViewModelDetailProduitPage(pg.Navigation);
-                    //pg.BindingContext = vm;
-                    //this._Navigation.PushAsync(pg).ConfigureAwait(false);
+                    ProduitPage pg = new ProduitPage();
+                    ViewModelProduitPage vm = new ViewModelProduitPage(pg.Navigation, SelectProduit);
+                    pg.BindingContext = vm;
+                    this._Navigation.PushAsync(pg).ConfigureAwait(false);
                 }
             }
         }
-
         //Liste de tous les produits
         public ObservableCollection<Produit> Produits
         {
@@ -47,7 +46,6 @@ namespace NovaktApp.ViewModel
 
             }
         }
-
         //Permet de naviguer entre les pages
         public INavigation Navigation
         {
@@ -61,7 +59,12 @@ namespace NovaktApp.ViewModel
             }
         }
 
-        public ViewModelListProduitPage(INavigation nav)
+        /// <summary>
+        /// Constructeur
+        /// </summary>
+        /// <param name="nav"></param>
+        /// <param name="cat"></param>
+        public ViewModelListProduitPage(INavigation nav, Categorie cat)
         {
             Produits = new ObservableCollection<Produit>();
 
@@ -86,5 +89,7 @@ namespace NovaktApp.ViewModel
 
             _Navigation = nav;
         }
+
+
     }
 }

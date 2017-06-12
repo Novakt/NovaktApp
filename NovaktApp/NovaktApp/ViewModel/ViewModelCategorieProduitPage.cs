@@ -15,6 +15,7 @@ namespace NovaktApp.ViewModel
         private Categorie _SelectCategorie;
         private ObservableCollection<Categorie> _Categories;
 
+
         public INavigation Navigation
         {
             get
@@ -27,7 +28,45 @@ namespace NovaktApp.ViewModel
                 _Navigation = value;
             }
         }
+        //Catégorie selectionné dans la liste
+        public Categorie SelectCategorie
+        {
+            get { return _SelectCategorie; }
+            set
+            {
+                OnPropertyChanging(nameof(SelectCategorie));
+                _SelectCategorie = value;
+                OnPropertyChanged(nameof(SelectCategorie));
 
+                if (SelectCategorie != null)
+                {
+                    //Permet de naviguer vers la page Liste produits
+                    ListeProduitPage pg = new ListeProduitPage();
+                    ViewModelListProduitPage vm = new ViewModelListProduitPage(pg.Navigation, SelectCategorie);
+                    pg.BindingContext = vm;
+                    this._Navigation.PushAsync(pg).ConfigureAwait(false);
+                }
+            }
+
+
+        }
+        //Liste de toutes les catégories 
+        public ObservableCollection<Categorie> Categories
+        {
+            get { return _Categories; }
+            set
+            {
+                OnPropertyChanging(nameof(Categories));
+                _Categories = value;
+                OnPropertyChanged(nameof(Categories));
+
+            }
+        }
+
+        /// <summary>
+        /// Constructeur
+        /// </summary>
+        /// <param name="nav"></param>
         public ViewModelCategorieProduitPage(INavigation nav)
         {
             _Navigation = nav;
@@ -53,40 +92,6 @@ namespace NovaktApp.ViewModel
             Categories.Add(cat5);
         }
 
-        //Catégorie selectionné dans la liste
-        public Categorie SelectCategorie
-        {
-            get { return _SelectCategorie; }
-            set
-            {
-                OnPropertyChanging(nameof(SelectCategorie));
-                _SelectCategorie = value;
-                OnPropertyChanged(nameof(SelectCategorie));
 
-                if (SelectCategorie != null)
-                {
-                    //Permet de naviguer vers la page Liste produits
-                    ListeProduitPage pg = new ListeProduitPage();
-                    ViewModelListProduitPage vm = new ViewModelListProduitPage(pg.Navigation);
-                    pg.BindingContext = vm;
-                    this._Navigation.PushAsync(pg).ConfigureAwait(false);
-                }
-            }
-
-
-        }
-
-        //Liste de toutes les catégories 
-        public ObservableCollection<Categorie> Categories
-        {
-            get { return _Categories; } 
-            set
-            {
-                OnPropertyChanging(nameof(Categories));
-                _Categories = value;
-                OnPropertyChanged(nameof(Categories));
-
-            }
-        }
     }
 }

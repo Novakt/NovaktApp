@@ -6,9 +6,9 @@ namespace NovaktApp.Interface
 {
     public interface IDatabase<T>
     {
-        IEnumerable<T> getAll();
-        T get(int id);
-        void delete(int id);
-        int add(T t);
+        IEnumerable<T> GetAll();
+        T Get(int id);
+        void Delete(int id);
+        int Add(T t);
     }
 }

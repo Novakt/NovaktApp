@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NovaktApp.View.ProduitPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Orientation="Vertical" HorizontalOptions="Center">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="70"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,20,0,0" x:Name="ProduitImage" Source="produit.png"  HorizontalOptions="CenterAndExpand" WidthRequest="100"/>
+                    <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="Produit"     TextColor="#005da7" FontSize="Large" HorizontalTextAlignment="Center"/>
+                    <Label Grid.Row="2" Grid.Column="0" Text="Référence"    FontSize="Small"   TextColor="#005da7"   Margin="5,0,0,0"  HorizontalTextAlignment="End"  VerticalTextAlignment="Center"/>
+                    <Label Grid.Row="3" Grid.Column="0" Text="Nom"          FontSize="Small"   TextColor="#005da7"   Margin="5,0,0,0"  HorizontalTextAlignment="End"  VerticalTextAlignment="Center"/>
+                    <Label Grid.Row="4" Grid.Column="0" Text="Type"         FontSize="Small"   TextColor="#005da7"   Margin="5,0,0,0"  HorizontalTextAlignment="End"  VerticalTextAlignment="Center"/>
+                    <Label Grid.Row="5" Grid.Column="0" Text="Description"  FontSize="Small"   TextColor="#005da7"   Margin="5,0,0,0"  HorizontalTextAlignment="End"  VerticalTextAlignment="Center"/>
+
+                    <Entry Grid.Row="2" Grid.Column="1"  TextColor="#005da7" IsEnabled="False"  Text="015015184"/>
+                    <Entry Grid.Row="3" Grid.Column="1"  TextColor="#005da7" IsEnabled="False"  Text="Pompe RZ 0001"/>
+                    <Entry Grid.Row="4" Grid.Column="1"  TextColor="#005da7" IsEnabled="False"  Text="Pompe à chaleur orienté froid"/>
+                    <Editor Grid.Row="5" Grid.Column="1" TextColor="#005da7" IsEnabled="False"  Text="Cette pompe peut (...)"/>
+
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

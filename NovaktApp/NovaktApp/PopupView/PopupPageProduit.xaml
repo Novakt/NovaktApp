@@ -37,7 +37,7 @@
       <Picker Grid.Row="2" x:Name="Produit" ItemsSource="{Binding Categories}" ItemDisplayBinding="{Binding Nom}" SelectedItem="{Binding SelectCategorie}"  HorizontalOptions="Center"/>
 
       <!--Bouton ajouter produit dans la listes des produits de l'estimation-->
-      <Button Grid.Row="3" x:Name="Ajouter" HorizontalOptions="Center" Text="Ajouter" Command="{Binding AjouterCommand}"/>
+            <Button Grid.Row="3" x:Name="Ajouter" TextColor="#005da7"  Opacity="0.6" HorizontalOptions="Center" Text="Ajouter" Command="{Binding AjouterCommand}"/>
 
     </Grid>
   </pages:PopupPage.Content>

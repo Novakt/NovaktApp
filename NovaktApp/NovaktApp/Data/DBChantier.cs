@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace NovaktApp.Data
 {
-    public class DBChantier
+    public class DBChantier : IDatabase<Chantier>
     {
         private SQLiteConnection _connection;
 

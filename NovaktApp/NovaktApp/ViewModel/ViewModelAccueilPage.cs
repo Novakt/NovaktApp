@@ -17,7 +17,23 @@ namespace NovaktApp.ViewModel
         public DelegateCommand ClientsCommand => _ClientsCommand;
         public DelegateCommand ListeChantierCommand => _ListeChantierCommand;
         public DelegateCommand CategorieProduitCommand => _CategorieProduitCommand;
+        public INavigation Navigation
+        {
+            get { return _Navigation; }
+            set
+            {
+                OnPropertyChanging(nameof(Navigation));
+                _Navigation = value;
+                OnPropertyChanged(nameof(Navigation));
 
+            }
+        }
+
+
+        /// <summary>
+        /// Constructeur
+        /// </summary>
+        /// <param name="nav"></param>
         public ViewModelAccueilPage(INavigation nav)
         {
             _Navigation = nav;
@@ -28,45 +44,41 @@ namespace NovaktApp.ViewModel
         }
 
 
-        public INavigation Navigation
-        {
-            get { return _Navigation; }
-            set
-            {
-                OnPropertyChanging(nameof(Navigation));
-                _Navigation = value;
-                OnPropertyChanged(nameof(Navigation));
-
-               }
-        }
-
+        /// <summary>
+        /// Permt de naviguer vers la liste des clients
+        /// </summary>
+        /// <param name="obj"></param>
         private void ExecuteClientsCommand(object obj)
         {
-            //Permt de naviguer vers la liste des clients
+            
             ListeClientPage pg = new ListeClientPage();
             ViewModelListeClientPage vm = new ViewModelListeClientPage(pg.Navigation);
             pg.BindingContext = vm;
             this._Navigation.PushAsync(pg).ConfigureAwait(false);
 
         }
-
+        /// <summary>
+        /// Permet de naviguer vers la liste des catégories de produit
+        /// </summary>
+        /// <param name="obj"></param>
         private void ExecuteCategorieProduitCommand(object obj)
         {
-            //Permt de naviguer vers la liste des catégories de produit
             CategorieProduitPage pg = new CategorieProduitPage();
             ViewModelCategorieProduitPage vm = new ViewModelCategorieProduitPage(pg.Navigation);
             pg.BindingContext = vm;
             this._Navigation.PushAsync(pg).ConfigureAwait(false);
 
         }
-
+        /// <summary>
+        /// Permt de naviguer vers la liste des chantier
+        /// </summary>
+        /// <param name="obj"></param>
         private void ExecuteListeChantierCommand(object obj)
-        {
-            //Permt de naviguer vers la liste des chantier
-             ListeChantierPage pg = new ListeChantierPage();
-             ViewModelListeChantierPage vm = new ViewModelListeChantierPage(pg.Navigation);
-             pg.BindingContext = vm;
-             this._Navigation.PushAsync(pg).ConfigureAwait(false);
+        {          
+           ListeChantierPage pg = new ListeChantierPage();
+           ViewModelListeChantierPage vm = new ViewModelListeChantierPage(pg.Navigation);
+           pg.BindingContext = vm;
+           this._Navigation.PushAsync(pg).ConfigureAwait(false);
 
         }
     }

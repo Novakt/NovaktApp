@@ -38,12 +38,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelAccueilPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelChantierPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelCategorieProduitPage.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelDetailProduitPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelEstimationPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelListeChantierPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelListeClientPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelListProduitPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelLoginPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelProduitPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)View\AccueilPage.xaml.cs">
       <DependentUpon>AccueilPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -52,11 +52,16 @@
       <DependentUpon>CategorieProduitPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)View\ChantierPage.xaml.cs">
+      <DependentUpon>ChantierPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)View\EstimationPage.xaml.cs">
       <DependentUpon>EstimationPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)View\ListeChantierPage.xaml.cs">
+      <DependentUpon>ListeChantierPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)View\ListeClientPage.xaml.cs">
@@ -65,13 +70,14 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)View\ListeProduitPage.xaml.cs">
       <DependentUpon>ListeProduitPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)View\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)View\ViewModelDetailProduitPage.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)View\ProduitPage.xaml.cs">
+      <DependentUpon>ProduitPage.xaml</DependentUpon>
       <SubType>Code</SubType>
-      <DependentUpon>ViewModelDetailProduitPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -80,10 +86,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\LoginPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\ViewModelDetailProduitPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -118,5 +120,27 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\ChantierPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\ProduitPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\ListeChantierPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\ListeProduitPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>
