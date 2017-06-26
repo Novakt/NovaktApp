@@ -2,6 +2,7 @@
 using NovaktApp.Data;
 using NovaktApp.Entity;
 using NovaktApp.PopupView;
+using NovaktApp.PopupViewModel;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
@@ -67,13 +68,13 @@ namespace NovaktApp.ViewModel
 
                 if(_SelectEstimation != null)
                 {
-                    //Récupération des roduit lié à l'estimation
+                    //Enlevé le libellé de l'estimation
+                    Estimation.Libelle = "";
+                    Estimation = Estimation;
+                    //Récupération des produit lié à l'estimation
                     ObservableCollection<EstimationProduit> obs = new ObservableCollection<EstimationProduit>();
                     //DBEstimationProduit dbEP = new DBEstimationProduit();
                     //obs.Add(dbEP.Get(_SelectEstimation.ID));
-
-
-
                     EstimationSelectVerif = true;
                 }
             }
@@ -147,6 +148,8 @@ namespace NovaktApp.ViewModel
         {
             _Navigation = nav;
 
+            _Client = new Client();
+            Estimation = new Estimation();
             _Produits = new ObservableCollection<Produit>();
             
             EstimationSelectVerif = false;
@@ -161,8 +164,11 @@ namespace NovaktApp.ViewModel
         /// <param name="obj"></param>
         private void ExecuteEstimationPlusCommand(object obj)
         {
-
+            //Permet d'ajouter une nouvelle estimation au client
+            ViderFormulaire();
+            
         }
+
         /// <summary>
         /// Ajouter des produit dans une estimation
         /// </summary>
@@ -178,27 +184,78 @@ namespace NovaktApp.ViewModel
         /// <param name="obj"></param>
         private void ExecuteEstimerCommand(object obj)
         {
-            DBEstimation db = new DBEstimation();
-            
-            if(EstimationSelectVerif == false)
+            /*DBEstimation dbEstimation = new DBEstimation();
+            DBClient dbClient = new DBClient();
+
+            if(Client.ID == 0)
             {
-                db.Add(Estimation);
+                Client.Estimations = new ObservableCollection<Estimation>();
+                Client.Estimations.Add(Estimation);
+                
+                dbClient.Add(Client);
+                Estimation.IDClient = Client.ID;
+                dbEstimation.Add(Estimation);
             }
             else
             {
-                db.Update(SelectEstimation);
-            }
+                if (EstimationSelectVerif == false)
+                {
+                    Estimation.IDClient = Client.ID;
+                    dbEstimation.Add(Estimation);
+                    Client.Estimations.Add(Estimation);
+                }
+                else
+                {
+                    dbEstimation.Update(SelectEstimation);
+                }
+            }*/
 
-
+            OpenPopup();
         }
         /// <summary>
         /// Ouvre la fenêtre de popup
         /// </summary>
         private async void OpenPopup()
         {
-            PopupPageProduit pg = new PopupPageProduit();
-            await PopupNavigation.PushAsync(pg); 
+            PopupEstimation pg = new PopupEstimation();
+            ViewModelPopupEstimation vm = new ViewModelPopupEstimation();
+            vm.EstimationWatt = CalculEstimtion(Estimation.Annee).ToString();
+            pg.BindingContext = vm;
+            await PopupNavigation.PushAsync(pg);
         }
 
+        /// <summary>
+        /// Permet de vider le formulaire
+        /// </summary>
+        private void ViderFormulaire()
+        {
+            Estimation.Libelle = "";
+            Estimation.Secteur = "";
+            Estimation.Surface = 0;
+            Estimation.NbBatiment = 0;
+            Estimation.TypeChantier = "";
+            Estimation.TypeBatiment = "";
+            Estimation.TemperatureMoyenne = 0;
+            Estimation.Lieu = "";
+            Estimation.Annee = 0;
+
+            _SelectEstimation = null;
+            EstimationSelectVerif = false;
+            Estimation = Estimation;
+        }
+
+        /// <summary>
+        /// Permet de calculer l'estimation en watt consommée
+        /// </summary>
+        /// <param name="anneeBatiment"></param>
+        /// <returns></returns>
+        private int CalculEstimtion(int anneeBatiment)
+        {
+            //Calcul de la consomation en watt
+
+
+            //retourne le nombre de watt électrique consommé
+            return 0;
+        }
     }
 }

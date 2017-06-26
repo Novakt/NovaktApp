@@ -1,4 +1,5 @@
 ﻿using NovaktApp.Core;
+using NovaktApp.Data;
 using NovaktApp.Entity;
 using NovaktApp.View;
 using System;
@@ -35,6 +36,7 @@ namespace NovaktApp.ViewModel
                     vm.Client = SelectClient;
                     pg.BindingContext = vm;
                     this._Navigation.PushAsync(pg).ConfigureAwait(false);
+
                 }
             }
         }
@@ -83,33 +85,27 @@ namespace NovaktApp.ViewModel
         public ViewModelListeClientPage(INavigation nav)
         {
             Clients = new ObservableCollection<Client>();
+            DBClient dbClient = new DBClient();
+            DBEstimation dbEstimation = new DBEstimation();
 
-            Client cl = new Client();
-            Estimation est = new Estimation();
+            //Récupération des client et leur estimation
+            foreach (Client client in dbClient.GetAll())
+            {
+                if(client.Estimations == null)
+                {
+                    client.Estimations = new ObservableCollection<Estimation>();
+                }
+                
+                foreach(Estimation estimation in dbEstimation.GetAll())
+                {
+                    if(estimation.IDClient == client.ID)
+                    {
+                        client.Estimations.Add(estimation);
+                    }
+                }
+                Clients.Add(client);
+            }
 
-            cl.Intitule = "Alonso Kévin";
-            cl.ID = 1;
-            cl.Mail = "k.alonso@iia-laval.fr";
-            cl.Tel = "0683636466";
-            cl.Adresse = "5 impasse de la paillardière";
-            cl.Ville = "MONTIGNE-LE-BRILLANT";
-
-            est.ID = 1;
-            est.Libelle = "Estimation 1";
-            est.Lieu = "Amiens";
-            est.DateCreation = DateTime.Now;
-            est.Secteur = "Nord-Ouest";
-            est.NbBatiment = 1;
-            est.TypeChantier = "Rénovation";
-            est.TypeBatiment = "Immeuble";
-            est.TemperatureMoyenne = 22;
-            est.NbEtage = 3;
-
-            cl.Estimations = new ObservableCollection<Estimation>();
-            cl.Estimations.Add(est);
-
-            Clients.Add(cl);
-            
             _Navigation = nav;
 
             _EstimationCommand = new DelegateCommand(ExecuteEstimationCommand);

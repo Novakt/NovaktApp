@@ -14,6 +14,11 @@ namespace NovaktApp.Entity
         private string _LienImage;
         private int _IDServeur;
 
+        public Produit()
+        {
+
+        }
+
         public int ID
         {
             get

@@ -12,6 +12,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Constant\Constant.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\DBCategorie.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\DBChantier.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\DBChantierProduit.cs" />
@@ -31,6 +32,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)Interface\IDatabase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interface\ISQLite.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)PopupViewModel\PopupPageProduitViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PopupViewModel\ViewModelPopupEstimation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PopupView\PopupEstimation.xaml.cs">
+      <DependentUpon>PopupEstimation.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)PopupView\PopupPageProduit.xaml.cs">
       <DependentUpon>PopupPageProduit.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -139,6 +145,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)View\ListeProduitPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)PopupView\PopupEstimation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

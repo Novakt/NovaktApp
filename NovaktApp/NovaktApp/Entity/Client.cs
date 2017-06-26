@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SQLite.Net.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
@@ -16,6 +17,7 @@ namespace NovaktApp.Entity
         private ObservableCollection<Estimation> _Estimations;
         private int _IDServeur;
 
+        [PrimaryKey, AutoIncrement]
         public int ID
         {
             get
@@ -93,7 +95,7 @@ namespace NovaktApp.Entity
                 _Mail = value;
             }
         }
-
+        [Ignore]
         public ObservableCollection<Estimation> Estimations
         {
             get

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SQLite.Net.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
@@ -16,11 +17,18 @@ namespace NovaktApp.Entity
         private string _TypeChantier;
         private string _TypeBatiment;
         private int _TemperatureMoyenne;
-        private int _NbEtage;
-        private ObservableCollection<Produit> _Produits;
+        private int _Annee;
+        private List<Produit> _Produits = new List<Produit>();
         private string _Lieu;
         private int _IDServeur;
+        private int _IDClient;
 
+        public Estimation()
+        {
+
+        }
+
+        [PrimaryKey, AutoIncrement]
         public int ID
         {
             get
@@ -138,20 +146,21 @@ namespace NovaktApp.Entity
             }
         }
 
-        public int NbEtage
+        public int Annee
         {
             get
             {
-                return _NbEtage;
+                return _Annee;
             }
 
             set
             {
-                _NbEtage = value;
+                _Annee = value;
             }
         }
 
-        public ObservableCollection<Produit> Produits
+        [Ignore]
+        public List<Produit> Produits
         {
             get
             {
@@ -187,6 +196,19 @@ namespace NovaktApp.Entity
             set
             {
                 _Lieu = value;
+            }
+        }
+
+        public int IDClient
+        {
+            get
+            {
+                return _IDClient;
+            }
+
+            set
+            {
+                _IDClient = value;
             }
         }
     }

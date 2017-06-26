@@ -60,7 +60,7 @@ namespace NovaktApp.Data
                 "[TypeChantier] = ?, " +
                 "[TypeBatiment] = ?, " +
                 "[TemperatureMoyenne] = ?, " +
-                "[NbEtage] = ?, " +
+                "[Annee] = ?, " +
                 "WHERE [IdServeur] = ?",
                 estimation.Libelle,
                 estimation.DateCreation,
@@ -70,7 +70,7 @@ namespace NovaktApp.Data
                 estimation.TypeChantier,
                 estimation.TypeBatiment,
                 estimation.TemperatureMoyenne,
-                estimation.NbEtage,
+                estimation.Annee,
                 estimation.IDServeur);
         }
         public Estimation GetByIdServeur(int id)
