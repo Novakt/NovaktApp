@@ -251,11 +251,27 @@ namespace NovaktApp.ViewModel
         /// <returns></returns>
         private int CalculEstimtion(int anneeBatiment)
         {
+            int result = 0;
             //Calcul de la consomation en watt
-
-
+            if (anneeBatiment >= 1972 ||anneeBatiment <= 1972)
+            {
+                result = Estimation.Surface * 250;
+            }
+            else if(anneeBatiment >= 1980)
+            {
+                result = Estimation.Surface * 100;
+            }
+            else if(anneeBatiment >= 2005)
+            {
+                result = Estimation.Surface * 80;
+            }
+            else if( anneeBatiment >= 2012)
+            {
+                result = Estimation.Surface * 30;
+            }
+            
             //retourne le nombre de watt électrique consommé
-            return 0;
+            return result;
         }
     }
 }
