@@ -48,6 +48,7 @@ namespace NovaktApp.Data
             _connection.Update(client);
         }
 
+
         //Serveur
         public void UpdateByIdServeur(Client client)
         {
@@ -77,6 +78,14 @@ namespace NovaktApp.Data
                 select t
                     ).Where(c => c.ID == id).ToList();
         }*/
+
+        public List<Client> GetAllByCommercial(int idCommercial)
+        {
+            return (
+                from t in _connection.Table<Client>()
+                select t
+                    ).Where(c => c.IDCommercial == idCommercial).ToList();
+        }
 
         public IEnumerable<Client> GetAll()
         {

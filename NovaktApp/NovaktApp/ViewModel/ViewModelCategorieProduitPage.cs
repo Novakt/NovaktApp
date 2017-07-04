@@ -1,4 +1,5 @@
 ﻿using NovaktApp.Core;
+using NovaktApp.Data;
 using NovaktApp.Entity;
 using NovaktApp.View;
 using System;
@@ -44,7 +45,7 @@ namespace NovaktApp.ViewModel
                     ListeProduitPage pg = new ListeProduitPage();
                     ViewModelListProduitPage vm = new ViewModelListProduitPage(pg.Navigation, SelectCategorie);
                     pg.BindingContext = vm;
-                    this._Navigation.PushAsync(pg).ConfigureAwait(false);
+                    _Navigation.PushAsync(pg).ConfigureAwait(false);
                 }
             }
 
@@ -71,25 +72,27 @@ namespace NovaktApp.ViewModel
         {
             _Navigation = nav;
 
-           Categories = new ObservableCollection<Categorie>();
+            /* Categories = new ObservableCollection<Categorie>();
+              Categorie cat1 = new Categorie();
+              Categorie cat2 = new Categorie();
+              Categorie cat3 = new Categorie();
+              Categorie cat4 = new Categorie();
+              Categorie cat5 = new Categorie();
 
-            Categorie cat1 = new Categorie();
-            Categorie cat2 = new Categorie();
-            Categorie cat3 = new Categorie();
-            Categorie cat4 = new Categorie();
-            Categorie cat5 = new Categorie();
+              cat1.Nom = "Catégorie 1";
+              cat2.Nom = "Catégorie 2";
+              cat3.Nom = "Catégorie 3";
+              cat4.Nom = "Catégorie 4";
+              cat5.Nom = "Catégorie 5";
 
-            cat1.Nom = "Catégorie 1";
-            cat2.Nom = "Catégorie 2";
-            cat3.Nom = "Catégorie 3";
-            cat4.Nom = "Catégorie 4";
-            cat5.Nom = "Catégorie 5";
+              Categories.Add(cat1);
+              Categories.Add(cat2);
+              Categories.Add(cat3);
+              Categories.Add(cat4);
+              Categories.Add(cat5);*/
+            DBCategorie db = new DBCategorie();
+            Categories = new ObservableCollection<Categorie>(db.GetAll());
 
-            Categories.Add(cat1);
-            Categories.Add(cat2);
-            Categories.Add(cat3);
-            Categories.Add(cat4);
-            Categories.Add(cat5);
         }
 
 

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using SQLite.Net.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
@@ -8,20 +10,32 @@ namespace NovaktApp.Entity
     public class Chantier
     {
         private int _ID;
+        [JsonProperty("nom")]
         private string _Nom;
+        [JsonProperty("lien_image")]
         private string _LienImage;
+        [JsonProperty("secteur")]
         private string _Secteur;
-        private int _Surface;
-        private int _NbBatiment;
+        [JsonProperty("surface")]
+        private string _Surface;
+        [JsonProperty("type_chantier")]
         private string _TypeChantier;
+        [JsonProperty("type_batiment")]
         private string _TypeBatiment;
+        [JsonProperty("temperature_moyenne")]
         private int _TemperatureMoyenne;
+        [JsonProperty("lieu")]
         private string _Lieu;
-        private int _NbEtage;
+        [JsonProperty("description")]
         private string _Description;
+        [JsonProperty("annees_batiment")]
+        private int _AnneeBatiment;
+        [JsonProperty("produits")]
         private ObservableCollection<Produit> _Produits;
+        [JsonProperty("id")]
         private int _IDServeur;
 
+        [PrimaryKey, AutoIncrement]
         public int ID
         {
             get
@@ -74,7 +88,7 @@ namespace NovaktApp.Entity
             }
         }
 
-        public int Surface
+        public string Surface
         {
             get
             {
@@ -84,19 +98,6 @@ namespace NovaktApp.Entity
             set
             {
                 _Surface = value;
-            }
-        }
-
-        public int NbBatiment
-        {
-            get
-            {
-                return _NbBatiment;
-            }
-
-            set
-            {
-                _NbBatiment = value;
             }
         }
 
@@ -152,19 +153,6 @@ namespace NovaktApp.Entity
             }
         }
 
-        public int NbEtage
-        {
-            get
-            {
-                return _NbEtage;
-            }
-
-            set
-            {
-                _NbEtage = value;
-            }
-        }
-
         public string Description
         {
             get
@@ -177,7 +165,7 @@ namespace NovaktApp.Entity
                 _Description = value;
             }
         }
-
+        [Ignore]
         public ObservableCollection<Produit> Produits
         {
             get
@@ -201,6 +189,19 @@ namespace NovaktApp.Entity
             set
             {
                 _IDServeur = value;
+            }
+        }
+
+        public int AnneeBatiment
+        {
+            get
+            {
+                return _AnneeBatiment;
+            }
+
+            set
+            {
+                _AnneeBatiment = value;
             }
         }
     }

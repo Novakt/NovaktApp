@@ -13,7 +13,7 @@ namespace NovaktApp.View
 		public LoginPage()
 		{
 			InitializeComponent();
-            this.BindingContext = new ViewModelLoginPage(Navigation);
+            this.BindingContext = new ViewModelLoginPage(Navigation,this);
         }
 	}
 }

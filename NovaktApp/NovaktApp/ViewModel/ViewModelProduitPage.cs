@@ -9,13 +9,28 @@ namespace NovaktApp.ViewModel
 {
     public class ViewModelProduitPage : Observable
     {
+        private Produit _Produit;
 
-        private Produit _pr1;
 
         public ViewModelProduitPage(INavigation nav, Produit pr)
         {
-            _pr1 = pr;
+            Produit = pr;
 
+        }
+
+        public Produit Produit
+        {
+            get
+            {
+                return _Produit;
+            }
+
+            set
+            {
+                OnPropertyChanging(nameof(Produit));
+                _Produit = value;
+                OnPropertyChanged(nameof(Produit));
+            }
         }
     }
 }

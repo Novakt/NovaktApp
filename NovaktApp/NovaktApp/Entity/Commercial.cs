@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using SQLite.Net.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
@@ -8,12 +10,18 @@ namespace NovaktApp.Entity
     public class Commercial
     {
         private int _ID;
-        private int _Login;
+        [JsonProperty("login")]
+        private string _Login;
+        [JsonProperty("password")]
         private string _Password;
+        [JsonProperty("token")]
         private string _Token;
+        [JsonProperty("clients")]
         private ObservableCollection<Client> _Clients;
+        [JsonProperty("id")]
         private int _IDServeur;
 
+        [PrimaryKey, AutoIncrement]
         public int ID
         {
             get
@@ -27,7 +35,7 @@ namespace NovaktApp.Entity
             }
         }
 
-        public int Login
+        public string Login
         {
             get
             {
@@ -65,7 +73,7 @@ namespace NovaktApp.Entity
                 _Token = value;
             }
         }
-
+        [Ignore]
         public ObservableCollection<Client> Clients
         {
             get

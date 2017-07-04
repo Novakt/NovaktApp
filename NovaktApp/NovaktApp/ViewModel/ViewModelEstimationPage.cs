@@ -184,7 +184,7 @@ namespace NovaktApp.ViewModel
         /// <param name="obj"></param>
         private void ExecuteEstimerCommand(object obj)
         {
-            /*DBEstimation dbEstimation = new DBEstimation();
+            DBEstimation dbEstimation = new DBEstimation();
             DBClient dbClient = new DBClient();
 
             if(Client.ID == 0)
@@ -208,7 +208,7 @@ namespace NovaktApp.ViewModel
                 {
                     dbEstimation.Update(SelectEstimation);
                 }
-            }*/
+            }
 
             OpenPopup();
         }
@@ -232,7 +232,6 @@ namespace NovaktApp.ViewModel
             Estimation.Libelle = "";
             Estimation.Secteur = "";
             Estimation.Surface = 0;
-            Estimation.NbBatiment = 0;
             Estimation.TypeChantier = "";
             Estimation.TypeBatiment = "";
             Estimation.TemperatureMoyenne = 0;

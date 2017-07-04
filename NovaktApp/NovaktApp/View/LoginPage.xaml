@@ -7,18 +7,22 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="100"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
-        <Grid Grid.Row="1">
+        <StackLayout Orientation="Horizontal" Grid.Row="1" HeightRequest="100">
+            <Image Source="fe.png" Grid.Row="1" HorizontalOptions="CenterAndExpand"/>
+        </StackLayout>
+        
+        <Grid Grid.Row="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/> 
             </Grid.RowDefinitions>
-            <Entry Grid.Row="0" HorizontalOptions="Center" WidthRequest="200" Placeholder="Login..." HorizontalTextAlignment="Center"/>
-            <Entry Grid.Row="1" HorizontalOptions="Center" WidthRequest="200" IsPassword="True"      HorizontalTextAlignment="Center"   Placeholder="Password..."/>
+            <Entry Grid.Row="0" HorizontalOptions="Center" WidthRequest="200" Text="{Binding Login}" Placeholder="Login..." HorizontalTextAlignment="Center"/>
+            <Entry Grid.Row="1" HorizontalOptions="Center" WidthRequest="200" Text="{Binding Password}" IsPassword="True"      HorizontalTextAlignment="Center"   Placeholder="Password..."/>
             <Button Grid.Row="2" HorizontalOptions="Center" WidthRequest="200" Text="Connexion" TextColor="White"  BackgroundColor="#005da7"   Opacity="0.75"  Margin="0,5,0,5" Command="{Binding ConnexionCommand}"/>
         </Grid>
     </Grid>

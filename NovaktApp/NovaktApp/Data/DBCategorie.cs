@@ -16,7 +16,7 @@ namespace NovaktApp.Data
         public DBCategorie()
         {
             _connection = DependencyService.Get<ISQLite>().GetConnection();
-            _connection.CreateTable<Produit>();
+            _connection.CreateTable<Categorie>();
         }
 
         public void Close()

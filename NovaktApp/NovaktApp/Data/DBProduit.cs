@@ -69,10 +69,10 @@ namespace NovaktApp.Data
             return _connection.Table<Produit>().FirstOrDefault(Produit => Produit.IDServeur == id);
         }
 
-        public List<Categorie> GetAllByCategorie(int idCategorie)
+        public IEnumerable<Produit> GetAllByCategorie(int idCategorie)
         {
             return (
-                from t in _connection.Table<Categorie>()
+                from t in _connection.Table<Produit>()
                 select t
                     ).Where(c => c.ID == idCategorie).ToList();
         }

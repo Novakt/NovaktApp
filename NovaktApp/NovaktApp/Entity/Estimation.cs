@@ -1,4 +1,5 @@
-﻿using SQLite.Net.Attributes;
+﻿using Newtonsoft.Json;
+using SQLite.Net.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -9,17 +10,25 @@ namespace NovaktApp.Entity
     public class Estimation
     {
         private int _ID;
+        [JsonProperty("libelle")]
         private string _Libelle;
+        [JsonProperty("date_creation")]
         private DateTime _DateCreation;
+        [JsonProperty("secteur")]
         private string _Secteur;
+        [JsonProperty("surface")]
         private int _Surface;
-        private int _NbBatiment;
+        [JsonProperty("type_chantier")]
         private string _TypeChantier;
+        [JsonProperty("type_batiment")]
         private string _TypeBatiment;
+        [JsonProperty("temperature_moyenne")]
         private int _TemperatureMoyenne;
+        [JsonProperty("annees_batiment")]
         private int _Annee;
         private List<Produit> _Produits = new List<Produit>();
         private string _Lieu;
+        [JsonProperty("id")]
         private int _IDServeur;
         private int _IDClient;
 
@@ -94,18 +103,6 @@ namespace NovaktApp.Entity
             }
         }
 
-        public int NbBatiment
-        {
-            get
-            {
-                return _NbBatiment;
-            }
-
-            set
-            {
-                _NbBatiment = value;
-            }
-        }
 
         public string TypeChantier
         {

@@ -69,10 +69,10 @@
             <Entry Grid.Row="7" x:Name="Surface" Placeholder="Surface client" PlaceholderColor="#005da7" Keyboard="Numeric">
                 <Entry.Triggers>
                     <DataTrigger TargetType="Entry" Binding="{Binding EstimationSelectVerif}" Value="False">
-                        <Setter Property="Text" Value="{Binding Estimation.Secteur, Mode=TwoWay}"/>
+                        <Setter Property="Text" Value="{Binding Estimation.Surface, Mode=TwoWay}"/>
                     </DataTrigger>
                     <DataTrigger TargetType="Entry" Binding="{Binding EstimationSelectVerif}" Value="True">
-                        <Setter Property="Text" Value="{Binding SelectEstimation.Secteur}"/>
+                        <Setter Property="Text" Value="{Binding SelectEstimation.Surface}"/>
                     </DataTrigger>
                 </Entry.Triggers>
             </Entry>

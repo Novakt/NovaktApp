@@ -13,6 +13,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Constant\Constant.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Constant\Global.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\DBCategorie.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\DBChantier.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\DBChantierProduit.cs" />
@@ -85,6 +86,10 @@
       <DependentUpon>ProduitPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)WS\WSCategorie.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WS\WSChantier.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WS\WSClient.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WS\WSCommercial.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)App.xaml">

@@ -6,6 +6,7 @@ using NovaktApp.Entity;
 using NovaktApp.View;
 using Xamarin.Forms;
 using System.Collections.ObjectModel;
+using NovaktApp.Data;
 
 namespace NovaktApp.ViewModel
 {
@@ -66,28 +67,32 @@ namespace NovaktApp.ViewModel
         /// <param name="cat"></param>
         public ViewModelListProduitPage(INavigation nav, Categorie cat)
         {
-            Produits = new ObservableCollection<Produit>();
-
-            Produit pr1 = new Produit();
-            Produit pr2 = new Produit();
-            Produit pr3 = new Produit();
-            Produit pr4 = new Produit();
-            Produit pr5 = new Produit();
-
-            pr1.Nom = "Produit 1";
-            pr2.Nom = "Produit 2";
-            pr3.Nom = "Produit 3";
-            pr4.Nom = "Produit 4";
-            pr5.Nom = "Produit 5";
-
-
-            Produits.Add(pr1);
-            Produits.Add(pr2);
-            Produits.Add(pr3);
-            Produits.Add(pr4);
-            Produits.Add(pr5);
-
             _Navigation = nav;
+
+            /* Produits = new ObservableCollection<Produit>();
+
+             Produit pr1 = new Produit();
+             Produit pr2 = new Produit();
+             Produit pr3 = new Produit();
+             Produit pr4 = new Produit();
+             Produit pr5 = new Produit();
+
+             pr1.Nom = "Produit 1";
+             pr2.Nom = "Produit 2";
+             pr3.Nom = "Produit 3";
+             pr4.Nom = "Produit 4";
+             pr5.Nom = "Produit 5";
+
+
+             Produits.Add(pr1);
+             Produits.Add(pr2);
+             Produits.Add(pr3);
+             Produits.Add(pr4);
+             Produits.Add(pr5);*/
+
+            DBProduit db = new DBProduit();
+            Produits = new ObservableCollection<Produit>( db.GetAllByCategorie(cat.ID));
+
         }
 
 

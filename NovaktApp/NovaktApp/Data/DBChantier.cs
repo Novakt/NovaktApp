@@ -55,24 +55,20 @@ namespace NovaktApp.Data
                 "[LienImage] = ?,"+
                 "[Secteur] = ?, "+
                 "[Surface] = ?, " +
-                "[NbBatiment] = ?, " +
                 "[TypeChantier] = ?, " +
                 "[TypeBatiment] = ?, " +
                 "[TemperatureMoyenne] = ?, " +
                 "[Lieu] = ?, " +
-                "[NbEtage] = ?, " +
                 "[Description] = ? " + 
                 "WHERE [IdServeur] = ?",
                 chantier.Nom,
                 chantier.LienImage, 
                 chantier.Secteur,
                 chantier.Surface,
-                chantier.NbBatiment,
                 chantier.TypeChantier,
                 chantier.TypeBatiment,
                 chantier.TemperatureMoyenne,
                 chantier.Lieu,
-                chantier.NbEtage,
                 chantier.Description,
                 chantier.IDServeur);
         }

@@ -48,6 +48,14 @@ namespace NovaktApp.Data
             _connection.Update(estimation);
         }
 
+        public List<Estimation> GetByClient(int idClient)
+        {
+            return (
+    from t in _connection.Table<Estimation>()
+    select t
+        ).Where(c => c.IDClient == idClient).ToList();
+        }
+
         //Serveur
         public void UpdateByIdServeur(Estimation estimation)
         {
@@ -56,17 +64,15 @@ namespace NovaktApp.Data
                 "[DateCreation] = ?, " +
                 "[Secteur] = ?, " +
                 "[Surface] = ?, " +
-                "[NbBatiment] = ?, " +
                 "[TypeChantier] = ?, " +
                 "[TypeBatiment] = ?, " +
                 "[TemperatureMoyenne] = ?, " +
-                "[Annee] = ?, " +
+                "[Annee] = ? " +
                 "WHERE [IdServeur] = ?",
                 estimation.Libelle,
                 estimation.DateCreation,
                 estimation.Secteur,
                 estimation.Surface,
-                estimation.NbBatiment,
                 estimation.TypeChantier,
                 estimation.TypeBatiment,
                 estimation.TemperatureMoyenne,

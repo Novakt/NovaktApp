@@ -1,4 +1,5 @@
-﻿using SQLite.Net.Attributes;
+﻿using Newtonsoft.Json;
+using SQLite.Net.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,14 +9,24 @@ namespace NovaktApp.Entity
 {
     public class Client
     {
+        [JsonIgnore]
         private int _ID;
+        [JsonProperty("intitule")]
         private string _Intitule;
+        [JsonProperty("adresse")]
         private string _Adresse;
+        [JsonProperty("ville")]
         private string _Ville;
+        [JsonProperty("tel")]
         private string _Tel;
+        [JsonProperty("mail")]
         private string _Mail;
+        [JsonProperty("estimations")]
         private ObservableCollection<Estimation> _Estimations;
+        [JsonProperty("id")]
         private int _IDServeur;
+        [JsonProperty("id_commercial")]
+        private int _IDCommercial;
 
         [PrimaryKey, AutoIncrement]
         public int ID
@@ -119,6 +130,19 @@ namespace NovaktApp.Entity
             set
             {
                 _IDServeur = value;
+            }
+        }
+
+        public int IDCommercial
+        {
+            get
+            {
+                return _IDCommercial;
+            }
+
+            set
+            {
+                _IDCommercial = value;
             }
         }
     }

@@ -6,6 +6,7 @@ using NovaktApp.Entity;
 using NovaktApp.View;
 using Xamarin.Forms;
 using System.Collections.ObjectModel;
+using NovaktApp.Data;
 
 namespace NovaktApp.ViewModel
 {
@@ -31,7 +32,7 @@ namespace NovaktApp.ViewModel
                     ChantierPage pg = new ChantierPage();
                     ViewModelChantierPage vm = new ViewModelChantierPage(pg.Navigation, SelectChantier);
                     pg.BindingContext = vm;
-                    this._Navigation.PushAsync(pg).ConfigureAwait(false);
+                    _Navigation.PushAsync(pg).ConfigureAwait(false);
                 }
 
             }          
@@ -67,28 +68,29 @@ namespace NovaktApp.ViewModel
         /// <param name="nav"></param>
         public ViewModelListeChantierPage(INavigation nav)
         {
-            Chantiers = new ObservableCollection<Chantier>();
-
-            Chantier pr1 = new Chantier();
-            Chantier pr2 = new Chantier();
-            Chantier pr3 = new Chantier();
-            Chantier pr4 = new Chantier();
-            Chantier pr5 = new Chantier();
-
-            pr1.Nom = "Chantier 1";
-            pr2.Nom = "Chantier 2";
-            pr3.Nom = "Chantier 3";
-            pr4.Nom = "Chantier 4";
-            pr5.Nom = "Chantier 5";
-
-
-            Chantiers.Add(pr1);
-            Chantiers.Add(pr2);
-            Chantiers.Add(pr3);
-            Chantiers.Add(pr4);
-            Chantiers.Add(pr5);
-
             _Navigation = nav;
+            /*  Chantiers = new ObservableCollection<Chantier>();
+
+              Chantier pr1 = new Chantier();
+              Chantier pr2 = new Chantier();
+              Chantier pr3 = new Chantier();
+              Chantier pr4 = new Chantier();
+              Chantier pr5 = new Chantier();
+
+              pr1.Nom = "Chantier 1";
+              pr2.Nom = "Chantier 2";
+              pr3.Nom = "Chantier 3";
+              pr4.Nom = "Chantier 4";
+              pr5.Nom = "Chantier 5";
+
+
+              Chantiers.Add(pr1);
+              Chantiers.Add(pr2);
+              Chantiers.Add(pr3);
+              Chantiers.Add(pr4);
+              Chantiers.Add(pr5);*/
+            DBChantier db = new DBChantier();
+            Chantiers =new ObservableCollection<Chantier>(db.GetAll());
 
         }
 

@@ -43,6 +43,13 @@ namespace NovaktApp.Data
         {
             return _connection.Table<Commercial>().FirstOrDefault(Commercial => Commercial.ID == id);
         }
+        public Commercial GetByUsernamePassword(string login,string password)
+        {
+            return (
+                            from t in _connection.Table<Commercial>()
+                            select t
+                                ).Where(c => c.Login == login && c.Password == password).FirstOrDefault();
+        }
         public void Update(Commercial commercial)
         {
             _connection.Update(commercial);

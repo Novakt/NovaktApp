@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using SQLite.Net.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
@@ -8,10 +10,14 @@ namespace NovaktApp.Entity
     public class Categorie
     {
         private int _ID;
+        [JsonProperty("nom")]
         private string _Nom;
+        [JsonProperty("id")]
         private int _IDServeur;
+        [JsonProperty("produits")]
         private ObservableCollection<Produit> _Produits;
 
+        [PrimaryKey,AutoIncrement]
         public int ID
         {
             get
@@ -50,7 +56,7 @@ namespace NovaktApp.Entity
                 _IDServeur = value;
             }
         }
-
+        [Ignore]
         public ObservableCollection<Produit> Produits
         {
             get
