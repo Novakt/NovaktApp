@@ -15,6 +15,7 @@ namespace NovaktApp.WS
             var client = new RestClient("http://192.168.100.217/NovaktWS/web/app_dev.php/api");
             var request = new RestRequest("/logins", Method.POST);
             request.AddParameter("username", username);
+            request.Timeout = 3000;
             request.AddParameter("password", password);
             try
             {

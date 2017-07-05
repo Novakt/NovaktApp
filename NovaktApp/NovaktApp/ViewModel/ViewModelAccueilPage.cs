@@ -86,8 +86,8 @@ namespace NovaktApp.ViewModel
         private void ExecuteSynchroCommand(object obj)
         {
             SyncClients();
-           /* GetCategoriesFromWS();
-            GetChantiersFromWS();*/
+            GetCategoriesFromWS();
+            GetChantiersFromWS();
 
         }
 
@@ -166,7 +166,9 @@ namespace NovaktApp.ViewModel
         private async void GetChantiersFromWS()
         {
             WSChantier ws = new WSChantier();
+            IsBusy = true;
             await ws.GetChantiers(Global.commercial.Token, ChantierCallback);
+            IsBusy = false;
         }
         /// <summary>
         /// WS chantier callback
@@ -199,7 +201,9 @@ namespace NovaktApp.ViewModel
         private async void GetCategoriesFromWS()
         {
             WSCategorie ws = new WSCategorie();
+            IsBusy = true;
             await ws.GetCategories(Global.commercial.Token, CategoriesCallback);
+            IsBusy = false;
         }
         /// <summary>
         /// WS categories callback

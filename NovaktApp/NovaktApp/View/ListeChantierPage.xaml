@@ -24,7 +24,7 @@
                                             <RowDefinition Height="auto"/>
                                         </Grid.RowDefinitions>
 
-                                        <Image Grid.Row="0" x:Name="ChantierImage" Source="chantier.png" HorizontalOptions="CenterAndExpand" WidthRequest="100"/>
+                                        <Image Grid.Row="0" x:Name="ChantierImage" Source="{Binding LienImage}" HorizontalOptions="CenterAndExpand" WidthRequest="100"/>
                                         <Label Grid.Row="1" HorizontalOptions="Center"  Text="{Binding Nom}" FontSize="Medium" />
                                     </Grid>
                                 </StackLayout>
