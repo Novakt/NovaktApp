@@ -12,7 +12,7 @@ namespace NovaktApp.WS
     {
         public async Task GetChantiers(string token, Action<IRestResponse> callback)
         {
-            var client = new RestClient("http://192.168.1.39/NovaktWS/web/app_dev.php/api");
+            var client = new RestClient("http://192.168.100.217/NovaktWS/web/app_dev.php/api");
             var request = new RestRequest("/chantier", Method.GET);
             request.AddParameter("token", token);
             try

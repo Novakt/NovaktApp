@@ -27,6 +27,7 @@ namespace NovaktApp.Entity
         private int _IDServeur;
         [JsonProperty("id_commercial")]
         private int _IDCommercial;
+        private bool _IsSynchro;
 
         [PrimaryKey, AutoIncrement]
         public int ID
@@ -143,6 +144,19 @@ namespace NovaktApp.Entity
             set
             {
                 _IDCommercial = value;
+            }
+        }
+
+        public bool IsSynchro
+        {
+            get
+            {
+                return _IsSynchro;
+            }
+
+            set
+            {
+                _IsSynchro = value;
             }
         }
     }

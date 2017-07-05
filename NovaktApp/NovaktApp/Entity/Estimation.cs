@@ -31,6 +31,7 @@ namespace NovaktApp.Entity
         [JsonProperty("id")]
         private int _IDServeur;
         private int _IDClient;
+        private bool _IsSynchro;
 
         public Estimation()
         {
@@ -206,6 +207,19 @@ namespace NovaktApp.Entity
             set
             {
                 _IDClient = value;
+            }
+        }
+
+        public bool IsSynchro
+        {
+            get
+            {
+                return _IsSynchro;
+            }
+
+            set
+            {
+                _IsSynchro = value;
             }
         }
     }

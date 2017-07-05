@@ -12,7 +12,7 @@ namespace NovaktApp.WS
     {
         public async Task PostClients(string token,List<Client> clients, Action<IRestResponse> callback)
         {
-            var client = new RestClient("http://192.168.1.39/NovaktWS/web/app_dev.php/api");
+            var client = new RestClient("http://192.168.100.217/NovaktWS/web/app_dev.php/api");
             var request = new RestRequest("/clients", Method.POST);
             request.AddParameter("token", token);
             string json = JsonConvert.SerializeObject(clients);

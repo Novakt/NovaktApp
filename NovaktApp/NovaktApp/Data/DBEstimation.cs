@@ -56,6 +56,14 @@ namespace NovaktApp.Data
         ).Where(c => c.IDClient == idClient).ToList();
         }
 
+        public List<Estimation> GetNoSynchroByClient(int idClient)
+        {
+            return (
+                    from t in _connection.Table<Estimation>()
+                     select t
+             ).Where(c => c.IDClient == idClient && c.IsSynchro == false).ToList();
+        }
+
         //Serveur
         public void UpdateByIdServeur(Estimation estimation)
         {
@@ -67,7 +75,8 @@ namespace NovaktApp.Data
                 "[TypeChantier] = ?, " +
                 "[TypeBatiment] = ?, " +
                 "[TemperatureMoyenne] = ?, " +
-                "[Annee] = ? " +
+                "[Annee] = ?, " +
+                "[IsSynchro] = ? " +
                 "WHERE [IdServeur] = ?",
                 estimation.Libelle,
                 estimation.DateCreation,
@@ -77,6 +86,7 @@ namespace NovaktApp.Data
                 estimation.TypeBatiment,
                 estimation.TemperatureMoyenne,
                 estimation.Annee,
+                estimation.IsSynchro,
                 estimation.IDServeur);
         }
         public Estimation GetByIdServeur(int id)

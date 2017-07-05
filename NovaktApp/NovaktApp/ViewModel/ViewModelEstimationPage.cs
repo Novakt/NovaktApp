@@ -191,21 +191,27 @@ namespace NovaktApp.ViewModel
             {
                 Client.Estimations = new ObservableCollection<Estimation>();
                 Client.Estimations.Add(Estimation);
-                
+                Client.IsSynchro = false;
                 dbClient.Add(Client);
                 Estimation.IDClient = Client.ID;
+                Estimation.IsSynchro = false;
                 dbEstimation.Add(Estimation);
             }
             else
             {
+                Client.IsSynchro = false;
+                dbClient.Update(Client);
+
                 if (EstimationSelectVerif == false)
                 {
                     Estimation.IDClient = Client.ID;
+                    Estimation.IsSynchro = false;
                     dbEstimation.Add(Estimation);
                     Client.Estimations.Add(Estimation);
                 }
                 else
                 {
+                    SelectEstimation.IsSynchro = false;
                     dbEstimation.Update(SelectEstimation);
                 }
             }

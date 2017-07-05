@@ -98,10 +98,10 @@ namespace NovaktApp.ViewModel
         {
             DBClient db = new DBClient();
             DBEstimation dbe = new DBEstimation();
-            List<Client> clients = db.GetAllByCommercial(Global.commercial.ID);
+            List<Client> clients = db.getAllNoSynchroByCommercial(Global.commercial.ID);
             foreach (Client c in clients)
             {
-                List<Estimation> estimations = dbe.GetByClient(c.ID);
+                List<Estimation> estimations = dbe.GetNoSynchroByClient(c.ID);
                 c.Estimations = new System.Collections.ObjectModel.ObservableCollection<Estimation>(estimations);               
             }
             IsBusy = true;
@@ -126,6 +126,7 @@ namespace NovaktApp.ViewModel
                 foreach (Client client in clients)
                 {
                     Client clientFound = dbc.GetByIdServeur(client.IDServeur);
+                    client.IsSynchro = true;
                     if (clientFound != null)
                     {
                         dbc.UpdateByIdServeur(client);
@@ -140,6 +141,7 @@ namespace NovaktApp.ViewModel
                     foreach (Estimation e in client.Estimations)
                     {
                         Estimation estimationFound = dbe.GetByIdServeur(e.IDServeur);
+                        e.IsSynchro = true;
                         if (estimationFound != null)
                         {
                             dbe.UpdateByIdServeur(e);

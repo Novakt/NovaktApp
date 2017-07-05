@@ -159,8 +159,9 @@ namespace NovaktApp.ViewModel
                 foreach (Client client in c.Clients)
                 {
                     Client clientFound = dbc.GetByIdServeur(client.IDServeur);
+                    client.IsSynchro = true;
                     if (clientFound != null)
-                    {
+                    {                    
                         dbc.UpdateByIdServeur(client);
                     }
                     else
@@ -173,6 +174,7 @@ namespace NovaktApp.ViewModel
                     foreach (Estimation e in client.Estimations)
                     {
                         Estimation estimationFound = dbe.GetByIdServeur(e.IDServeur);
+                        e.IsSynchro = true;
                         if (estimationFound != null)
                         {
                             dbe.UpdateByIdServeur(e);

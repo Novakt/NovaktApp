@@ -57,13 +57,15 @@ namespace NovaktApp.Data
                 "[Adresse] = ?, " +
                 "[Ville] = ?, " +
                 "[Tel] = ?, " +
-                "[Mail] = ? " +
+                "[Mail] = ?, " +
+                "[IsSynchro] = ?" +
                 "WHERE [IdServeur] = ?",
                 client.Intitule,
                 client.Adresse,
                 client.Ville,
                 client.Tel,
                 client.Mail,
+                client.IsSynchro,
                 client.IDServeur);
         }
         public Client GetByIdServeur(int id)
@@ -85,6 +87,15 @@ namespace NovaktApp.Data
                 from t in _connection.Table<Client>()
                 select t
                     ).Where(c => c.IDCommercial == idCommercial).ToList();
+        }
+
+        public List<Client> getAllNoSynchroByCommercial(int idCommercial)
+        {
+            return (
+                from t in _connection.Table<Client>()
+                select t
+                ).Where(Client => Client.IsSynchro == false && Client.IDCommercial == idCommercial
+                ).ToList();
         }
 
         public IEnumerable<Client> GetAll()
