@@ -11,5 +11,6 @@ namespace NovaktApp.Constant
         public const int AN1980 = 100;
         public const int RT2005 = 80;
         public const int RT2012 = 30;
+        public const int BureauMoyenne = 15;
     }
 }
