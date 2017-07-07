@@ -118,7 +118,7 @@ namespace NovaktApp.ViewModel
             Commercial c = db.GetByUsernamePassword(Login, Password);
             Global.commercial = c;
             if (c != null)
-            {
+            {*/
                 NavigateToAccueil();
             }
             else
