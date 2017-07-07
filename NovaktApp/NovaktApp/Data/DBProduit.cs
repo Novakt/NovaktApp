@@ -55,12 +55,20 @@ namespace NovaktApp.Data
                 "[Nom] = ?,"+
                 "[Type] = ?,"+
                 "[Description] = ?,"+
-                "[LienImage] = ?"+ 
+                "[PuissanceCalorifiqueChaud] = ?," +
+                "[PuissanceCalorifiqueFroid] = ?," +
+                "[PuissanceElectriqueChaud] = ?," +
+                "[PuissanceElectriqueFroid] = ?," +
+                "[LienImage] = ?" + 
                 "WHERE [IdServeur] = ?", 
                 produit.Reference, 
                 produit.Nom, 
                 produit.Type, 
                 produit.Description, 
+                produit.PuissanceCalorifiqueChaud,
+                produit.PuissanceCalorifiqueFroid,
+                produit.PuissanceElectriqueChaud,
+                produit.PuissanceElectriqueFroid,
                 produit.LienImage, 
                 produit.IDServeur);
         }

@@ -18,7 +18,7 @@ namespace NovaktApp.ViewModel
         private string _Password;
         private LoginPage _LoginPage;
 
-        private bool _IsConnected = false;
+        private bool _IsBusy = false;
         public INavigation Navigation
         {
             get
@@ -76,6 +76,21 @@ namespace NovaktApp.ViewModel
             }
         }
 
+        public bool IsBusy
+        {
+            get
+            {
+                return _IsBusy;
+            }
+
+            set
+            {
+                OnPropertyChanging(nameof(IsBusy));
+                _IsBusy = value;
+                OnPropertyChanged(nameof(IsBusy));
+            }
+        }
+
         /// <summary>
         /// Constructeur
         /// </summary>
@@ -124,7 +139,9 @@ namespace NovaktApp.ViewModel
             else
             {
                 WSCommercial ws = new WSCommercial();
+                IsBusy = true;
                 await ws.Login(Login, Password, LoginCallback);
+                IsBusy = false;
             }
         }
 
@@ -194,6 +211,10 @@ namespace NovaktApp.ViewModel
                 MessageService.message("Impossible de joindre le serveur");
             }
             else if (obj.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                MessageService.message("Identifiants incorrects");
+            }
+            else if (obj.StatusCode == System.Net.HttpStatusCode.NoContent)
             {
                 MessageService.message("Identifiants incorrects");
             }

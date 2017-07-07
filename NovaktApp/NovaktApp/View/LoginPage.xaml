@@ -6,13 +6,13 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
             <RowDefinition Height="100"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <StackLayout Orientation="Horizontal" Grid.Row="1" HeightRequest="100">
-            <Image Source="fe.png" Grid.Row="1" HorizontalOptions="CenterAndExpand"/>
+            <Image Source="fe.png"  HorizontalOptions="CenterAndExpand"/>
         </StackLayout>
         
         <Grid Grid.Row="2">
@@ -25,6 +25,7 @@
             <Entry Grid.Row="1" HorizontalOptions="Center" WidthRequest="200" Text="{Binding Password}" IsPassword="True"      HorizontalTextAlignment="Center"   Placeholder="Password..."/>
             <Button Grid.Row="2" HorizontalOptions="Center" WidthRequest="200" Text="Connexion" TextColor="White"  BackgroundColor="#005da7"   Opacity="0.75"  Margin="0,5,0,5" Command="{Binding ConnexionCommand}"/>
         </Grid>
+        <ActivityIndicator Grid.Row="3" IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" Color="Black"/>
     </Grid>
 
 </ContentPage>

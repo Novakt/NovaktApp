@@ -18,7 +18,7 @@
                         <ColumnDefinition Width="80"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Image Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,20,0,0" x:Name="ProduitImage" Source="produit.png"  HorizontalOptions="CenterAndExpand" WidthRequest="100"/>
+                    <Image Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,20,0,0" x:Name="ProduitImage" Source="{Binding Produit.LienImage}"  HorizontalOptions="CenterAndExpand" WidthRequest="100"/>
                     <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="Produit"     TextColor="#005da7" FontSize="Large" HorizontalTextAlignment="Center"/>
                     <Label Grid.Row="2" Grid.Column="0" Text="Référence"    FontSize="Small"   TextColor="#005da7"   Margin="5,0,0,0"  HorizontalTextAlignment="End"  VerticalTextAlignment="Center"/>
                     <Label Grid.Row="3" Grid.Column="0" Text="Nom"          FontSize="Small"   TextColor="#005da7"   Margin="5,0,0,0"  HorizontalTextAlignment="End"  VerticalTextAlignment="Center"/>
