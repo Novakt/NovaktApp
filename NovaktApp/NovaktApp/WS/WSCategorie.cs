@@ -12,9 +12,10 @@ namespace NovaktApp.WS
     {
         public async Task GetCategories(string token, Action<IRestResponse> callback)
         {
-            var client = new RestClient("http://192.168.100.217/NovaktWS/web/app_dev.php/api");
+            var client = new RestClient(String.Format(@"http://{0}/NovaktWS/web/app_dev.php/api",Constant.Constant.IP));
             var request = new RestRequest("/categorie", Method.GET);
             request.AddParameter("token", token);
+            request.Timeout = 3000;
             try
             {
                 IRestResponse response = await client.ExecuteTaskAsync(request);

@@ -11,7 +11,7 @@
 
             <Label Grid.Row="0" Text="Chantiers"/>
 
-            <ListView x:Name="Chantiers" Grid.Row="1" ItemsSource="{Binding Chantiers}" SelectedItem="{Binding SelectChantier}" RowHeight="200">
+            <ListView x:Name="Chantiers" Grid.Row="1" ItemsSource="{Binding Chantiers}" SelectedItem="{Binding SelectChantier}" RowHeight="200" SeparatorColor="Black" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -19,13 +19,13 @@
                                 <StackLayout Orientation="Vertical" HorizontalOptions="Center">
                                     <Grid>
                                         <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
                                             <RowDefinition Height="*"/>
-                                            <RowDefinition Height="auto"/>
-                                            <RowDefinition Height="auto"/>
                                         </Grid.RowDefinitions>
-
-                                        <Image Grid.Row="0" x:Name="ChantierImage" Source="{Binding LienImage}" HorizontalOptions="CenterAndExpand" WidthRequest="100"/>
-                                        <Label Grid.Row="1" HorizontalOptions="Center"  Text="{Binding Nom}" FontSize="Medium" />
+                                        <StackLayout Grid.Row="1" Orientation="Horizontal" HeightRequest="200" WidthRequest="200">
+                                            <Image x:Name="ChantierImage" Source="{Binding LienImage}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Aspect="AspectFill"/>
+                                        </StackLayout>
+                                        <Label Grid.Row="0" HorizontalOptions="Center"  Text="{Binding Nom}" FontSize="Large" FontAttributes="Bold" />
                                     </Grid>
                                 </StackLayout>
                             </ViewCell.View>

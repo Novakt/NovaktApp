@@ -10,6 +10,16 @@ namespace NovaktApp.Entity
         private int _IDProduit;
         private int _Quantite;
 
+        public ChantierProduit(int idChantier,int idProduit)
+        {
+            _IDChantier = idChantier;
+            _IDProduit = idProduit;
+        }
+        public ChantierProduit()
+        {
+
+        }
+
         public int IDChantier
         {
             get

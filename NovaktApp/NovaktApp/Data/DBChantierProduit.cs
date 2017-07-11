@@ -43,6 +43,14 @@ namespace NovaktApp.Data
         {
             return _connection.Table<ChantierProduit>().FirstOrDefault(ChantierProduit => ChantierProduit.IDChantier == idChantier && ChantierProduit.IDProduit == idProduit);
         }
+
+        public List<ChantierProduit> GetByChantier(int idChantier)
+        {
+            return (
+                from t in _connection.Table<ChantierProduit>()
+                select t
+                    ).Where(c => c.IDChantier == idChantier).ToList();
+        }
         public void Update(ChantierProduit chantierProduit)
         {
             _connection.Update(chantierProduit);
@@ -54,7 +62,8 @@ namespace NovaktApp.Data
             _connection.Query<ChantierProduit>("UPDATE [ChantierProduit] SET " +
                 "[IDProduit] = ?, " +
                 "[IDChantier] = ?" +
-                "WHERE [IDProduit] = ? && [IDChantier] = ? ",
+                "WHERE [IDProduit] = ? "+
+                "AND [IDChantier] = ? ",
                 chantierProduit.IDProduit,
                 chantierProduit.IDChantier,
                 chantierProduit.IDProduit,

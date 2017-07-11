@@ -12,12 +12,13 @@ namespace NovaktApp.WS
     {
         public async Task PostClients(string token,List<Client> clients, Action<IRestResponse> callback)
         {
-            var client = new RestClient("http://192.168.100.217/NovaktWS/web/app_dev.php/api");
+            var client = new RestClient(String.Format(@"http://{0}/NovaktWS/web/app_dev.php/api", Constant.Constant.IP));
             var request = new RestRequest("/clients", Method.POST);
             request.AddParameter("token", token);
             string json = JsonConvert.SerializeObject(clients);
             request.AddParameter("clients", json);
             request.AddHeader("Content-type", "application/json");
+            request.Timeout = 3000;
             try
             {
                 IRestResponse response = await client.ExecuteTaskAsync(request);

@@ -8,7 +8,7 @@
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Label Grid.Row="0" Text="Liste Catégories"/>
+            <Label Grid.Row="0" Text="Liste des catégories"/>
             <ListView x:Name="Categories" Grid.Row="1" ItemsSource="{Binding Categories}" SelectedItem="{Binding SelectCategorie}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
