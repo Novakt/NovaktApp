@@ -75,8 +75,7 @@ namespace NovaktApp.ViewModel
                 if(_SelectEstimation != null)
                 {
                     //Enlevé le libellé de l'estimation
-                    Estimation.Libelle = "";
-                    Estimation = Estimation;
+                    Estimation = SelectEstimation;
                     
                     EstimationSelectVerif = true;
                 }
@@ -247,12 +246,11 @@ namespace NovaktApp.ViewModel
         {
             Estimation.Libelle = "";
             Estimation.Secteur = "";
-            Estimation.Surface = 0;
+            Estimation.Surface = null;
             Estimation.TypeChantier = "";
             Estimation.TypeBatiment = "";
-            Estimation.TemperatureMoyenne = 0;
             Estimation.Lieu = "";
-            Estimation.Annee = 0;
+            Estimation.Annee = null;
 
             //_SelectEstimation = null;
             //EstimationSelectVerif = false;
@@ -264,12 +262,12 @@ namespace NovaktApp.ViewModel
         /// </summary>
         /// <param name="anneeBatiment"></param>
         /// <returns></returns>
-        private int CalculEstimtion(int anneeBatiment)
+        private int? CalculEstimtion(int? anneeBatiment)
         {
 
-            int result = 0;
+            int? result = 0;
             int valeurRejete = 0;
-            int nbPac = 0;
+            int? nbPac = 0;
 
             //Calcul de la consomation en watt
             if (anneeBatiment >= 1972 && anneeBatiment <= 1980)

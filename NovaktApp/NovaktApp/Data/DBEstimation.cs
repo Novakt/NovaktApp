@@ -74,7 +74,6 @@ namespace NovaktApp.Data
                 "[Surface] = ?, " +
                 "[TypeChantier] = ?, " +
                 "[TypeBatiment] = ?, " +
-                "[TemperatureMoyenne] = ?, " +
                 "[Annee] = ?, " +
                 "[IsSynchro] = ? " +
                 "WHERE [IdServeur] = ?",
