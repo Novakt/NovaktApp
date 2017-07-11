@@ -9,7 +9,7 @@
         <RowDefinition Height="*"/>
       </Grid.RowDefinitions>
 
-            <Label Grid.Row="0" Text="Produits"/>
+            <Label Grid.Row="0" Text="{Binding Categorie.Nom}"/>
             <ListView x:Name="Produits" Grid.Row="1" ItemsSource="{Binding Produits}" SelectedItem="{Binding SelectProduit,Mode=TwoWay}">
                 <ListView.ItemTemplate>
                     <DataTemplate>

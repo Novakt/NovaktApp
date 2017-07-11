@@ -13,6 +13,7 @@ namespace NovaktApp.ViewModel
     public class ViewModelListProduitPage : Observable
     {
         private INavigation _Navigation;
+        private Categorie _Categorie;
         private Produit _SelectProduit;
         private ObservableCollection<Produit> _Produit;
 
@@ -61,6 +62,21 @@ namespace NovaktApp.ViewModel
             }
         }
 
+        public Categorie Categorie
+        {
+            get
+            {
+                return _Categorie;
+            }
+
+            set
+            {
+                OnPropertyChanging(nameof(Categorie));
+                _Categorie = value;
+                OnPropertyChanged(nameof(Categorie));
+            }
+        }
+
         /// <summary>
         /// Constructeur
         /// </summary>
@@ -69,7 +85,7 @@ namespace NovaktApp.ViewModel
         public ViewModelListProduitPage(INavigation nav, Categorie cat)
         {
             _Navigation = nav;
-
+            Categorie = cat;
             /* Produits = new ObservableCollection<Produit>();
 
              Produit pr1 = new Produit();

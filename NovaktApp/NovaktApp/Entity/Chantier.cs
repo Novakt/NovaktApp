@@ -34,7 +34,7 @@ namespace NovaktApp.Entity
         private ObservableCollection<Produit> _Produits;
         [JsonProperty("id")]
         private int _IDServeur;
-
+        private string _SurfaceFull;
         [PrimaryKey, AutoIncrement]
         public int ID
         {
@@ -202,6 +202,14 @@ namespace NovaktApp.Entity
             set
             {
                 _AnneeBatiment = value;
+            }
+        }
+
+        public string SurfaceFull
+        {
+            get
+            {
+                return  "(" +Surface+" m²)";
             }
         }
     }

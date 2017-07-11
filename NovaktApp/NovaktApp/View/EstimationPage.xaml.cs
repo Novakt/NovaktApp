@@ -19,6 +19,10 @@ namespace NovaktApp.View
             Adresse.Completed += (s, e) => Ville.Focus();
             Ville.Completed += (s, e) => Tel.Focus();
             Tel.Completed += (s, e) => Mail.Focus();
+
+            EstimationPlus.Clicked += (s, e) => Estimation.Focus();
+
+
             Estimation.Completed += (s, e) => Secteur.Focus();
             Secteur.Completed += (s, e) => Surface.Focus();
             Surface.Completed += (s, e) => TypeChantier.Focus();

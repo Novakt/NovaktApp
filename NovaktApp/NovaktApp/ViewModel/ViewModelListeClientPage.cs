@@ -1,4 +1,5 @@
-﻿using NovaktApp.Core;
+﻿using NovaktApp.Constant;
+using NovaktApp.Core;
 using NovaktApp.Data;
 using NovaktApp.Entity;
 using NovaktApp.View;
@@ -90,7 +91,7 @@ namespace NovaktApp.ViewModel
             DBEstimation dbEstimation = new DBEstimation();
 
             //Récupération des client et leur estimation
-            foreach (Client client in dbClient.GetAll())
+            foreach (Client client in dbClient.GetAllByCommercial(Global.commercial.ID))
             {
                 if(client.Estimations == null)
                 {

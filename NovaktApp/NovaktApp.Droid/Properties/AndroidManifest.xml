@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:installLocation="auto" android:versionName="1.0" package="n.n">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:label="France Énergie" android:name="France Énergie" android:versionCode="1" android:installLocation="auto" android:versionName="1.0" package="n.n">
 	<uses-sdk android:minSdkVersion="15" />
-	<application android:label="France Énergie" android:theme="@android:style/Theme.Holo.Light" android:icon="@drawable/Icon"></application>
+	<application android:label="France Énergie" android:name="France Énergie" android:theme="@android:style/Theme.Holo.Light" android:icon="@drawable/Icon"></application>
 </manifest>
