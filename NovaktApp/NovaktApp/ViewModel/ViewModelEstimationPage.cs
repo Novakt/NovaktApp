@@ -225,7 +225,7 @@ namespace NovaktApp.ViewModel
         {
             PopupEstimation pg = new PopupEstimation();
             ViewModelPopupEstimation vm = new ViewModelPopupEstimation();
-            vm.EstimationWatt = CalculEstimtion(Estimation.Annee).ToString();
+            vm.EstimationWatt = "Puissance en Watt consommée par l'installation des PAC : \n" + CalculEstimtion(Estimation.Annee).ToString();
             pg.BindingContext = vm;
             await PopupNavigation.PushAsync(pg);
         }
@@ -258,6 +258,8 @@ namespace NovaktApp.ViewModel
         {
             int result = 0;
             int valeurRejete = 0;
+            int nbPac = 0;
+
             //Calcul de la consomation en watt
             if (anneeBatiment >= 1972 && anneeBatiment <= 1980)
             {
@@ -281,7 +283,29 @@ namespace NovaktApp.ViewModel
             }
 
             //Récupération du PAC nécessaire afin de connaître la puissance à utiliser
+            DBProduit dbp = new DBProduit();
+            Produits = new ObservableCollection<Produit>(dbp.GetAll());
+            Produit pacRetenu = new Produit();
             
+            //Recherche le PAC qui convient pour ce bâtiment
+            foreach(Produit item in Produits)
+            {
+                //Moyenne entre la puissance à chaud et à froid du PAC
+                double moyennePac = (item.PuissanceCalorifiqueChaud + item.PuissanceCalorifiqueFroid) / 2;
+
+                //Selection du PAC
+                if(valeurRejete < moyennePac)
+                {
+                    pacRetenu = item;
+                }
+            }
+
+            //Nombre de pac
+            nbPac = result / pacRetenu.PuissanceCalorifiqueChaud;
+
+            //Consommation électrique estimé
+            int moyennePuissanceElectrique = (pacRetenu.PuissanceElectriqueChaud + pacRetenu.PuissanceElectriqueFroid) / 2;
+            result = nbPac * moyennePuissanceElectrique;
 
             //retourne le nombre de watt électrique consommé
             return result;
