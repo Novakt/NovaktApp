@@ -266,6 +266,7 @@ namespace NovaktApp.ViewModel
         /// <returns></returns>
         private int CalculEstimtion(int anneeBatiment)
         {
+
             int result = 0;
             int valeurRejete = 0;
             int nbPac = 0;
