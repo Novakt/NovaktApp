@@ -39,12 +39,16 @@ namespace NovaktApp.ViewModel
 
             }
         }
+
         //Permet de créer des estimation supplémentaire pour un client
         public DelegateCommand EstimationPlusCommand  => _EstimationPlusCommand;
+
         //Permet de rajouter des produit dans la liste de produits pour réaliser l'estimation
         public DelegateCommand ProduitUtiliseCommand => _ProduitUtiliseCommand;
+
         //Permet de réaliser l'estimation
         public DelegateCommand EstimerCommand => _EstimerCommand;
+
         //Récupére les informations du client
         public Client Client
         {
@@ -57,6 +61,7 @@ namespace NovaktApp.ViewModel
 
             }
         }
+
         //Permet de récupérer l'estimation sélectionnée
         public Estimation SelectEstimation
         {
@@ -72,14 +77,12 @@ namespace NovaktApp.ViewModel
                     //Enlevé le libellé de l'estimation
                     Estimation.Libelle = "";
                     Estimation = Estimation;
-                    //Récupération des produit lié à l'estimation
-                    ObservableCollection<EstimationProduit> obs = new ObservableCollection<EstimationProduit>();
-                    //DBEstimationProduit dbEP = new DBEstimationProduit();
-                    //obs.Add(dbEP.Get(_SelectEstimation.ID));
+                    
                     EstimationSelectVerif = true;
                 }
             }
         }
+
         //Permt de vérifier si une estimation pour un client est selectionné
         public bool EstimationSelectVerif
         {
@@ -92,6 +95,7 @@ namespace NovaktApp.ViewModel
 
             }
         }
+
         //Permet de récupérer le produit selectionné
         public Produit SelectProduit
         {
@@ -108,6 +112,7 @@ namespace NovaktApp.ViewModel
                 }
             }
         }
+
         //Liste des produit ajouter à l'estimation
         public ObservableCollection<Produit> Produits
         {
@@ -124,6 +129,7 @@ namespace NovaktApp.ViewModel
                 }
             }
         }
+
         //Permet de créer une estimation
         public Estimation Estimation
         {
@@ -167,7 +173,8 @@ namespace NovaktApp.ViewModel
         {
             //Permet d'ajouter une nouvelle estimation au client
             ViderFormulaire();
-            
+            EstimationSelectVerif = false;
+            SelectEstimation = null;
         }
 
         /// <summary>
@@ -247,8 +254,8 @@ namespace NovaktApp.ViewModel
             Estimation.Lieu = "";
             Estimation.Annee = 0;
 
-            _SelectEstimation = null;
-            EstimationSelectVerif = false;
+            //_SelectEstimation = null;
+            //EstimationSelectVerif = false;
             Estimation = Estimation;
         }
 
