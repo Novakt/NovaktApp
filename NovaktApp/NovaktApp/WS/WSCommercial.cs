@@ -12,11 +12,11 @@ namespace NovaktApp.WS
     {
         public async Task Login(string username,string password, Action<IRestResponse> callback)
         {
-            var client = new RestClient("http://192.168.100.217/NovaktWS/web/app_dev.php/api");
+            var client = new RestClient(String.Format(@"http://{0}/NovaktWS/web/app_dev.php/api", Constant.Constant.IP));
             var request = new RestRequest("/logins", Method.POST);
             request.AddParameter("username", username);
-            request.Timeout = 3000;
             request.AddParameter("password", password);
+            request.Timeout = 3000;
             try
             {
                 IRestResponse response = await client.ExecuteTaskAsync(request);

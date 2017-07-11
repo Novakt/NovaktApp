@@ -34,6 +34,11 @@ namespace NovaktApp.Data
             _connection.Delete<ChantierProduit>(id);
         }
 
+        public void DeleteByIdChantier(int idChantier)
+        {
+            _connection.Query<ChantierProduit>("DELETE FROM [ChantierProduit] WHERE [IDChantier] = ?",idChantier);
+        }
+
         public void DeleteAll()
         {
             _connection.DeleteAll<ChantierProduit>();
@@ -42,6 +47,14 @@ namespace NovaktApp.Data
         public ChantierProduit Get(int idChantier, int idProduit)
         {
             return _connection.Table<ChantierProduit>().FirstOrDefault(ChantierProduit => ChantierProduit.IDChantier == idChantier && ChantierProduit.IDProduit == idProduit);
+        }
+
+        public List<ChantierProduit> GetByChantier(int idChantier)
+        {
+            return (
+                from t in _connection.Table<ChantierProduit>()
+                select t
+                    ).Where(c => c.IDChantier == idChantier).ToList();
         }
         public void Update(ChantierProduit chantierProduit)
         {
@@ -54,7 +67,8 @@ namespace NovaktApp.Data
             _connection.Query<ChantierProduit>("UPDATE [ChantierProduit] SET " +
                 "[IDProduit] = ?, " +
                 "[IDChantier] = ?" +
-                "WHERE [IDProduit] = ? && [IDChantier] = ? ",
+                "WHERE [IDProduit] = ? "+
+                "AND [IDChantier] = ? ",
                 chantierProduit.IDProduit,
                 chantierProduit.IDChantier,
                 chantierProduit.IDProduit,

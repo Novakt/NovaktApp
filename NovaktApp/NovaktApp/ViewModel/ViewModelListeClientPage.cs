@@ -36,6 +36,7 @@ namespace NovaktApp.ViewModel
                     vm.Client = SelectClient;
                     pg.BindingContext = vm;
                     this._Navigation.PushAsync(pg).ConfigureAwait(false);
+                    SelectClient = null;
 
                 }
             }

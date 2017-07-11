@@ -1,4 +1,5 @@
-﻿using NovaktApp.Core;
+﻿using NovaktApp.Constant;
+using NovaktApp.Core;
 using NovaktApp.Data;
 using NovaktApp.Entity;
 using NovaktApp.PopupView;
@@ -190,6 +191,7 @@ namespace NovaktApp.ViewModel
             if(Client.ID == 0)
             {
                 Client.Estimations = new ObservableCollection<Estimation>();
+                Client.IDCommercial = Global.commercial.ID;
                 Client.Estimations.Add(Estimation);
                 Client.IsSynchro = false;
                 dbClient.Add(Client);
@@ -200,6 +202,7 @@ namespace NovaktApp.ViewModel
             else
             {
                 Client.IsSynchro = false;
+                Client.IDCommercial = Global.commercial.ID;
                 dbClient.Update(Client);
 
                 if (EstimationSelectVerif == false)

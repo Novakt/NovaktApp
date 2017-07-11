@@ -10,7 +10,7 @@
       </Grid.RowDefinitions>
 
             <Label Grid.Row="0" Text="Produits"/>
-            <ListView x:Name="Produits" Grid.Row="1" ItemsSource="{Binding Produits}" SelectedItem="{Binding SelectProduit}">
+            <ListView x:Name="Produits" Grid.Row="1" ItemsSource="{Binding Produits}" SelectedItem="{Binding SelectProduit,Mode=TwoWay}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

@@ -98,11 +98,12 @@ namespace NovaktApp.ViewModel
         {
             DBClient db = new DBClient();
             DBEstimation dbe = new DBEstimation();
+            List<Client> clientstest = db.GetAllByCommercial(Global.commercial.ID);
             List<Client> clients = db.getAllNoSynchroByCommercial(Global.commercial.ID);
             foreach (Client c in clients)
             {
                 List<Estimation> estimations = dbe.GetNoSynchroByClient(c.ID);
-                c.Estimations = new System.Collections.ObjectModel.ObservableCollection<Estimation>(estimations);               
+                c.Estimations = new System.Collections.ObjectModel.ObservableCollection<Estimation>(estimations);
             }
             IsBusy = true;
             WSClient ws = new WSClient();
@@ -153,6 +154,24 @@ namespace NovaktApp.ViewModel
                         }
                     }
                 }
+                IEnumerable<Client> allClient = dbc.GetAll();
+                foreach (Client item in allClient)
+                {
+                    bool canDelete = true;
+                    foreach (Client item2 in clients)
+                    {
+                        if (item.IDServeur == item2.IDServeur)
+                        {
+                            canDelete = false;
+                            break;
+                        }
+                    }
+                    if (canDelete == true)
+                    {
+                      
+                        dbc.Delete(item.ID);
+                    }
+                }
             }
             else
             {
@@ -181,6 +200,8 @@ namespace NovaktApp.ViewModel
                 WSChantier ws = new WSChantier();
                 List<Chantier> chantiers = ws.JSONToChantier(obj.Content);
                 DBChantier dbc = new DBChantier();
+                DBProduit dbp = new DBProduit();
+                DBChantierProduit dbcp = new DBChantierProduit();
                 foreach (Chantier c in chantiers)
                 {
                     Chantier chantierFound = dbc.GetByIdServeur(c.IDServeur);
@@ -191,6 +212,49 @@ namespace NovaktApp.ViewModel
                     else
                     {
                         dbc.Add(c);
+                    }
+                    chantierFound = dbc.GetByIdServeur(c.IDServeur);
+                    foreach (Produit produit in c.Produits)
+                    {
+                        Produit p = dbp.GetByIdServeur(produit.IDServeur);
+                        if (p != null)
+                        {
+
+                            ChantierProduit chantierproduitFound = dbcp.Get(chantierFound.ID, p.ID);
+                            if (chantierproduitFound != null)
+                            {
+                                chantierproduitFound.IDChantier = chantierFound.ID;
+                                chantierproduitFound.IDProduit = p.ID;
+                                dbcp.UpdateByIdChantierProduit(chantierproduitFound);
+                            }
+                            else
+                            {
+                                dbcp.Add(new ChantierProduit(chantierFound.ID, p.ID));
+                            }
+                        }
+                    }
+                }
+
+                IEnumerable<Chantier> allChantiers = dbc.GetAll();
+                foreach (Chantier item in allChantiers)
+                {
+                    bool canDelete = true;
+                    foreach (Chantier item2 in chantiers)
+                    {
+                        if(item.IDServeur == item2.IDServeur)
+                        {
+                            canDelete = false;
+                            break;
+                        }
+                    }
+                    if(canDelete == true)
+                    {
+                        List<ChantierProduit> cp = dbcp.GetByChantier(item.ID);
+                        foreach (ChantierProduit item3 in cp)
+                        {
+                            dbcp.DeleteByIdChantier(item3.IDChantier);
+                        }
+                        dbc.Delete(item.ID);
                     }
                 }
             }
@@ -234,16 +298,34 @@ namespace NovaktApp.ViewModel
                     foreach (Produit produit in c.Produits)
                     {
                         Produit produitFound = dbp.GetByIdServeur(produit.IDServeur);
-                        if(produitFound != null)
+                        if (produitFound != null)
                         {
                             dbp.UpdateByIdServeur(produit);
-                        }else
+                        }
+                        else
                         {
                             produit.IDCategorie = categorieFound.ID;
                             dbp.Add(produit);
                         }
                     }
 
+                }
+                IEnumerable<Categorie> allCategories = dbc.GetAll();
+                foreach (Categorie item in allCategories)
+                {
+                    bool canDelete = true;
+                    foreach (Categorie item2 in categories)
+                    {
+                        if (item.IDServeur == item2.IDServeur)
+                        {
+                            canDelete = false;
+                            break;
+                        }
+                    }
+                    if (canDelete == true)
+                    {
+                        dbc.Delete(item.ID);
+                    }
                 }
             }
         }

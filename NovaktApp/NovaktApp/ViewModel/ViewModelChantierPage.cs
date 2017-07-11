@@ -6,14 +6,16 @@ using NovaktApp.Entity;
 using NovaktApp.View;
 using Xamarin.Forms;
 using System.Collections.ObjectModel;
-
+using NovaktApp.Data;
 
 namespace NovaktApp.ViewModel
 {
     public class ViewModelChantierPage : Observable
     {
+        private INavigation _Navigation;
         private ObservableCollection<Produit> _Produits;
         private Chantier _Chantier;
+        private Produit _SelectedProduit;
         public ObservableCollection<Produit> Produits
         {
             get
@@ -44,6 +46,46 @@ namespace NovaktApp.ViewModel
             }
         }
 
+        public Produit SelectedProduit
+        {
+            get
+            {
+                return _SelectedProduit;
+            }
+
+            set
+            {
+                //
+                OnPropertyChanging(nameof(SelectedProduit));
+                _SelectedProduit = value;
+                OnPropertyChanged(nameof(SelectedProduit));
+                if (SelectedProduit != null)
+                {
+                    //Permet de naviguer vers la page Liste produits
+                    ProduitPage pg = new ProduitPage();
+                    ViewModelProduitPage vm = new ViewModelProduitPage(pg.Navigation, SelectedProduit);
+                    pg.BindingContext = vm;
+                    this.Navigation.PushAsync(pg).ConfigureAwait(false);
+                    SelectedProduit = null;
+                }
+                
+                //
+            }
+        }
+
+        public INavigation Navigation
+        {
+            get
+            {
+                return _Navigation;
+            }
+
+            set
+            {
+                _Navigation = value;
+            }
+        }
+
         /// <summary>
         /// Constructeur
         /// </summary>
@@ -51,6 +93,7 @@ namespace NovaktApp.ViewModel
         /// <param name="ch"></param>
         public ViewModelChantierPage(INavigation nav, Chantier ch)
         {
+            Navigation = nav;
             /* if (ch.Produits == null)
              {
                  Produits = new ObservableCollection<Produit>();
@@ -68,7 +111,21 @@ namespace NovaktApp.ViewModel
              {
                  this.Produits = ch.Produits;
              }*/
-            Chantier = ch;           
+            Chantier = ch;
+            DBChantierProduit db = new DBChantierProduit();
+            DBProduit dbp = new DBProduit();
+            List<ChantierProduit> cp = db.GetByChantier(ch.ID);
+            IEnumerable<ChantierProduit> test = db.GetAll();
+            ch.Produits = new ObservableCollection<Produit>();
+            foreach (ChantierProduit item in cp)
+            {
+               Produit p = dbp.Get(item.IDProduit);
+                if(p != null)
+                {
+                    ch.Produits.Add(p);
+                }            
+            }
+            Produits = ch.Produits;        
         }
     }
 }

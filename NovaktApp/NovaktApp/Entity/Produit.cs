@@ -17,15 +17,15 @@ namespace NovaktApp.Entity
         private string _Type;
         [JsonProperty("description")]
         private string _Description;
-        [JsonProperty("lien_image")]
-        private int _PuissanceCalorifiqueChaud;
         [JsonProperty("puissance_calorifique_chaud")]
-        private int _PuissanceCalorifiqueFroid;
+        private int _PuissanceCalorifiqueChaud;
         [JsonProperty("puissance_calorifique_froid")]
-        private int _PuissanceElectriqueChaud;
+        private int _PuissanceCalorifiqueFroid;
         [JsonProperty("puissance_electrique_chaud")]
-        private int _PuissanceElectriqueFroid;
+        private int _PuissanceElectriqueChaud;
         [JsonProperty("puissance_electrique_froid")]
+        private int _PuissanceElectriqueFroid; 
+        [JsonProperty("lien_image")]
         private string _LienImage;
         [JsonProperty("id")]
         private int _IDServeur;
