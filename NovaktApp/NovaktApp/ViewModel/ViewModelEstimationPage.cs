@@ -39,12 +39,16 @@ namespace NovaktApp.ViewModel
 
             }
         }
+
         //Permet de créer des estimation supplémentaire pour un client
         public DelegateCommand EstimationPlusCommand  => _EstimationPlusCommand;
+
         //Permet de rajouter des produit dans la liste de produits pour réaliser l'estimation
         public DelegateCommand ProduitUtiliseCommand => _ProduitUtiliseCommand;
+
         //Permet de réaliser l'estimation
         public DelegateCommand EstimerCommand => _EstimerCommand;
+
         //Récupére les informations du client
         public Client Client
         {
@@ -57,6 +61,7 @@ namespace NovaktApp.ViewModel
 
             }
         }
+
         //Permet de récupérer l'estimation sélectionnée
         public Estimation SelectEstimation
         {
@@ -72,14 +77,12 @@ namespace NovaktApp.ViewModel
                     //Enlevé le libellé de l'estimation
                     Estimation.Libelle = "";
                     Estimation = Estimation;
-                    //Récupération des produit lié à l'estimation
-                    ObservableCollection<EstimationProduit> obs = new ObservableCollection<EstimationProduit>();
-                    //DBEstimationProduit dbEP = new DBEstimationProduit();
-                    //obs.Add(dbEP.Get(_SelectEstimation.ID));
+                    
                     EstimationSelectVerif = true;
                 }
             }
         }
+
         //Permt de vérifier si une estimation pour un client est selectionné
         public bool EstimationSelectVerif
         {
@@ -92,6 +95,7 @@ namespace NovaktApp.ViewModel
 
             }
         }
+
         //Permet de récupérer le produit selectionné
         public Produit SelectProduit
         {
@@ -108,6 +112,7 @@ namespace NovaktApp.ViewModel
                 }
             }
         }
+
         //Liste des produit ajouter à l'estimation
         public ObservableCollection<Produit> Produits
         {
@@ -124,6 +129,7 @@ namespace NovaktApp.ViewModel
                 }
             }
         }
+
         //Permet de créer une estimation
         public Estimation Estimation
         {
@@ -167,7 +173,8 @@ namespace NovaktApp.ViewModel
         {
             //Permet d'ajouter une nouvelle estimation au client
             ViderFormulaire();
-            
+            EstimationSelectVerif = false;
+            SelectEstimation = null;
         }
 
         /// <summary>
@@ -228,7 +235,7 @@ namespace NovaktApp.ViewModel
         {
             PopupEstimation pg = new PopupEstimation();
             ViewModelPopupEstimation vm = new ViewModelPopupEstimation();
-            vm.EstimationWatt = CalculEstimtion(Estimation.Annee).ToString();
+            vm.EstimationWatt = "Puissance en Watt consommée par l'installation des PAC : \n" + CalculEstimtion(Estimation.Annee).ToString();
             pg.BindingContext = vm;
             await PopupNavigation.PushAsync(pg);
         }
@@ -240,15 +247,15 @@ namespace NovaktApp.ViewModel
         {
             Estimation.Libelle = "";
             Estimation.Secteur = "";
-            Estimation.Surface = null;
+            Estimation.Surface = 0;
             Estimation.TypeChantier = "";
             Estimation.TypeBatiment = "";
             Estimation.TemperatureMoyenne = 0;
             Estimation.Lieu = "";
             Estimation.Annee = 0;
 
-            _SelectEstimation = null;
-            EstimationSelectVerif = false;
+            //_SelectEstimation = null;
+            //EstimationSelectVerif = false;
             Estimation = Estimation;
         }
 
@@ -257,10 +264,13 @@ namespace NovaktApp.ViewModel
         /// </summary>
         /// <param name="anneeBatiment"></param>
         /// <returns></returns>
-        private int? CalculEstimtion(int? anneeBatiment)
+        private int CalculEstimtion(int anneeBatiment)
         {
-            int? result = 0;
-            int? valeurRejete = 0;
+
+            int result = 0;
+            int valeurRejete = 0;
+            int nbPac = 0;
+
             //Calcul de la consomation en watt
             if (anneeBatiment >= 1972 && anneeBatiment <= 1980)
             {
@@ -284,7 +294,29 @@ namespace NovaktApp.ViewModel
             }
 
             //Récupération du PAC nécessaire afin de connaître la puissance à utiliser
+            DBProduit dbp = new DBProduit();
+            Produits = new ObservableCollection<Produit>(dbp.GetAll());
+            Produit pacRetenu = new Produit();
             
+            //Recherche le PAC qui convient pour ce bâtiment
+            foreach(Produit item in Produits)
+            {
+                //Moyenne entre la puissance à chaud et à froid du PAC
+                double moyennePac = (item.PuissanceCalorifiqueChaud + item.PuissanceCalorifiqueFroid) / 2;
+
+                //Selection du PAC
+                if(valeurRejete < moyennePac)
+                {
+                    pacRetenu = item;
+                }
+            }
+
+            //Nombre de pac
+            nbPac = result / pacRetenu.PuissanceCalorifiqueChaud;
+
+            //Consommation électrique estimé
+            int moyennePuissanceElectrique = (pacRetenu.PuissanceElectriqueChaud + pacRetenu.PuissanceElectriqueFroid) / 2;
+            result = nbPac * moyennePuissanceElectrique;
 
             //retourne le nombre de watt électrique consommé
             return result;

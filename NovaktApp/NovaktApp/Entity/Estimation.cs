@@ -17,7 +17,7 @@ namespace NovaktApp.Entity
         [JsonProperty("secteur")]
         private string _Secteur;
         [JsonProperty("surface")]
-        private int? _Surface;
+        private int _Surface;
         [JsonProperty("type_chantier")]
         private string _TypeChantier;
         [JsonProperty("type_batiment")]
@@ -25,7 +25,7 @@ namespace NovaktApp.Entity
         [JsonProperty("temperature_moyenne")]
         private int _TemperatureMoyenne;
         [JsonProperty("annees_batiment")]
-        private int? _Annee;
+        private int _Annee;
         private List<Produit> _Produits = new List<Produit>();
         private string _Lieu;
         [JsonProperty("id")]
@@ -91,7 +91,7 @@ namespace NovaktApp.Entity
             }
         }
 
-        public int? Surface
+        public int Surface
         {
             get
             {
@@ -144,7 +144,7 @@ namespace NovaktApp.Entity
             }
         }
 
-        public int? Annee
+        public int Annee
         {
             get
             {

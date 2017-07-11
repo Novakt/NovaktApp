@@ -54,8 +54,10 @@ namespace NovaktApp.ViewModel
 
             }
         }
+
         //Permet de créer un nouveau client et son estimation
         public DelegateCommand EstimationCommand => _EstimationCommand;
+
         //Permet de naviguer entre les pages
         public INavigation Navigation
         {
@@ -68,6 +70,7 @@ namespace NovaktApp.ViewModel
 
             }
         }
+
         //Permet de récupérer l'estimation
         public Estimation SelectEstimation
         {

@@ -22,7 +22,9 @@
 
   <pages:PopupPage.Content>
     <Grid>
-      <Label x:Name="EstimationWatt" Font="25" Text="{Binding EstimationWatt}"/>
+
+      <Label x:Name="EstimationWatt" Grid.Row="0" Font="25" Text="{Binding EstimationWatt}"/>
+
     </Grid>
   </pages:PopupPage.Content>
 </pages:PopupPage>
