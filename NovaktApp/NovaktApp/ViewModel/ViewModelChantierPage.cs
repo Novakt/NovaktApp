@@ -66,7 +66,9 @@ namespace NovaktApp.ViewModel
                     ViewModelProduitPage vm = new ViewModelProduitPage(pg.Navigation, SelectedProduit);
                     pg.BindingContext = vm;
                     this.Navigation.PushAsync(pg).ConfigureAwait(false);
+                    SelectedProduit = null;
                 }
+                
                 //
             }
         }
@@ -91,6 +93,7 @@ namespace NovaktApp.ViewModel
         /// <param name="ch"></param>
         public ViewModelChantierPage(INavigation nav, Chantier ch)
         {
+            Navigation = nav;
             /* if (ch.Produits == null)
              {
                  Produits = new ObservableCollection<Produit>();

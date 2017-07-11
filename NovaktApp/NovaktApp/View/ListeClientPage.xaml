@@ -11,7 +11,7 @@
 
     <Label Grid.Row="0" Text="Clients"/>
 
-    <ListView x:Name="Clients" Grid.Row="1" ItemsSource="{Binding Clients}" SelectedItem="{Binding SelectClient}">
+    <ListView x:Name="Clients" Grid.Row="1" ItemsSource="{Binding Clients}" SelectedItem="{Binding SelectClient,Mode=TwoWay}">
       <ListView.ItemTemplate>
         <DataTemplate>
           <ViewCell>

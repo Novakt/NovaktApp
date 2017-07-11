@@ -98,6 +98,7 @@ namespace NovaktApp.ViewModel
         {
             DBClient db = new DBClient();
             DBEstimation dbe = new DBEstimation();
+            List<Client> clientstest = db.GetAllByCommercial(Global.commercial.ID);
             List<Client> clients = db.getAllNoSynchroByCommercial(Global.commercial.ID);
             foreach (Client c in clients)
             {
@@ -151,6 +152,24 @@ namespace NovaktApp.ViewModel
                             e.IDClient = clientFound.ID;
                             dbe.Add(e);
                         }
+                    }
+                }
+                IEnumerable<Client> allClient = dbc.GetAll();
+                foreach (Client item in allClient)
+                {
+                    bool canDelete = true;
+                    foreach (Client item2 in clients)
+                    {
+                        if (item.IDServeur == item2.IDServeur)
+                        {
+                            canDelete = false;
+                            break;
+                        }
+                    }
+                    if (canDelete == true)
+                    {
+                      
+                        dbc.Delete(item.ID);
                     }
                 }
             }
@@ -215,6 +234,29 @@ namespace NovaktApp.ViewModel
                         }
                     }
                 }
+
+                IEnumerable<Chantier> allChantiers = dbc.GetAll();
+                foreach (Chantier item in allChantiers)
+                {
+                    bool canDelete = true;
+                    foreach (Chantier item2 in chantiers)
+                    {
+                        if(item.IDServeur == item2.IDServeur)
+                        {
+                            canDelete = false;
+                            break;
+                        }
+                    }
+                    if(canDelete == true)
+                    {
+                        List<ChantierProduit> cp = dbcp.GetByChantier(item.ID);
+                        foreach (ChantierProduit item3 in cp)
+                        {
+                            dbcp.DeleteByIdChantier(item3.IDChantier);
+                        }
+                        dbc.Delete(item.ID);
+                    }
+                }
             }
         }
         /// <summary>
@@ -267,6 +309,23 @@ namespace NovaktApp.ViewModel
                         }
                     }
 
+                }
+                IEnumerable<Categorie> allCategories = dbc.GetAll();
+                foreach (Categorie item in allCategories)
+                {
+                    bool canDelete = true;
+                    foreach (Categorie item2 in categories)
+                    {
+                        if (item.IDServeur == item2.IDServeur)
+                        {
+                            canDelete = false;
+                            break;
+                        }
+                    }
+                    if (canDelete == true)
+                    {
+                        dbc.Delete(item.ID);
+                    }
                 }
             }
         }

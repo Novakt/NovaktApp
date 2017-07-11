@@ -17,6 +17,14 @@ namespace NovaktApp.Entity
         private string _Type;
         [JsonProperty("description")]
         private string _Description;
+        [JsonProperty("puissance_calorifique_chaud")]
+        private int _PuissanceCalorifiqueChaud;
+        [JsonProperty("puissance_calorifique_froid")]
+        private int _PuissanceCalorifiqueFroid;
+        [JsonProperty("puissance_electrique_chaud")]
+        private int _PuissanceElectriqueChaud;
+        [JsonProperty("puissance_electrique_froid")]
+        private int _PuissanceElectriqueFroid; 
         [JsonProperty("lien_image")]
         private string _LienImage;
         [JsonProperty("id")]
@@ -30,106 +38,74 @@ namespace NovaktApp.Entity
         [PrimaryKey,AutoIncrement]
         public int ID
         {
-            get
-            {
-                return _ID;
-            }
-
-            set
-            {
-                _ID = value;
-            }
+            get{return _ID; }
+            set{_ID = value;}
         }
 
         public string Reference
         {
-            get
-            {
-                return _Reference;
-            }
-
-            set
-            {
-                _Reference = value;
-            }
+            get { return _Reference; }
+            set{_Reference = value;}
         }
 
         public string Nom
         {
-            get
-            {
-                return _Nom;
-            }
-
-            set
-            {
-                _Nom = value;
-            }
+            get{return _Nom;}
+            set{_Nom = value;}
         }
 
         public string Type
         {
-            get
-            {
-                return _Type;
-            }
-
-            set
-            {
-                _Type = value;
-            }
+            get{ return _Type;}
+            set{_Type = value;}
         }
 
         public string Description
         {
-            get
-            {
-                return _Description;
-            }
+            get{return _Description; }
+            set{_Description = value;}
+        }
 
-            set
-            {
-                _Description = value;
-            }
+        public int PuissanceCalorifiqueChaud
+        {
+            get { return _PuissanceCalorifiqueChaud; }
+            set { _PuissanceCalorifiqueChaud = value; }
+        }
+
+        public int PuissanceCalorifiqueFroid
+        {
+            get { return _PuissanceCalorifiqueFroid; }
+            set { _PuissanceCalorifiqueFroid = value; }
+        }
+
+        public int PuissanceElectriqueChaud
+        {
+            get { return _PuissanceElectriqueChaud; }
+            set { _PuissanceElectriqueChaud = value; }
+        }
+
+        public int PuissanceElectriqueFroid
+        {
+            get { return _PuissanceElectriqueFroid; }
+            set { _PuissanceElectriqueFroid = value; }
         }
 
         public string LienImage
         {
-            get
-            {
-                return _LienImage;
-            }
-
-            set
-            {
-                _LienImage = value;
-            }
+            get{return _LienImage;}
+            set{_LienImage = value;}
         }
 
         public int IDServeur
         {
-            get
-            {
-                return _IDServeur;
-            }
-
-            set
-            {
-                _IDServeur = value;
-            }
+            get{ return _IDServeur;}
+            set{_IDServeur = value;}
         }
 
         public int IDCategorie
         {
-            get
-            {
-                return _IDCategorie;
-            }
-
-            set
-            {
-                _IDCategorie = value;
-            }
+            get{return _IDCategorie;}
+            set{_IDCategorie = value;}
         }
     }
 }

@@ -41,11 +41,14 @@ namespace NovaktApp.ViewModel
 
                 if (SelectCategorie != null)
                 {
+                   
                     //Permet de naviguer vers la page Liste produits
                     ListeProduitPage pg = new ListeProduitPage();
                     ViewModelListProduitPage vm = new ViewModelListProduitPage(pg.Navigation, SelectCategorie);
+                   
                     pg.BindingContext = vm;
                     _Navigation.PushAsync(pg).ConfigureAwait(false);
+                    SelectCategorie = null;
                 }
             }
 

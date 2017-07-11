@@ -15,7 +15,11 @@ namespace NovaktApp.WS
             var client = new RestClient(String.Format(@"http://{0}/NovaktWS/web/app_dev.php/api", Constant.Constant.IP));
             var request = new RestRequest("/clients", Method.POST);
             request.AddParameter("token", token);
-            string json = JsonConvert.SerializeObject(clients);
+            JsonSerializerSettings settings = new JsonSerializerSettings
+            {
+                PreserveReferencesHandling = PreserveReferencesHandling.Objects
+            };
+            string json = JsonConvert.SerializeObject(clients,settings);
             request.AddParameter("clients", json);
             request.AddHeader("Content-type", "application/json");
             request.Timeout = 3000;

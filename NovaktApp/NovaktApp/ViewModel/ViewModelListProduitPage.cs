@@ -32,6 +32,7 @@ namespace NovaktApp.ViewModel
                     ViewModelProduitPage vm = new ViewModelProduitPage(pg.Navigation, SelectProduit);
                     pg.BindingContext = vm;
                     this._Navigation.PushAsync(pg).ConfigureAwait(false);
+                    SelectProduit = null;
                 }
             }
         }

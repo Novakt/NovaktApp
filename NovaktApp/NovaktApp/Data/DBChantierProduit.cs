@@ -34,6 +34,11 @@ namespace NovaktApp.Data
             _connection.Delete<ChantierProduit>(id);
         }
 
+        public void DeleteByIdChantier(int idChantier)
+        {
+            _connection.Query<ChantierProduit>("DELETE FROM [ChantierProduit] WHERE [IDChantier] = ?",idChantier);
+        }
+
         public void DeleteAll()
         {
             _connection.DeleteAll<ChantierProduit>();

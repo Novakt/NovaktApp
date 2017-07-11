@@ -11,7 +11,7 @@
 
             <Label Grid.Row="0" Text="Chantiers"/>
 
-            <ListView x:Name="Chantiers" Grid.Row="1" ItemsSource="{Binding Chantiers}" SelectedItem="{Binding SelectChantier}" RowHeight="200" SeparatorColor="Black" >
+            <ListView x:Name="Chantiers" Grid.Row="1" ItemsSource="{Binding Chantiers}" SelectedItem="{Binding SelectChantier,Mode=TwoWay}" RowHeight="200" SeparatorColor="Black" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

@@ -1,4 +1,5 @@
-﻿using NovaktApp.Core;
+﻿using NovaktApp.Constant;
+using NovaktApp.Core;
 using NovaktApp.Data;
 using NovaktApp.Entity;
 using NovaktApp.PopupView;
@@ -190,6 +191,7 @@ namespace NovaktApp.ViewModel
             if(Client.ID == 0)
             {
                 Client.Estimations = new ObservableCollection<Estimation>();
+                Client.IDCommercial = Global.commercial.ID;
                 Client.Estimations.Add(Estimation);
                 Client.IsSynchro = false;
                 dbClient.Add(Client);
@@ -200,6 +202,7 @@ namespace NovaktApp.ViewModel
             else
             {
                 Client.IsSynchro = false;
+                Client.IDCommercial = Global.commercial.ID;
                 dbClient.Update(Client);
 
                 if (EstimationSelectVerif == false)
@@ -257,26 +260,48 @@ namespace NovaktApp.ViewModel
         private int CalculEstimtion(int anneeBatiment)
         {
             int result = 0;
+            int valeurRejete = 0;
             //Calcul de la consomation en watt
-            if (anneeBatiment >= 1972 ||anneeBatiment <= 1972)
+            if (anneeBatiment >= 1972 && anneeBatiment <= 1980)
             {
-                result = Estimation.Surface * 250;
+                result = Estimation.Surface * Constant.Constant.AV1972;
+                valeurRejete = ValeurRejeteBureau(Constant.Constant.AV1972);
             }
-            else if(anneeBatiment >= 1980)
+            else if(anneeBatiment >= 1980 && anneeBatiment <= 2005)
             {
-                result = Estimation.Surface * 100;
+                result = Estimation.Surface * Constant.Constant.AN1980;
+                valeurRejete = ValeurRejeteBureau(Constant.Constant.AN1980);
             }
-            else if(anneeBatiment >= 2005)
+            else if(anneeBatiment >= 2005 && anneeBatiment <= 2011)
             {
-                result = Estimation.Surface * 80;
+                result = Estimation.Surface * Constant.Constant.RT2005;
+                valeurRejete = ValeurRejeteBureau(Constant.Constant.RT2005);
             }
             else if( anneeBatiment >= 2012)
             {
-                result = Estimation.Surface * 30;
+                result = Estimation.Surface * Constant.Constant.RT2012;
+                valeurRejete = ValeurRejeteBureau(Constant.Constant.RT2012);
             }
+
+            //Récupération du PAC nécessaire afin de connaître la puissance à utiliser
             
+
             //retourne le nombre de watt électrique consommé
             return result;
+        }
+
+        /// <summary>
+        /// Permet de connaître la valeur nécessaire à rejetée dans un bureau pour un PAC
+        /// </summary>
+        /// <param name="NormeElectrique"></param>
+        /// <returns></returns>
+        private int ValeurRejeteBureau(int NormeElectrique)
+        {
+            int valeur = 0;
+
+            valeur = Constant.Constant.BureauMoyenne * NormeElectrique;
+
+            return valeur;
         }
     }
 }

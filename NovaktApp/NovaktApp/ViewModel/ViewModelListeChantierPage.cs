@@ -33,6 +33,7 @@ namespace NovaktApp.ViewModel
                     ViewModelChantierPage vm = new ViewModelChantierPage(pg.Navigation, SelectChantier);
                     pg.BindingContext = vm;
                     _Navigation.PushAsync(pg).ConfigureAwait(false);
+                    SelectChantier = null;
                 }
 
             }          
@@ -90,7 +91,8 @@ namespace NovaktApp.ViewModel
               Chantiers.Add(pr4);
               Chantiers.Add(pr5);*/
             DBChantier db = new DBChantier();
-            Chantiers =new ObservableCollection<Chantier>(db.GetAll());
+            IEnumerable<Chantier> chantiers = db.GetAll();
+            Chantiers =new ObservableCollection<Chantier>(chantiers);
 
         }
 

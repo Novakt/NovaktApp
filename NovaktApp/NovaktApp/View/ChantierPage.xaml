@@ -50,7 +50,7 @@
                     <Label Grid.Row="10" Grid.Column="1" IsEnabled="False" TextColor="#005da7" Text="{Binding Chantier.AnneeBatiment}"/>
                     <Label Grid.Row="9" Grid.Column="0" IsEnabled="False" TextColor="#005da7" Grid.ColumnSpan="2" Text="{Binding Chantier.Description}"/>
 
-                    <ListView x:Name="Produits" Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2" ItemsSource="{Binding Produits}">
+                    <ListView x:Name="Produits" Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2" ItemsSource="{Binding Produits}" SelectedItem="{Binding SelectedProduit,Mode=TwoWay}">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>

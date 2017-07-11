@@ -4,32 +4,47 @@
              x:Class="NovaktApp.View.ProduitPage">
     <ContentPage.Content>
         <ScrollView>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="100"/>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="35"/>
-                    <RowDefinition Height="35"/>
-                    <RowDefinition Height="35"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="80"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Image Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,20,0,0" x:Name="ProduitImage" Source="{Binding Produit.LienImage}"  HorizontalOptions="Center" WidthRequest="200"/>
-                <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding Produit.Nom}"     TextColor="#005da7" FontSize="Large" HorizontalTextAlignment="Center" HorizontalOptions="Center" FontAttributes="Bold"/>
-               <!-- <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="Red" />
-                <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="Blue" />-->
-                <Label Grid.Row="2" Grid.Column="0" Text="Référence"    FontSize="Small"   TextColor="#005da7" VerticalOptions="Center"  Margin="5,0,0,0"  HorizontalTextAlignment="End"  VerticalTextAlignment="Center" FontAttributes="Bold"/>
-                <Label Grid.Row="3" Grid.Column="0" Text="Type"         FontSize="Small"   TextColor="#005da7" VerticalOptions="Center"  Margin="5,0,0,0"  HorizontalTextAlignment="End"  VerticalTextAlignment="Center" FontAttributes="Bold"/>
-                <Label Grid.Row="4" Grid.Column="0" Text="Description"  FontSize="Small"   TextColor="#005da7" VerticalOptions="Center"  Margin="5,0,0,0"  HorizontalTextAlignment="End"  VerticalTextAlignment="Center" FontAttributes="Bold"/>
+            <StackLayout Orientation="Vertical" HorizontalOptions="Center">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Margin="0,20,0,0" x:Name="ProduitImage" Source="{Binding Produit.LienImage}"  HorizontalOptions="Center" WidthRequest="200"/>
+                    <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" Text="{Binding Produit.Nom}"     TextColor="#005da7" FontSize="Large" HorizontalTextAlignment="Center" HorizontalOptions="Center" FontAttributes="Bold"/>
+                    <Label Grid.Row="2" Grid.Column="0" Text="Référence"    FontSize="Small"   TextColor="#005da7" VerticalOptions="Center"  Margin="5,0,0,0"  HorizontalTextAlignment="End"  VerticalTextAlignment="Center" FontAttributes="Bold"/>
+                    <Label Grid.Row="3" Grid.Column="0" Text="Type"         FontSize="Small"   TextColor="#005da7" VerticalOptions="Center"  Margin="5,0,0,0"  HorizontalTextAlignment="End"  VerticalTextAlignment="Center" FontAttributes="Bold"/>
+                    <Label Grid.Row="4" Grid.Column="0" Text="Puissance calorifique à chaud (W)"         FontSize="Small"   TextColor="#005da7" VerticalOptions="Center"  Margin="5,0,0,0"  HorizontalTextAlignment="End"  VerticalTextAlignment="Center" FontAttributes="Bold"/>
+                    <Label Grid.Row="5" Grid.Column="0" Text="Puissance calorifique à froid (W)"         FontSize="Small"   TextColor="#005da7" VerticalOptions="Center"  Margin="5,0,0,0"  HorizontalTextAlignment="End"  VerticalTextAlignment="Center" FontAttributes="Bold"/>
+                    <Label Grid.Row="6" Grid.Column="0" Text="Puissance électrique à chaud (W)"         FontSize="Small"   TextColor="#005da7" VerticalOptions="Center"  Margin="5,0,0,0"  HorizontalTextAlignment="End"  VerticalTextAlignment="Center" FontAttributes="Bold"/>
+                    <Label Grid.Row="7" Grid.Column="0" Text="Puissance électrique à froid (W)"         FontSize="Small"   TextColor="#005da7" VerticalOptions="Center"  Margin="5,0,0,0"  HorizontalTextAlignment="End"  VerticalTextAlignment="Center" FontAttributes="Bold"/>
+                    <Label Grid.Row="8" Grid.Column="0" Text="Description"  FontSize="Small"   TextColor="#005da7" VerticalOptions="Center"  Margin="5,0,0,0"  HorizontalTextAlignment="End"  VerticalTextAlignment="Center" FontAttributes="Bold"/>
 
-                <Label Grid.Row="2" Grid.Column="1"  TextColor="#005da7"  VerticalOptions="Center"   Text="{Binding Produit.Reference}"/>
-                <Label Grid.Row="3" Grid.Column="1"  TextColor="#005da7"  VerticalOptions="Center"   Text="{Binding Produit.Type}"/>
-                <Label Grid.Row="5" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2" TextColor="#005da7"   Text="{Binding Produit.Description}"/>
+                    <Label Grid.Row="2" Grid.Column="2"  TextColor="#005da7"  VerticalOptions="Center"   Text="{Binding Produit.Reference}"/>
+                    <Label Grid.Row="3" Grid.Column="2"  TextColor="#005da7"  VerticalOptions="Center"   Text="{Binding Produit.Type}"/>
+                    <Label Grid.Row="4" Grid.Column="2"  TextColor="#005da7"  VerticalOptions="Center"   Text="{Binding Produit.PuissanceCalorifiqueChaud}"/>
+                    <Label Grid.Row="5" Grid.Column="2"  TextColor="#005da7"  VerticalOptions="Center"   Text="{Binding Produit.PuissanceCalorifiqueFroid}"/>
+                    <Label Grid.Row="6" Grid.Column="2"  TextColor="#005da7"  VerticalOptions="Center"   Text="{Binding Produit.PuissanceElectriqueChaud}"/>
+                    <Label Grid.Row="7" Grid.Column="2"  TextColor="#005da7"  VerticalOptions="Center"   Text="{Binding Produit.PuissanceElectriqueFroid}"/>
+                    <ScrollView Grid.Row="8" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="3" VerticalOptions="Center">
+                        <Label Grid.Row="9" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="3" TextColor="#005da7"   Text="{Binding Produit.Description}"/>
+                    </ScrollView>
 
-            </Grid>
+                </Grid>
+            </StackLayout>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>
