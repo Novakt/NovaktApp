@@ -240,7 +240,7 @@ namespace NovaktApp.ViewModel
         {
             Estimation.Libelle = "";
             Estimation.Secteur = "";
-            Estimation.Surface = 0;
+            Estimation.Surface = null;
             Estimation.TypeChantier = "";
             Estimation.TypeBatiment = "";
             Estimation.TemperatureMoyenne = 0;
@@ -257,10 +257,10 @@ namespace NovaktApp.ViewModel
         /// </summary>
         /// <param name="anneeBatiment"></param>
         /// <returns></returns>
-        private int CalculEstimtion(int anneeBatiment)
+        private int? CalculEstimtion(int? anneeBatiment)
         {
-            int result = 0;
-            int valeurRejete = 0;
+            int? result = 0;
+            int? valeurRejete = 0;
             //Calcul de la consomation en watt
             if (anneeBatiment >= 1972 && anneeBatiment <= 1980)
             {
