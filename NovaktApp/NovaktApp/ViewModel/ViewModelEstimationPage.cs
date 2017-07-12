@@ -76,6 +76,8 @@ namespace NovaktApp.ViewModel
                 {
                     //Enlevé le libellé de l'estimation
                     Estimation = SelectEstimation;
+                    StrNumberAnnee = SelectEstimation.Annee.ToString();
+                    StrNumberSurface = SelectEstimation.Surface.ToString();
                     
                     EstimationSelectVerif = true;
                 }
@@ -132,7 +134,8 @@ namespace NovaktApp.ViewModel
         //Permet de créer une estimation
         public Estimation Estimation
         {
-            get { return _Estimation; }
+            get
+            { return _Estimation; }
             set
             {
                 OnPropertyChanging(nameof(Estimation));
@@ -142,6 +145,67 @@ namespace NovaktApp.ViewModel
                 if (_SelectEstimation != null)
                 {
                     EstimationSelectVerif = true;
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// Permet de récupérer la valeur pour alimenter la variable Surface qui est en int?
+        /// </summary>
+        public string StrNumberSurface
+        {
+            get
+            {
+                if (Estimation.Surface == null)
+                {
+                    return "";
+                }
+                else
+                {
+                    return Estimation.Surface.ToString();
+                }
+            }
+
+            set
+            {
+                try
+                {
+                    Estimation.Surface = int.Parse(value);
+                }
+                catch
+                {
+                    Estimation.Surface = null;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Permet de récupérer la valeur pour alimenter la variable Annee qui est en int?
+        /// </summary>
+        public string StrNumberAnnee
+        {
+            get
+            {
+                if (Estimation.Annee == null)
+                {
+                    return "";
+                }
+                else
+                {
+                    return Estimation.Annee.ToString();
+                }
+            }
+
+            set
+            {
+                try
+                {
+                    Estimation.Annee = int.Parse(value);
+                }
+                catch
+                {
+                    Estimation.Annee = null;
                 }
             }
         }
@@ -194,6 +258,9 @@ namespace NovaktApp.ViewModel
             DBEstimation dbEstimation = new DBEstimation();
             DBClient dbClient = new DBClient();
 
+            //TODO Ajouter les vérification sur les champs du formulaire
+
+
             if(Client.ID == 0)
             {
                 Client.Estimations = new ObservableCollection<Estimation>();
@@ -224,7 +291,7 @@ namespace NovaktApp.ViewModel
                     dbEstimation.Update(SelectEstimation);
                 }
             }
-
+            //Ouvre la popup pour afficher la consommation en Watt
             OpenPopup();
         }
         /// <summary>
@@ -234,7 +301,7 @@ namespace NovaktApp.ViewModel
         {
             PopupEstimation pg = new PopupEstimation();
             ViewModelPopupEstimation vm = new ViewModelPopupEstimation();
-            vm.EstimationWatt = "Puissance en Watt consommée par l'installation des PAC : \n" + CalculEstimtion(Estimation.Annee).ToString();
+            vm.EstimationWatt = "Puissance en Watt consommée par l'installation des PAC : \n" + CalculEstimtion(Estimation.Annee).ToString() + "W";
             pg.BindingContext = vm;
             await PopupNavigation.PushAsync(pg);
         }
@@ -310,7 +377,9 @@ namespace NovaktApp.ViewModel
             }
 
             //Nombre de pac
-            nbPac = result / pacRetenu.PuissanceCalorifiqueChaud;
+            double arrondi = 0;
+            arrondi = Math.Ceiling((double)result / pacRetenu.PuissanceCalorifiqueChaud);
+            nbPac = Convert.ToInt32(arrondi);
 
             //Consommation électrique estimé
             int moyennePuissanceElectrique = (pacRetenu.PuissanceElectriqueChaud + pacRetenu.PuissanceElectriqueFroid) / 2;

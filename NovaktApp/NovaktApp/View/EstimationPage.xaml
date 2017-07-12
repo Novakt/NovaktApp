@@ -67,10 +67,10 @@
             <Entry Grid.Row="7" x:Name="Surface" Placeholder="Surface"  Keyboard="Numeric">
                 <Entry.Triggers>
                     <DataTrigger TargetType="Entry" Binding="{Binding EstimationSelectVerif}" Value="False">
-                        <Setter Property="Text" Value="{Binding Estimation.Surface, Mode=TwoWay}"/>
+                        <Setter Property="Text" Value="{Binding StrNumberSurface, Mode=TwoWay}"/>
                     </DataTrigger>
                     <DataTrigger TargetType="Entry" Binding="{Binding EstimationSelectVerif}" Value="True">
-                        <Setter Property="Text" Value="{Binding SelectEstimation.Surface}"/>
+                        <Setter Property="Text" Value="{Binding StrNumberSurface}"/>
                     </DataTrigger>
                 </Entry.Triggers>
             </Entry>
@@ -140,10 +140,10 @@
             <Entry Grid.Row="11" x:Name="Annee" Placeholder="Année construction"  Keyboard="Numeric">
                 <Entry.Triggers>
                     <DataTrigger TargetType="Entry" Binding="{Binding EstimationSelectVerif}" Value="False">
-                        <Setter Property="Text" Value="{Binding Estimation.Annee, Mode=TwoWay}"/>
+                        <Setter Property="Text" Value="{Binding StrNumberAnnee, Mode=TwoWay}"/>
                     </DataTrigger>
                     <DataTrigger TargetType="Entry" Binding="{Binding EstimationSelectVerif}" Value="True">
-                        <Setter Property="Text" Value="{Binding SelectEstimation.Annee}"/>
+                        <Setter Property="Text" Value="{Binding StrNumberAnnee}"/>
                     </DataTrigger>
                 </Entry.Triggers>
             </Entry>
