@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Text.RegularExpressions;
 using Xamarin.Forms;
 
 namespace NovaktApp.ViewModel
@@ -259,41 +260,77 @@ namespace NovaktApp.ViewModel
             DBClient dbClient = new DBClient();
 
             //TODO Ajouter les vérification sur les champs du formulaire
-
-
-            if(Client.ID == 0)
+            if(ValidationFormulaire() == true)
             {
-                Client.Estimations = new ObservableCollection<Estimation>();
-                Client.IDCommercial = Global.commercial.ID;
-                Client.Estimations.Add(Estimation);
-                Client.IsSynchro = false;
-                dbClient.Add(Client);
-                Estimation.IDClient = Client.ID;
-                Estimation.IsSynchro = false;
-                dbEstimation.Add(Estimation);
-            }
-            else
-            {
-                Client.IsSynchro = false;
-                Client.IDCommercial = Global.commercial.ID;
-                dbClient.Update(Client);
-
-                if (EstimationSelectVerif == false)
+                if (Client.ID == 0)
                 {
+                    Client.Estimations = new ObservableCollection<Estimation>();
+                    Client.IDCommercial = Global.commercial.ID;
+                    Client.Estimations.Add(Estimation);
+                    Client.IsSynchro = false;
+                    dbClient.Add(Client);
                     Estimation.IDClient = Client.ID;
                     Estimation.IsSynchro = false;
                     dbEstimation.Add(Estimation);
-                    Client.Estimations.Add(Estimation);
                 }
                 else
                 {
-                    SelectEstimation.IsSynchro = false;
-                    dbEstimation.Update(SelectEstimation);
+                    Client.IsSynchro = false;
+                    Client.IDCommercial = Global.commercial.ID;
+                    dbClient.Update(Client);
+
+                    if (EstimationSelectVerif == false)
+                    {
+                        Estimation.IDClient = Client.ID;
+                        Estimation.IsSynchro = false;
+                        dbEstimation.Add(Estimation);
+                        Client.Estimations.Add(Estimation);
+                    }
+                    else
+                    {
+                        SelectEstimation.IsSynchro = false;
+                        dbEstimation.Update(SelectEstimation);
+                    }
+                }
+                //Ouvre la popup pour afficher la consommation en Watt
+                OpenPopup();
+            }
+            else
+            {
+                //Message pour prévenir de remplir tous les champs
+                MessageService.message("Merci de compléter tous les champs au bon format");
+            }
+        }
+
+        /// <summary>
+        /// Permet de véirifier les champs du formualire
+        /// </summary>
+        /// <returns></returns>
+        private bool ValidationFormulaire()
+        {
+            bool valide = false;
+
+            if(Client.Intitule != null && Client.Adresse != null && Client.Ville != null && Client.Mail != null && Client.Tel != null
+                && Estimation.Libelle != null && Estimation.Secteur != null && Estimation.TypeChantier != null && Estimation.TypeBatiment != null
+                && Estimation.Lieu != null && Estimation.Annee != null && Estimation.Surface != null)
+            {
+                bool valideEmail = Regex.IsMatch(Client.Mail, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase);
+                bool valideTel = Regex.IsMatch(Client.Tel, @"^[0-9]{10}$");
+                bool valideAnnee = Regex.IsMatch(Estimation.Annee.ToString(), @"^[0-9]{4}$");
+                bool valideSurface = Regex.IsMatch(Estimation.Surface.ToString(), @"^[0-9]*$");
+
+                if (valideEmail && valideTel && valideAnnee && valideSurface
+                    && Client.Intitule != "" && Client.Adresse != "" && Client.Ville != ""
+                    && Estimation.Libelle != "" && Estimation.Secteur != "" && Estimation.TypeChantier != "" && Estimation.TypeBatiment != ""
+                    && Estimation.Lieu != "")
+                {
+                    valide = true;
                 }
             }
-            //Ouvre la popup pour afficher la consommation en Watt
-            OpenPopup();
+
+            return valide;
         }
+
         /// <summary>
         /// Ouvre la fenêtre de popup
         /// </summary>
@@ -301,7 +338,18 @@ namespace NovaktApp.ViewModel
         {
             PopupEstimation pg = new PopupEstimation();
             ViewModelPopupEstimation vm = new ViewModelPopupEstimation();
-            vm.EstimationWatt = "Puissance en Watt consommée par l'installation des PAC : \n" + CalculEstimtion(Estimation.Annee).ToString() + "W";
+
+            int resultatEstimation = (int)CalculEstimtion(Estimation.Annee);
+
+            if (resultatEstimation == 0)
+            {
+                vm.EstimationWatt = "Vous n'avez pas de produit l'estimation est donc impossible merci de synchroniser";
+            }
+            else
+            {
+                vm.EstimationWatt = "Puissance en Watt consommée par l'installation des PAC : \n" + resultatEstimation +"Watt";
+            }
+           
             pg.BindingContext = vm;
             await PopupNavigation.PushAsync(pg);
         }
@@ -376,15 +424,23 @@ namespace NovaktApp.ViewModel
                 }
             }
 
-            //Nombre de pac
-            double arrondi = 0;
-            arrondi = Math.Ceiling((double)result / pacRetenu.PuissanceCalorifiqueChaud);
-            nbPac = Convert.ToInt32(arrondi);
+            if(Produits.Count != 0)
+            {
+                //Nombre de pac
+                double arrondi = 0;
+                arrondi = Math.Ceiling((double)result / pacRetenu.PuissanceCalorifiqueChaud);
+                nbPac = Convert.ToInt32(arrondi);
 
-            //Consommation électrique estimé
-            int moyennePuissanceElectrique = (pacRetenu.PuissanceElectriqueChaud + pacRetenu.PuissanceElectriqueFroid) / 2;
-            result = nbPac * moyennePuissanceElectrique;
+                //Consommation électrique estimé
+                int moyennePuissanceElectrique = (pacRetenu.PuissanceElectriqueChaud + pacRetenu.PuissanceElectriqueFroid) / 2;
+                result = nbPac * moyennePuissanceElectrique;
 
+            }
+            else
+            {
+                result = 0;
+            }
+           
             //retourne le nombre de watt électrique consommé
             return result;
         }
