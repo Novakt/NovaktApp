@@ -30,6 +30,6 @@
       </ListView.ItemTemplate>
     </ListView>
 
-        <Button x:Name="NouvelleEstimation" Grid.Row="2" Text="Nouveau client" TextColor="White"  BackgroundColor="#005da7"   Opacity="0.75" Command="{Binding EstimationCommand}"/>
+        <Button x:Name="NouveauClient" AutomationId="NouveauClient"  Grid.Row="2" Text="Nouveau client" TextColor="White"  BackgroundColor="#005da7"   Opacity="0.75" Command="{Binding EstimationCommand}"/>
   </Grid>
 </ContentPage>

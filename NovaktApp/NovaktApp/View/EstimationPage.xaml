@@ -23,19 +23,19 @@
             </Grid.RowDefinitions>
 
             <!--Nom client-->
-            <Entry Grid.Row="0" x:Name="Intitule"  TextColor="#005da7"  Placeholder="Nom" Text="{Binding Client.Intitule}"/>
+            <Entry Grid.Row="0" x:Name="Intitule" AutomationId="Intitule"  TextColor="#005da7"  Placeholder="Nom" Text="{Binding Client.Intitule}"/>
 
             <!--Adresse client-->
-            <Entry Grid.Row="1" x:Name="Adresse"   TextColor="#005da7" Placeholder="Adresse" Text="{Binding Client.Adresse}"/>
+            <Entry Grid.Row="1" x:Name="Adresse"  AutomationId="Adresse"   TextColor="#005da7" Placeholder="Adresse" Text="{Binding Client.Adresse}"/>
 
             <!--Ville client-->
-            <Entry Grid.Row="2" x:Name="Ville"     TextColor="#005da7" Placeholder="Ville" Text="{Binding Client.Ville}"/>
+            <Entry Grid.Row="2" x:Name="Ville"    AutomationId="Ville"  TextColor="#005da7" Placeholder="Ville" Text="{Binding Client.Ville}"/>
 
             <!--Tel client-->
-            <Entry Grid.Row="3" x:Name="Tel"       TextColor="#005da7" Placeholder="Tel." Text="{Binding Client.Tel}" Keyboard="Numeric"/>
-
+            <Entry Grid.Row="3" x:Name="Tel"      AutomationId="Tel"  TextColor="#005da7" Placeholder="Tel." Text="{Binding Client.Tel}" Keyboard="Numeric"/>
+    
             <!--Mail client-->
-            <Entry Grid.Row="4" x:Name="Mail"      TextColor="#005da7" Placeholder="Mail" Text="{Binding Client.Mail}" Keyboard="Email"/>
+            <Entry Grid.Row="4" x:Name="Mail"     AutomationId="Mail"  TextColor="#005da7" Placeholder="Mail" Text="{Binding Client.Mail}" Keyboard="Email"/>
 
             <!--Estimation + Bouton + nouvelle estimation client-->
             <Grid Grid.Row="5">
@@ -52,7 +52,7 @@
             </Grid>
 
             <!--Secteur activité client-->
-            <Entry Grid.Row="6" x:Name="Secteur" Placeholder="Secteur d'activité">
+            <Entry Grid.Row="6" x:Name="Secteur" AutomationId="" Placeholder="Secteur d'activité">
                 <Entry.Triggers>
                     <DataTrigger TargetType="Entry" Binding="{Binding EstimationSelectVerif}" Value="False">
                         <Setter Property="Text" Value="{Binding Estimation.Secteur, Mode=TwoWay}"/>
@@ -64,7 +64,7 @@
             </Entry>
 
             <!--Surface client-->
-            <Entry Grid.Row="7" x:Name="Surface" Placeholder="Surface"  Keyboard="Numeric">
+            <Entry Grid.Row="7" x:Name="Surface" AutomationId=""  Placeholder="Surface"  Keyboard="Numeric">
                 <Entry.Triggers>
                     <DataTrigger TargetType="Entry" Binding="{Binding EstimationSelectVerif}" Value="False">
                         <Setter Property="Text" Value="{Binding StrNumberSurface, Mode=TwoWay}"/>
@@ -88,7 +88,7 @@
             </Entry>-->
 
             <!--Type chantier client-->
-            <Entry Grid.Row="8" x:Name="TypeChantier" Placeholder="Type de chantier" >
+            <Entry Grid.Row="8" x:Name="TypeChantier" AutomationId=""  Placeholder="Type de chantier" >
                 <Entry.Triggers>
                     <DataTrigger TargetType="Entry" Binding="{Binding EstimationSelectVerif}" Value="False">
                         <Setter Property="Text" Value="{Binding Estimation.TypeChantier, Mode=TwoWay}"/>
@@ -100,7 +100,7 @@
             </Entry>
 
             <!--Type batiment client-->
-            <Entry Grid.Row="9" x:Name="TypeBatiment" Placeholder="Type de bâtiment">
+            <Entry Grid.Row="9" x:Name="TypeBatiment" AutomationId=""  Placeholder="Type de bâtiment">
                 <Entry.Triggers>
                     <DataTrigger TargetType="Entry" Binding="{Binding EstimationSelectVerif}" Value="False">
                         <Setter Property="Text" Value="{Binding Estimation.TypeBatiment, Mode=TwoWay}"/>
@@ -125,7 +125,7 @@
 
 
             <!--Lieu client-->
-            <Entry Grid.Row="10" x:Name="Lieu" Placeholder="Lieu" >
+            <Entry Grid.Row="10" x:Name="Lieu" AutomationId=""  Placeholder="Lieu" >
                 <Entry.Triggers>
                     <DataTrigger TargetType="Entry" Binding="{Binding EstimationSelectVerif}" Value="False">
                         <Setter Property="Text" Value="{Binding Estimation.Lieu, Mode=TwoWay}"/>
@@ -137,7 +137,7 @@
             </Entry>
 
             <!--Annee client-->
-            <Entry Grid.Row="11" x:Name="Annee" Placeholder="Année construction"  Keyboard="Numeric">
+            <Entry Grid.Row="11" x:Name="Annee" AutomationId=""  Placeholder="Année construction"  Keyboard="Numeric">
                 <Entry.Triggers>
                     <DataTrigger TargetType="Entry" Binding="{Binding EstimationSelectVerif}" Value="False">
                         <Setter Property="Text" Value="{Binding StrNumberAnnee, Mode=TwoWay}"/>
