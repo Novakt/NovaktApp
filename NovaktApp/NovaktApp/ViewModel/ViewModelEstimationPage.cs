@@ -26,6 +26,8 @@ namespace NovaktApp.ViewModel
         private ObservableCollection<Produit> _Produits;
         private Produit _SelectProduit;
         private Estimation _Estimation;
+        private string _Pac;
+        private string _PacCaractUnitaire;
 
 
         //Permet de naviguer entre les différentes pages
@@ -211,6 +213,31 @@ namespace NovaktApp.ViewModel
             }
         }
 
+        public string Pac
+        {
+            get { return _Pac; }
+            set
+            {
+                OnPropertyChanging(nameof(Pac));
+                _Pac = value;
+                OnPropertyChanged(nameof(Pac));
+
+            }
+        }
+
+        public string PacCaractUnitaire
+        {
+            get { return _PacCaractUnitaire; }
+            set
+            {
+                OnPropertyChanging(nameof(PacCaractUnitaire));
+                _PacCaractUnitaire = value;
+                OnPropertyChanged(nameof(PacCaractUnitaire));
+
+            }
+        }
+
+
         /// <summary>
         /// Constructeur
         /// </summary>
@@ -308,9 +335,9 @@ namespace NovaktApp.ViewModel
         /// <returns></returns>
         private bool ValidationFormulaire()
         {
-            bool valide = false;
+            bool valide = true;//false;
 
-            if(Client.Intitule != null && Client.Adresse != null && Client.Ville != null && Client.Mail != null && Client.Tel != null
+            /*if(Client.Intitule != null && Client.Adresse != null && Client.Ville != null && Client.Mail != null && Client.Tel != null
                 && Estimation.Libelle != null && Estimation.Secteur != null && Estimation.TypeChantier != null && Estimation.TypeBatiment != null
                 && Estimation.Lieu != null && Estimation.Annee != null && Estimation.Surface != null)
             {
@@ -326,7 +353,7 @@ namespace NovaktApp.ViewModel
                 {
                     valide = true;
                 }
-            }
+            }*/
 
             return valide;
         }
@@ -338,16 +365,19 @@ namespace NovaktApp.ViewModel
         {
             PopupEstimation pg = new PopupEstimation();
             ViewModelPopupEstimation vm = new ViewModelPopupEstimation();
+            vm.Produit = new Produit();
 
             int resultatEstimation = (int)CalculEstimtion(Estimation.Annee);
 
             if (resultatEstimation == 0)
             {
-                vm.EstimationWatt = "Vous n'avez pas de produit l'estimation est donc impossible merci de synchroniser";
+                vm.EstimationWatt = "Aucun produit. Estimation impossible merci de synchroniser";
             }
             else
             {
-                vm.EstimationWatt = "Puissance en Watt consommée par l'installation des PAC : \n" + resultatEstimation +"Watt";
+                vm.EstimationWatt = "Puissance en Watt du PAC : " + resultatEstimation +"Watt";
+                vm.Produit.Nom = "PAC utilisé "+Pac;
+                vm.Produit.PuissanceElectriqueChaud = int.Parse(PacCaractUnitaire);
             }
            
             pg.BindingContext = vm;
@@ -410,7 +440,7 @@ namespace NovaktApp.ViewModel
             DBProduit dbp = new DBProduit();
             Produits = new ObservableCollection<Produit>(dbp.GetAll());
             Produit pacRetenu = new Produit();
-            
+
             //Recherche le PAC qui convient pour ce bâtiment
             foreach(Produit item in Produits)
             {
@@ -421,6 +451,8 @@ namespace NovaktApp.ViewModel
                 if(valeurRejete < moyennePac)
                 {
                     pacRetenu = item;
+                    //Récupération du nom du PAC 
+                    Pac = item.Nom;
                 }
             }
 
@@ -433,7 +465,13 @@ namespace NovaktApp.ViewModel
 
                 //Consommation électrique estimé
                 int moyennePuissanceElectrique = (pacRetenu.PuissanceElectriqueChaud + pacRetenu.PuissanceElectriqueFroid) / 2;
+
+                //Récupération de la consmmation lectrique pour un PAC
+                PacCaractUnitaire = moyennePuissanceElectrique.ToString();
+
                 result = nbPac * moyennePuissanceElectrique;
+                Estimation.ResultatEstimation = (int)result;
+
 
             }
             else

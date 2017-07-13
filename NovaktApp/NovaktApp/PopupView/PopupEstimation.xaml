@@ -22,8 +22,29 @@
 
   <pages:PopupPage.Content>
     <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*"/>
+        <RowDefinition Height="150"/>
+        <RowDefinition Height="*"/>
+        <RowDefinition Height="*"/>
+      </Grid.RowDefinitions>
 
-      <Label x:Name="EstimationWatt" Grid.Row="0" Font="25" Text="{Binding EstimationWatt}"/>
+      <StackLayout Orientation="Horizontal" Grid.Row="0" HeightRequest="100">
+        <Image Source="fe.png"  HorizontalOptions="CenterAndExpand"/>
+      </StackLayout>
+      
+      <Label x:Name="EstimationWatt" Grid.Row="1" Font="25" Text="{Binding EstimationWatt}"/>
+      <Label x:Name="ProduitNom" Grid.Row="2" Font="25" Text="{Binding Produit.Nom}"/>
+
+      <Label Grid.Row="3" x:Name="ProduitElectrique" Font="25">
+        <Label.Triggers>
+          <DataTrigger TargetType="Label" Binding="{Binding Produit.PuissanceElectriqueChaud}" Value="0">
+            <Setter Property="IsVisible" Value="false"/>
+          </DataTrigger>
+        </Label.Triggers>
+      </Label>
+
+      <!--<Label IsVisible="" x:Name="ProduitElectrique" Grid.Row="3" Font="25" Text="{Binding Produit.PuissanceElectriqueChaud}"/>-->
 
     </Grid>
   </pages:PopupPage.Content>

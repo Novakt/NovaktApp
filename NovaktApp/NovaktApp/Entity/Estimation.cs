@@ -32,6 +32,7 @@ namespace NovaktApp.Entity
         private int _IDServeur;
         private int _IDClient;
         private bool _IsSynchro;
+        private int _ResultatEstimation;
 
         public Estimation()
         {
@@ -220,6 +221,19 @@ namespace NovaktApp.Entity
             set
             {
                 _IsSynchro = value;
+            }
+        }
+
+        public int ResultatEstimation
+        {
+            get
+            {
+                return _ResultatEstimation;
+            }
+
+            set
+            {
+                _ResultatEstimation = value;
             }
         }
     }
