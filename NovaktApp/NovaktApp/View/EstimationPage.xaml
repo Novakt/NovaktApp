@@ -177,7 +177,7 @@
                     </ListView.ItemTemplate>
                 </ListView>-->
 
-                <Button Grid.Row="12" x:Name="Estimer" Text="Estimer" Command="{Binding EstimerCommand}" TextColor="White"  BackgroundColor="#005da7" Opacity="0.75"/>
+                <Button Grid.Row="12" x:Name="Estimer" Text="Enregistrer et Estimer" Command="{Binding EstimerCommand}" TextColor="White"  BackgroundColor="#005da7" Opacity="0.75"/>
 
             <!--"</Grid>-->
 
