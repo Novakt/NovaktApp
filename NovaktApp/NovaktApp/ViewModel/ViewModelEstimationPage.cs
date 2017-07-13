@@ -213,6 +213,9 @@ namespace NovaktApp.ViewModel
             }
         }
 
+        /// <summary>
+        /// Pac sélectionner 
+        /// </summary>
         public string Pac
         {
             get { return _Pac; }
@@ -225,6 +228,9 @@ namespace NovaktApp.ViewModel
             }
         }
 
+        /// <summary>
+        /// Puissance en watt du PAC sélectionné
+        /// </summary>
         public string PacCaractUnitaire
         {
             get { return _PacCaractUnitaire; }
@@ -335,7 +341,7 @@ namespace NovaktApp.ViewModel
         /// <returns></returns>
         private bool ValidationFormulaire()
         {
-            bool valide = true;//false;
+            bool valide = false;
 
             if(Client.Intitule != null && Client.Adresse != null && Client.Ville != null && Client.Mail != null && Client.Tel != null
                 && Estimation.Libelle != null && Estimation.Secteur != null && Estimation.TypeChantier != null && Estimation.TypeBatiment != null
