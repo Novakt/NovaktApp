@@ -337,7 +337,7 @@ namespace NovaktApp.ViewModel
         {
             bool valide = true;//false;
 
-            /*if(Client.Intitule != null && Client.Adresse != null && Client.Ville != null && Client.Mail != null && Client.Tel != null
+            if(Client.Intitule != null && Client.Adresse != null && Client.Ville != null && Client.Mail != null && Client.Tel != null
                 && Estimation.Libelle != null && Estimation.Secteur != null && Estimation.TypeChantier != null && Estimation.TypeBatiment != null
                 && Estimation.Lieu != null && Estimation.Annee != null && Estimation.Surface != null)
             {
@@ -353,7 +353,7 @@ namespace NovaktApp.ViewModel
                 {
                     valide = true;
                 }
-            }*/
+            }
 
             return valide;
         }
