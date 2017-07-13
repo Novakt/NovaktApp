@@ -19,7 +19,7 @@
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto"/>
                                         </Grid.RowDefinitions>
-                                        <Label Grid.Row="0" HorizontalOptions="Start"  Text="{Binding Nom}" FontSize="Medium"/>
+                                        <Label Grid.Row="0" AutomationId="ListeCategorieProduit" HorizontalOptions="Start"  Text="{Binding Nom}" FontSize="Medium"/>
                                     </Grid>
                                 </StackLayout>
                             </ViewCell.View>

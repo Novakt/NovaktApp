@@ -28,7 +28,7 @@
                                                 <ColumnDefinition Width="auto"/>
                                                 <ColumnDefinition Width="auto"/>
                                             </Grid.ColumnDefinitions>
-                                            <Label Grid.Column="0" HorizontalOptions="Center"  Text="{Binding Nom}" FontSize="Large" FontAttributes="Bold" />
+                                            <Label Grid.Column="0" HorizontalOptions="Center" AutomationId="ListeChantier"  Text="{Binding Nom}" FontSize="Large" FontAttributes="Bold" />
                                             <Label Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center"  Text="{Binding SurfaceFull}" FontSize="Small" FontAttributes="Italic" />
                                         </Grid>
                                         
