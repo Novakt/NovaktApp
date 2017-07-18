@@ -70,7 +70,7 @@
                         <Setter Property="Text" Value="{Binding StrNumberSurface, Mode=TwoWay}"/>
                     </DataTrigger>
                     <DataTrigger TargetType="Entry" Binding="{Binding EstimationSelectVerif}" Value="True">
-                        <Setter Property="Text" Value="{Binding StrNumberSurface}"/>
+                        <Setter Property="Text" Value="{Binding SelectEstimation.Surface}"/>
                     </DataTrigger>
                 </Entry.Triggers>
             </Entry>
@@ -143,7 +143,7 @@
                         <Setter Property="Text" Value="{Binding StrNumberAnnee, Mode=TwoWay}"/>
                     </DataTrigger>
                     <DataTrigger TargetType="Entry" Binding="{Binding EstimationSelectVerif}" Value="True">
-                        <Setter Property="Text" Value="{Binding StrNumberAnnee}"/>
+                        <Setter Property="Text" Value="{Binding SelectEstimation.Annee}"/>
                     </DataTrigger>
                 </Entry.Triggers>
             </Entry>
