@@ -130,7 +130,7 @@ namespace NovaktApp.ViewModel
         private async void TestConnect()
         {
             DBUtilisateur db = new DBUtilisateur();
-            Commercial c = db.GetByUsernamePassword(Login, Password);
+            Commercial c = db.GetByUsernamePassword(Login, Global.sha256(Password));
             Global.commercial = c;
             if (c != null)
             {
@@ -140,7 +140,7 @@ namespace NovaktApp.ViewModel
             {
                 WSCommercial ws = new WSCommercial();
                 IsBusy = true;
-                await ws.Login(Login, Password, LoginCallback);
+                await ws.Login(Login, Global.sha256(Password), LoginCallback);
                 IsBusy = false;
             }
         }
