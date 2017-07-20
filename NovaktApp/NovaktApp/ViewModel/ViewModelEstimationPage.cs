@@ -445,24 +445,54 @@ namespace NovaktApp.ViewModel
             //Récupération du PAC nécessaire afin de connaître la puissance à utiliser
             DBProduit dbp = new DBProduit();
             Produits = new ObservableCollection<Produit>(dbp.GetAll());
-            Produit pacRetenu = new Produit();
+            Produit pacRetenu = null;
+            Boolean pacTrouve = false;
 
             //Recherche le PAC qui convient pour ce bâtiment
             foreach(Produit item in Produits)
             {
-                //Moyenne entre la puissance à chaud et à froid du PAC
-                double moyennePac = (item.PuissanceCalorifiqueChaud + item.PuissanceCalorifiqueFroid) / 2;
-
-                //Selection du PAC
-                if(valeurRejete < moyennePac)
+                if (pacTrouve == false)
                 {
-                    pacRetenu = item;
-                    //Récupération du nom du PAC 
-                    Pac = item.Nom;
+                    //Moyenne entre la puissance à chaud et à froid du PAC
+                    double moyennePac = (item.PuissanceCalorifiqueChaud + item.PuissanceCalorifiqueFroid) / 2;
+
+                    //Selection du PAC
+                    if (valeurRejete < moyennePac)
+                    {
+                        pacTrouve = true;
+                        pacRetenu = item;
+                        //Récupération du nom du PAC 
+                        Pac = item.Nom;
+                    }
                 }
             }
 
-            if(Produits.Count != 0)
+            //Récupération du PAC le plus élever si pas de c
+            if (pacRetenu == null)
+            {
+                double moyennePacRetenu = 0;
+                foreach (Produit item in Produits)
+                {
+                    if (moyennePacRetenu == 0)
+                    {
+                        pacRetenu = item;
+                        Pac = item.Nom;
+                    }
+                    //Moyenne entre la puissance à chaud et à froid du PAC
+                    double moyennePac = (item.PuissanceCalorifiqueChaud + item.PuissanceCalorifiqueFroid) / 2;
+                    moyennePacRetenu = (pacRetenu.PuissanceCalorifiqueChaud + pacRetenu.PuissanceCalorifiqueFroid) / 2;
+
+                    //Selection du PAC
+                    if (moyennePacRetenu < moyennePac)
+                    {
+                        pacRetenu = item;
+                        Pac = item.Nom;
+                    }
+                }
+
+            }
+
+            if (Produits.Count != 0)
             {
                 //Nombre de pac
                 double arrondi = 0;
