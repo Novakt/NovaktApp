@@ -59,6 +59,7 @@ namespace NovaktApp.Data
                 "[Tel] = ?, " +
                 "[Mail] = ?, " +
                 "[IsSynchro] = ?" +
+                "[IDCommercial]" +
                 "WHERE [IdServeur] = ?",
                 client.Intitule,
                 client.Adresse,
@@ -66,6 +67,7 @@ namespace NovaktApp.Data
                 client.Tel,
                 client.Mail,
                 client.IsSynchro,
+                client.IDCommercial,
                 client.IDServeur);
         }
         public Client GetByIdServeur(int id)
